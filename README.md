@@ -14,7 +14,7 @@ ITHS School group project
 
 ### Developers
 
-- first
+- Sirak Kahsay
 - Max Eriksson
 - Sandra Boerma
 - forth
