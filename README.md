@@ -4,18 +4,17 @@ ITHS School group project
 
 ## Developed by
 
-### Project leaders
+### Project manager
 
-- Jonas Rosen
 - Chiman Delwood
 - Debora Tecle
+- Jonas Rosen
 - Kelly Fredriksson
 - Nabila Zekry
 
 ### Developers
 
-- Sirak Kahsay
+- devName
 - Max Eriksson
 - Sandra Boerma
-- forth
-- fifth
+- Sirak Kahsay
