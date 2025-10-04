@@ -1,3 +1,5 @@
+import { isHex } from "./helpers";
+
 /**
  * Fetch all `Recipe`.
  *
@@ -63,3 +65,10 @@ export async function getCommentsByRecipeId(id) { }
  * @returns {boolean} Success confirmation in the form of a `Boolean`.
  */
 export async function commentRecipeById(id, comment, author) { }
+
+// Helpers
+
+function validateId(id) {
+  if (!(isHex(id) && id.length === 24))
+    throw new Error("`id` must be a 24 character hexadecimal");
+}
