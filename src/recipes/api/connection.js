@@ -16,7 +16,9 @@ export async function getRecipes(nameQuery) { }
  * @param {string} id - A 24 character hexadecimal.
  * @returns {Recipe} A `Recipe` with details.
  */
-export async function getRecipeById(id) { }
+export async function getRecipeById(id) {
+  validateId(id);
+}
 
 /**
  * Fetch all categories stored in the database.
@@ -42,7 +44,9 @@ export async function getRecipesByCategory(category) { }
  * @param {number} rating - Rating of `Recipe`
  * @returns {boolean} Success confirmation in the form of a `Boolean`.
  */
-export async function rateRecipeById(id, rating) { }
+export async function rateRecipeById(id, rating) {
+  validateId(id);
+}
 
 /**
  * Fetch all `Comment` for specified `Recipe`.
@@ -51,7 +55,9 @@ export async function rateRecipeById(id, rating) { }
  * @param {string} id - A 24 character hexadecimal `Recipe` id.
  * @returns {Array<Comment>} All stored `Comment` of the `Recipe`.
  */
-export async function getCommentsByRecipeId(id) { }
+export async function getCommentsByRecipeId(id) {
+  validateId(id);
+}
 
 /**
  * Publish a `Comment` for specified `Recipe`.
@@ -64,7 +70,9 @@ export async function getCommentsByRecipeId(id) { }
  * @param {string} author - Name of `Comment`'s author.
  * @returns {boolean} Success confirmation in the form of a `Boolean`.
  */
-export async function commentRecipeById(id, comment, author) { }
+export async function commentRecipeById(id, comment, author) {
+  validateId(id);
+}
 
 // Helpers
 
