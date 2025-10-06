@@ -94,7 +94,9 @@ export default class Recipe {
       timeInMins: this.instructions.timeInMins,
       categories: this.categories,
       instructions: this.instructions.steps,
-      ingredients: this.ingredients.items.map((i) => i.toJSON())
+      ingredients: this.ingredients.items.map((ingredient) =>
+        ingredient.toJSON()
+      )
     };
 
     // Can be left out, or an array of numbers - empty or not.
