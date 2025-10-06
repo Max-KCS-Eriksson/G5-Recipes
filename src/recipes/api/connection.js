@@ -1,3 +1,5 @@
+import Recipe from "./dto/Recipe";
+import Comment from "./dto/Comment";
 import { isHex } from "./helpers";
 
 const API_URL = "https://grupp5-hzqem.reky.se";
@@ -72,6 +74,8 @@ export async function rateRecipeById(id, rating) {
   const API_PATH = `/${id}/ratings`;
 
   validateId(id);
+
+  postData(`${API_ENDPOINT}${API_PATH}`, { rating: rating });
 }
 
 /**
@@ -106,6 +110,8 @@ export async function commentRecipeById(id, comment, author) {
   const API_PATH = `/${id}/comments`;
 
   validateId(id);
+
+  postData(`${API_ENDPOINT}${API_PATH}`, new Comment(author, comment));
 }
 
 // Helpers
