@@ -13,7 +13,10 @@ export async function getRecipes(nameQuery) {
   const API_ENDPOINT = "/recipes";
   if (nameQuery) {
     const QUERY_PARAM = `?query=${nameQuery}`;
+
+    return getData(`${API_ENDPOINT}${QUERY_PARAM}`);
   }
+  return getData(API_ENDPOINT);
 }
 
 /**
@@ -27,6 +30,8 @@ export async function getRecipeById(id) {
   const API_ENDPOINT = "/recipes";
 
   validateId(id);
+
+  return getData(`${API_ENDPOINT}/${id}`);
 }
 
 /**
@@ -37,6 +42,8 @@ export async function getRecipeById(id) {
  */
 export async function getCategories() {
   const API_ENDPOINT = "/categories";
+
+  return getData(API_ENDPOINT);
 }
 
 /**
@@ -49,6 +56,8 @@ export async function getCategories() {
 export async function getRecipesByCategory(category) {
   const API_ENDPOINT = "/categories";
   const API_PATH = `/${category}/recipes`;
+
+  return getData(`${API_ENDPOINT}${API_PATH}`);
 }
 
 /**
@@ -77,6 +86,8 @@ export async function getCommentsByRecipeId(id) {
   const API_PATH = `/${id}/comments`;
 
   validateId(id);
+
+  return getData(`${API_ENDPOINT}${API_PATH}`);
 }
 
 /**
