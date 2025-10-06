@@ -1,0 +1,129 @@
+/* FOOTER – CONTAINER */
+.footer-container {
+  background: linear-gradient(180deg, rgba(136, 98, 133, 0.606), rgba(44, 21, 149, 0.629));
+  color: #ffeea2;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  opacity: 0;
+  animation: footerFadeIn 1.2s ease-in-out forwards;
+}
+
+/* FOOTER – CONTENT */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.footer-logo:hover {
+  cursor: pointer;
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* FOOTER – LINKS */
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #ffeea2;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffde73;
+}
+
+/* FOOTER - ANIMATION - FADE-IN */
+@keyframes footerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FOOTER - RESPONSIVE */
+
+/*  ≤ 600px */
+@media (max-width: 600px) {
+  .footer-container {
+    padding: 1.2rem;
+  }
+
+  .footer-content {
+    gap: 0.6rem;
+  }
+
+  .footer-logo {
+    font-size: 1.4rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/*  601 – 1023px */
+@media (min-width: 601px) and (max-width: 1023px) {
+  .footer-container {
+    padding: 1.4rem 2.5rem;
+  }
+
+  .footer-logo {
+    font-size: 1.6rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem;
+  }
+}
+
+/*  ≥ 1024px */
+@media (min-width: 1024px) {
+  .footer-container {
+    padding: 1.5rem 4rem;
+  }
+
+  .footer-logo {
+    font-size: 2rem;
+  }
+
+  .footer-links {
+    gap: 1.5rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.9rem;
+  }
+}
