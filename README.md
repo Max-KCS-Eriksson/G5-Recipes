@@ -14,7 +14,7 @@ ITHS School group project
 
 ### Developers
 
-- devName
+- Belle Sangthong
 - Max Eriksson
 - Sandra Boerma
 - Sirak Kahsay
