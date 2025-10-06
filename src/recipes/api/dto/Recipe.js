@@ -63,6 +63,7 @@ export default class Recipe {
   static fromJSON(data) {
     return new Recipe(
       data.title,
+      data.categories,
       data.description,
       data.imageUrl,
       {
@@ -73,7 +74,6 @@ export default class Recipe {
         timeInMins: data.timeInMins,
         steps: data.instructions
       },
-      data.categories,
       {
         id: data._id,
         avgRating: data.avgRating,
