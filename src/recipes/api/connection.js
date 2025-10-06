@@ -123,6 +123,17 @@ async function getData(endpoint) {
   return await response.json();
 }
 
+async function postData(endpoint, data) {
+  await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+}
+
 function validateId(id) {
   if (!(isHex(id) && id.length === 24))
     throw new Error("`id` must be a 24 character hexadecimal");
