@@ -60,7 +60,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <h1>Alla recept</h1>
+      <h1 class="recipe-list-header">Alla recept</h1>
       <SearchBar onSearch={handleSearch} />
       <CategoryList categories={categories} onCategoryClick={handleCategoryClick} />
      <section className="recipe-list">
