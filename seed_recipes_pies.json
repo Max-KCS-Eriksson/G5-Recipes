@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Blåbärspaj med vaniljsås",
+    "description": "En klassisk smulpaj fylld med saftiga blåbär och serverad med len vaniljsås.",
+    "imageUrl": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/h8dqaapkhdbcgixeceq8.jpg",
+    "timeInMins": 40,
+    "price": 80,
+    "categories": ["Klassiska Pajer"],
+    "instructions": [
+      "Sätt ugnen på 200°C.",
+      "Blanda blåbär, socker och potatismjöl och häll i en pajform.",
+      "Smula ihop smör, mjöl, havregryn och socker till en deg.",
+      "Fördela degen över bären och grädda 25–30 minuter tills gyllene.",
+      "Servera med vaniljsås eller vaniljglass."
+    ],
+    "ingredients": [
+      { "name": "Blåbär", "amount": 300, "unit": "gram" },
+      { "name": "Smör", "amount": 125, "unit": "gram" },
+      { "name": "Vetemjöl", "amount": 150, "unit": "gram" },
+      { "name": "Havregryn", "amount": 50, "unit": "gram" },
+      { "name": "Strösocker", "amount": 100, "unit": "gram" },
+      { "name": "Potatismjöl", "amount": 1, "unit": "msk" }
+    ]
+  },
+  {
+    "title": "Räkpaj med dill och västerbottenost",
+    "description": "Krämig och smakrik paj med räkor, dill och västerbottenost — perfekt till buffé eller helgmiddag.",
+    "imageUrl": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/sn6dfa6xhn30rmo3k8dh.jpg",
+    "timeInMins": 45,
+    "price": 120,
+    "categories": ["Pajer med Skaldjur"],
+    "instructions": [
+      "Sätt ugnen på 200°C.",
+      "Förgrädda pajskalet i 10 minuter.",
+      "Vispa ihop ägg, grädde, riven ost, salt och dill.",
+      "Fyll pajskalet med räkblandningen och häll över äggstanningen.",
+      "Grädda i ca 25 minuter tills gyllene yta.",
+      "Toppa med färska räkor och dill."
+    ],
+    "ingredients": [
+      { "name": "Pajdeg", "amount": 1, "unit": "st" },
+      { "name": "Räkor", "amount": 200, "unit": "gram" },
+      { "name": "Västerbottenost", "amount": 100, "unit": "gram" },
+      { "name": "Ägg", "amount": 3, "unit": "st" },
+      { "name": "Grädde", "amount": 2, "unit": "dl" },
+      { "name": "Dill", "amount": 2, "unit": "msk" }
+    ]
+  },
+  {
+    "title": "Spenat- och fetaostpaj",
+    "description": "En fräsch och mättande vegetarisk paj med spenat, fetaost och krämig äggstanning.",
+    "imageUrl": "https://assets.icanet.se/e_sharpen:80,q_auto,dpr_1.25,w_718,h_718,c_lfill/imagevaultfiles/id_251653/cf_259/spenatpaj_med_fetaost.jpg",
+    "timeInMins": 50,
+    "price": 90,
+    "categories": ["Vegetariska Pajer"],
+    "instructions": [
+      "Sätt ugnen på 200°C.",
+      "Förgrädda pajskalet i 10 minuter.",
+      "Fräs spenaten tills vätskan kokat bort.",
+      "Blanda ägg, grädde, salt och peppar och häll i pajformen.",
+      "Tillsätt smulad fetaost och grädda 25–30 minuter.",
+      "Låt stå några minuter innan servering."
+    ],
+    "ingredients": [
+      { "name": "Pajdeg", "amount": 1, "unit": "st" },
+      { "name": "Färsk spenat", "amount": 250, "unit": "gram" },
+      { "name": "Fetaost", "amount": 150, "unit": "gram" },
+      { "name": "Ägg", "amount": 3, "unit": "st" },
+      { "name": "Grädde", "amount": 2, "unit": "dl" },
+      { "name": "Salt", "amount": 1, "unit": "tsk" },
+      { "name": "Svartpeppar", "amount": 0.5, "unit": "tsk" }
+    ]
+  }
+]
