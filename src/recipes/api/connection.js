@@ -99,6 +99,19 @@ export async function commentRecipeById(id, comment, author) {
 
 // Helpers
 
+async function getData(endpoint) {
+  const response = await fetch(`${API_URL}/${endpoint}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  });
+  if (!response.ok) throw new Error(response.status);
+
+  return await response.json();
+}
+
 function validateId(id) {
   if (!(isHex(id) && id.length === 24))
     throw new Error("`id` must be a 24 character hexadecimal");
