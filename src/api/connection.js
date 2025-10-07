@@ -16,9 +16,9 @@ export async function getRecipes(nameQuery) {
   if (nameQuery) {
     const QUERY_PARAM = `?query=${nameQuery}`;
 
-    return getData(`${API_ENDPOINT}${QUERY_PARAM}`).map(Recipe.fromJSON);
+    return await getData(`${API_ENDPOINT}${QUERY_PARAM}`).map(Recipe.fromJSON);
   }
-  return getData(API_ENDPOINT).map(Recipe.fromJSON);
+  return await getData(API_ENDPOINT).map(Recipe.fromJSON);
 }
 
 /**
@@ -33,7 +33,7 @@ export async function getRecipeById(id) {
 
   validateId(id);
 
-  return Recipe.fromJSON(getData(`${API_ENDPOINT}/${id}`));
+  return Recipe.fromJSON(await getData(`${API_ENDPOINT}/${id}`));
 }
 
 /**
@@ -45,7 +45,7 @@ export async function getRecipeById(id) {
 export async function getCategories() {
   const API_ENDPOINT = "/categories";
 
-  return getData(API_ENDPOINT).map((category) => category.name);
+  return await getData(API_ENDPOINT).map((category) => category.name);
 }
 
 /**
@@ -59,7 +59,7 @@ export async function getRecipesByCategory(category) {
   const API_ENDPOINT = "/categories";
   const API_PATH = `/${category}/recipes`;
 
-  return getData(`${API_ENDPOINT}${API_PATH}`).map(Recipe.fromJSON);
+  return await getData(`${API_ENDPOINT}${API_PATH}`).map(Recipe.fromJSON);
 }
 
 /**
@@ -75,7 +75,7 @@ export async function rateRecipeById(id, rating) {
 
   validateId(id);
 
-  postData(`${API_ENDPOINT}${API_PATH}`, { rating: rating });
+  await postData(`${API_ENDPOINT}${API_PATH}`, { rating: rating });
 }
 
 /**
@@ -91,7 +91,7 @@ export async function getCommentsByRecipeId(id) {
 
   validateId(id);
 
-  return getData(`${API_ENDPOINT}${API_PATH}`).map(Comment.fromJSON);
+  return await getData(`${API_ENDPOINT}${API_PATH}`).map(Comment.fromJSON);
 }
 
 /**
@@ -111,7 +111,7 @@ export async function commentRecipeById(id, comment, author) {
 
   validateId(id);
 
-  postData(`${API_ENDPOINT}${API_PATH}`, new Comment(author, comment));
+  await postData(`${API_ENDPOINT}${API_PATH}`, new Comment(author, comment));
 }
 
 // Helpers
