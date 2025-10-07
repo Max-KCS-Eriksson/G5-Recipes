@@ -5,7 +5,9 @@
   margin: 0;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
   opacity: 0;
   animation: fadeInLogo 1s ease-in-out forwards;
 }
