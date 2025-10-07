@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "prettier:check": "prettier --check .",
+    "prettier:format": "prettier --write .",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
