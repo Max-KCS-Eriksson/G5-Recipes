@@ -34,7 +34,7 @@ export default class Ingredient {
     return {
       name: this.name,
       amount: this.amount,
-      unit: this.unit
+      unit: this.unit,
     };
   }
 }

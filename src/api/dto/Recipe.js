@@ -24,7 +24,7 @@ export default class Recipe {
     imageUrl,
     ingredients,
     instructions,
-    optional = {}
+    optional = {},
   ) {
     if (!(name && description && imageUrl))
       throw new Error("`title`, `description`, and `imageUrl` are required");
@@ -68,17 +68,17 @@ export default class Recipe {
       data.imageUrl,
       {
         price: data.price,
-        items: data.ingredients.map(Ingredient.fromJSON)
+        items: data.ingredients.map(Ingredient.fromJSON),
       },
       {
         timeInMins: data.timeInMins,
-        steps: data.instructions
+        steps: data.instructions,
       },
       {
         id: data._id,
         avgRating: data.avgRating,
-        ratings: data.ratings
-      }
+        ratings: data.ratings,
+      },
     );
   }
 
@@ -95,8 +95,8 @@ export default class Recipe {
       categories: this.categories,
       instructions: this.instructions.steps,
       ingredients: this.ingredients.items.map((ingredient) =>
-        ingredient.toJSON()
-      )
+        ingredient.toJSON(),
+      ),
     };
 
     // Can be left out, or an array of numbers - empty or not.

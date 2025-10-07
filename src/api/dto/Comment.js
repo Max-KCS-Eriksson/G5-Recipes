@@ -26,7 +26,7 @@ export default class Comment {
     return new Comment(data.name, data.comment, data.recipeId, {
       id: data._id,
       createdAt: data.createdAt,
-      updatedAt: data.updatedAt
+      updatedAt: data.updatedAt,
     });
   }
 

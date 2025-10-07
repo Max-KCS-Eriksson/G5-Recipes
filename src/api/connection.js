@@ -121,8 +121,8 @@ async function getData(endpoint) {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   });
   if (!response.ok) throw new Error(response.status);
 
@@ -134,9 +134,9 @@ async function postData(endpoint, data) {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   });
 }
 
