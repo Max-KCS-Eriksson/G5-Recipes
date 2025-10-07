@@ -5,4 +5,4 @@ function isHex(str) {
   return pattern.test(str);
 }
 
-module.exports = { isHex };
+export default { isHex };
