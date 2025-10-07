@@ -6,7 +6,7 @@ function Header() {
     <header className="header-container">
       <img
         className="header-bg-image"
-        src="/src/assets/images/Paj_1 (pexels-polina-tankilevitch-5419100).jpg"
+        src="/src/assets/images/header_bg_image_pie.jpg"
         alt="Pajbakgrund"
       />
       <div className="header-logo-container">
