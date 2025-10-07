@@ -10,6 +10,8 @@
   background: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  opacity: 0;
+  animation: headerFadeIn 1s ease-in-out forwards;
 }
 
 /* HEADER - BG IMAGE */
@@ -77,6 +79,18 @@
   background-color: #ffde73;
 }
 
+/* 🔆 FADE-IN ANIMATION */
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* HEADER - RESPONSIVE */
 
 /* Mobil (≤600px) */
@@ -109,10 +123,7 @@
     background-color: rgba(216, 211, 184, 0.918);
     width: 80%;
     max-width: 220px;
-   
   }
-
-  
 }
 
 /* Tablet (601–1023px) */
