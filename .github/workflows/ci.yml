@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code from your repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      # Lint
+      - name: Run ESLint
+        run: npm run lint
+
+      # Prettier check
+      - name: Run Prettier check
+        run: npm run prettier:check
+
+      # npm audit
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+
+      # Build the Vite project
+      - name: Build Vite project
+        run: npm run build
+
+      # Run tests (optional)
+      # - name: Run tests
+      #   run:
