@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prettier:check": "prettier --check .",
+    "prettier:format": "prettier --write .",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -14,6 +16,7 @@
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
+    "prettier": "^3.6.2",
     "@eslint/js": "^9.36.0",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
