@@ -1,4 +1,4 @@
-const { isHex } = require("../../../src/recipes/api/helpers");
+const { isHex } = require("../../src/api/helpers");
 
 test("valid Hex", () => {
   let validHex = "8afA13";
