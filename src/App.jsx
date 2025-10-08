@@ -1,8 +1,7 @@
-// Comment for lint issue
 import "./App.css";
-import Header from "./components/Header.jsx";
+import AppRoutes from "./routes.jsx";
 
 function App() {
-  return <Header />;
+  return <AppRoutes />;
 }
 export default App;
