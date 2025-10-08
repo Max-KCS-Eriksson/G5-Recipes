@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "test": "echo 'Tests temporarily disabled - add in later sprint'",
     "preview": "vite preview"
   },
   "dependencies": {
