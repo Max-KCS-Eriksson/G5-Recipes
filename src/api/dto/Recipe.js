@@ -50,9 +50,11 @@ export default class Recipe {
     this.instructions = instructions;
     this.categories = categories;
 
-    if (optional.id) this.id = optional.id;
-    if (optional.avgRating !== undefined) this.avgRating = optional.avgRating;
-    if (optional.ratings !== undefined) this.ratings = optional.ratings;
+    if (optional) {
+      if (optional.id) this.id = optional.id;
+      if (optional.avgRating !== undefined) this.avgRating = optional.avgRating;
+      if (optional.ratings !== undefined) this.ratings = optional.ratings;
+    }
   }
 
   /**
