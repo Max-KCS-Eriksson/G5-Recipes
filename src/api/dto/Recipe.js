@@ -26,8 +26,8 @@ export default class Recipe {
     instructions,
     optional = {},
   ) {
-    if (!(name && description && imageUrl))
-      throw new Error("`title`, `description`, and `imageUrl` are required");
+    if (!(name && description))
+      throw new Error("`title` and `description` are required");
     if (
       !ingredients ||
       !Array.isArray(ingredients.items) ||
@@ -50,9 +50,11 @@ export default class Recipe {
     this.instructions = instructions;
     this.categories = categories;
 
-    if (optional.id) this.id = optional.id;
-    if (optional.avgRating !== undefined) this.avgRating = optional.avgRating;
-    if (optional.ratings !== undefined) this.ratings = optional.ratings;
+    if (optional) {
+      if (optional.id) this.id = optional.id;
+      if (optional.avgRating !== undefined) this.avgRating = optional.avgRating;
+      if (optional.ratings !== undefined) this.ratings = optional.ratings;
+    }
   }
 
   /**
