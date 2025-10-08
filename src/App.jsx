@@ -1,11 +1,7 @@
+import AppRoutes from "./routes.jsx";
 import "./App.css";
-import Footer from "./components/Footer.jsx";
 
 function App() {
-  return (
-    <>
-      <Footer />
-    </>
-  );
+  return <AppRoutes />;
 }
 export default App;
