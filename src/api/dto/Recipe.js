@@ -26,8 +26,8 @@ export default class Recipe {
     instructions,
     optional = {},
   ) {
-    if (!(name && description && imageUrl))
-      throw new Error("`title`, `description`, and `imageUrl` are required");
+    if (!(name && description))
+      throw new Error("`title` and `description` are required");
     if (
       !ingredients ||
       !Array.isArray(ingredients.items) ||
