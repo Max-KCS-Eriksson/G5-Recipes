@@ -1,13 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 
-function Recipe() {
-  const { recipeId } = useParams();
+function CategoryPage() {
+  const { categoryId } = useParams();
 
   return (
     <>
-      <h1>Receptet..</h1>
+      <h1>Pajkategorier</h1>
       <p>
-        Recept ID: <strong>{recipeId}</strong>
+        Här är receptkategori id nr: <strong>{categoryId}</strong>
       </p>
       <p>
         <Link to="/">
@@ -18,4 +18,4 @@ function Recipe() {
   );
 }
 
-export default Recipe;
+export default CategoryPage;
