@@ -16,9 +16,8 @@ function Header() {
         />
       </div>
       <nav className="header-nav">
-        <button className="nav-btn">Knapp 1</button>
-        <button className="nav-btn">Knapp 2</button>
-        <button className="nav-btn">Knapp 3</button>
+        <button className="nav-btn">Hem</button>
+        <button className="nav-btn">Kategorier</button>
       </nav>
     </header>
   );
