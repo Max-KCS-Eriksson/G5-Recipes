@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
+import { Link } from "react-router-dom";
+import RecipeCard from "./RecipeCard";
 
 export default function RecipeList({ category }) {
   const [recipes, setRecipes] = useState([]);
@@ -13,10 +15,14 @@ export default function RecipeList({ category }) {
   }, [category]);
 
   return (
-    <>
-      <h1>Alla paj recept här!</h1>
-      <p>Hello Paj World..</p>
-      <p>{recipes.length}</p>
-    </>
+    <ul className="recipe-list">
+      {recipes.map((recipe) => (
+        <li key={recipe.id}>
+          <Link to={`recipes/${recipe.id}`}>
+            <RecipeCard id={recipe.id} />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
