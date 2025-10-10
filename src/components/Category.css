@@ -1,4 +1,4 @@
-/* CATEGORY – Base style */
+/* CATEGORY */
 .category-item {
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@
   transform: translateY(-2px);
 }
 
-/* CATEGORY – Active state (for toggle mode) */
+/* CATEGORY - TOGGLE-STATE - ACTIVE */
 .category-item.active {
   background-color: #ffeea2;
   border-color: #e0c96b;
@@ -35,15 +35,15 @@
   font-weight: 600;
 }
 
-/* CATEGORY – Count text */
-.category-count {
+/* CATEGORY - RECIPE COUNT  */
+.category-recipe-count {
   color: #666;
   font-weight: 500;
 }
 
-/* CATEGORY – Variants */
+/* CATEGORY - Variants */
 
-/* link variant (used on HomePage) */
+/* Variant: LINK (HomePage) */
 .category-item.link {
   background: transparent;
   border: none;
@@ -56,7 +56,7 @@
   text-decoration: underline;
 }
 
-/* toggle variant (used on CategoryPage) */
+/* Variant: TOGGLE (CategoryPage) */
 .category-item.toggle {
   justify-content: space-between;
 }
