@@ -1,13 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 
 function CategoryPage() {
-  const { categoryId } = useParams();
+  const { categoryName } = useParams();
 
   return (
     <>
       <h1>Pajkategorier</h1>
       <p>
-        Här är receptkategori id nr: <strong>{categoryId}</strong>
+        Här är receptkategori id nr: <strong>{categoryName}</strong>
       </p>
       <p>
         <Link to="/">
