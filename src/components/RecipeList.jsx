@@ -1,3 +1,3 @@
-export default function RecipeList({ category = "" }) {
+export default function RecipeList({ category }) {
   return;
 }
