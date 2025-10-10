@@ -40,7 +40,7 @@ export async function getRecipeById(id) {
  * Fetch all categories stored in the database.
  *
  * @async
- * @returns {string} Category name.
+ * @returns {Array<string>} Category names.
  */
 export async function getCategories() {
   const API_ENDPOINT = "/categories";
