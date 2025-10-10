@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 
-function Recipe() {
+function RecipePage() {
   const { recipeId } = useParams();
 
   return (
@@ -18,4 +18,4 @@ function Recipe() {
   );
 }
 
-export default Recipe;
+export default RecipePage;

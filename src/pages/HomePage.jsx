@@ -1,4 +1,4 @@
-function Home() {
+function HomePage() {
   return (
     <>
       <h1>Alla paj recept här!</h1>
@@ -7,4 +7,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
