@@ -10,8 +10,9 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="category/:categoryId" element={<CategoryPage />} />
-        <Route path="recipe/:recipeId" element={<RecipePage />} />
+        <Route path="categories" element={<CategoryPage />} />
+        <Route path="categories/:categoryName" element={<CategoryPage />} />
+        <Route path="recipes/:recipeId" element={<RecipePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
