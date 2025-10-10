@@ -1,12 +1,22 @@
+import { useEffect, useState } from "react";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
 
 export default function RecipeList({ category }) {
-  let recipes;
-  if (category) {
-    recipes = getRecipesByCategory(category);
-  } else {
-    recipes = getRecipes;
-  }
+  const [recipes, setRecipes] = useState([]);
 
-  return;
+  useEffect(() => {
+    async function fetchRecipes() {
+      if (category) setRecipes(await getRecipesByCategory(category));
+      else setRecipes(await getRecipes());
+    }
+    fetchRecipes();
+  }, [category]);
+
+  return (
+    <>
+      <h1>Alla paj recept här!</h1>
+      <p>Hello Paj World..</p>
+      <p>{recipes.length}</p>
+    </>
+  );
 }
