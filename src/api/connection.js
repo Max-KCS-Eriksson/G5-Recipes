@@ -13,12 +13,15 @@ const API_URL = "https://grupp5-hzqem.reky.se";
  */
 export async function getRecipes(nameQuery) {
   const API_ENDPOINT = "/recipes";
+  let data;
   if (nameQuery) {
     const QUERY_PARAM = `?query=${nameQuery}`;
-
-    return await getData(`${API_ENDPOINT}${QUERY_PARAM}`).map(Recipe.fromJSON);
+    data = await getData(`${API_ENDPOINT}${QUERY_PARAM}`);
+  } else {
+    data = await getData(API_ENDPOINT);
   }
-  return await getData(API_ENDPOINT).map(Recipe.fromJSON);
+
+  return data.map(Recipe.fromJSON);
 }
 
 /**
@@ -45,7 +48,8 @@ export async function getRecipeById(id) {
 export async function getCategories() {
   const API_ENDPOINT = "/categories";
 
-  return await getData(API_ENDPOINT).map((category) => category.name);
+  const data = await getData(API_ENDPOINT);
+  return data.map((category) => category.name);
 }
 
 /**
@@ -59,7 +63,8 @@ export async function getRecipesByCategory(category) {
   const API_ENDPOINT = "/categories";
   const API_PATH = `/${category}/recipes`;
 
-  return await getData(`${API_ENDPOINT}${API_PATH}`).map(Recipe.fromJSON);
+  const data = await getData(`${API_ENDPOINT}${API_PATH}`);
+  return data.map(Recipe.fromJSON);
 }
 
 /**
@@ -91,7 +96,8 @@ export async function getCommentsByRecipeId(id) {
 
   validateId(id);
 
-  return await getData(`${API_ENDPOINT}${API_PATH}`).map(Comment.fromJSON);
+  const data = await getData(`${API_ENDPOINT}${API_PATH}`);
+  return data.map(Comment.fromJSON);
 }
 
 /**
@@ -117,7 +123,7 @@ export async function commentRecipeById(id, comment, author) {
 // Helpers
 
 async function getData(endpoint) {
-  const response = await fetch(`${API_URL}/${endpoint}`, {
+  const response = await fetch(`${API_URL}${endpoint}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
