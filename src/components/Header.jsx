@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "./Logo.jsx";
 
@@ -16,8 +17,12 @@ function Header() {
         />
       </div>
       <nav className="header-nav">
-        <button className="nav-btn">Hem</button>
-        <button className="nav-btn">Kategorier</button>
+        <Link to="/" className="nav-btn">
+          Hem
+        </Link>
+        <Link to="/categories" className="nav-btn">
+          Kategorier
+        </Link>
       </nav>
     </header>
   );
