@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getRecipes, getRecipesByCategory } from "../api/connection";
 import { Link } from "react-router-dom";
 import "./RecipeList.css";
+import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
 
 /**
