@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 import "./RecipeList.css";
 import RecipeCard from "./RecipeCard";
 
-export default function RecipeList({ category }) {
+export default function RecipeList({ category, nameQuery }) {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     async function fetchRecipes() {
       if (category) setRecipes(await getRecipesByCategory(category));
       else setRecipes(await getRecipes());
+
+      if (nameQuery) setRecipes(await getRecipes(nameQuery));
     }
     fetchRecipes();
-  }, [category]);
+  }, [category, nameQuery]);
 
   return (
     <ul className="recipe-list">
