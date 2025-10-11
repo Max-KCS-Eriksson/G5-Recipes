@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import "./RecipeList.css";
 import RecipeCard from "./RecipeCard";
 
+/**
+ * Dynamically list `Recipe`s.
+ *
+ * @param {string} [category] - Optionally narrow down list by category.
+ * @param {string} [nameQuery] - Optionally narrow down list by search term.
+ */
 export default function RecipeList({ category, nameQuery }) {
   const [recipes, setRecipes] = useState([]);
 
