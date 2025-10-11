@@ -1,18 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
-import Home from "./pages/Home.jsx";
-import Category from "./pages/Category.jsx";
-import Recipe from "./pages/Recipe.jsx";
-import NotFound from "./pages/NotFound.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import CategoryPage from "./pages/CategoryPage.jsx";
+import RecipePage from "./pages/RecipePage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="category/:categoryId" element={<Category />} />
-        <Route path="recipe/:recipeId" element={<Recipe />} />
-        <Route path="*" element={<NotFound />} />
+        <Route index element={<HomePage />} />
+        <Route path="categories" element={<CategoryPage />} />
+        <Route path="categories/:categoryName" element={<CategoryPage />} />
+        <Route path="recipes/:recipeId" element={<RecipePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );
