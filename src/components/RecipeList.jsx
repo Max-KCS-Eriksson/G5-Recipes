@@ -28,7 +28,7 @@ export default function RecipeList({ category, nameQuery }) {
       {recipes.map((recipe) => (
         <li key={recipe.id}>
           <Link to={`recipes/${recipe.id}`}>
-            <RecipeCard id={recipe.id} />
+            <RecipeCard recipe={recipe} />
           </Link>
         </li>
       ))}
