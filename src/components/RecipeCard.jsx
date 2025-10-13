@@ -4,14 +4,18 @@ export default function RecipeCard({ recipe }) {
   const { name, imageUrl, avgRating, timeInMins, ingredients } = recipe;
 
   return (
-    <div>
+    <div className="recipe-card">
       <h2>{name}</h2>
-      <img src={imageUrl || "/placeholder.jpg"} alt={name || "Recipe image"} />
+      <img
+        className="recipe-image"
+        src={imageUrl || "/placeholder.jpg"}
+        alt={name || "Recipe image"}
+      />
       <p>Rating: {avgRating ?? "No rating yet"}</p>
       <p>Time: {timeInMins ? `${timeInMins} minutes` : "Unknown time"}</p>
-      <h3>Ingredients:</h3>
+      <h3 className="ingredients-title">Ingredients:</h3>
       {ingredients?.items?.length ? (
-        <ul>
+        <ul className="ingredients-list">
           {ingredients.items.map((ingredients, i) => (
             <li key={i}>
               {ingredients.amount} {ingredients.unit} {ingredients.name}
