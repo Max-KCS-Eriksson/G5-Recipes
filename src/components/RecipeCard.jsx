@@ -1,3 +1,5 @@
+import "./RecipeCard.css";
+
 export default function RecipeCard({ recipe }) {
   if (!recipe) return <div>No recipe found</div>;
 
