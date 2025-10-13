@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getRecipes, getRecipesByCategory } from "../api/connection";
 import { Link } from "react-router-dom";
 import "./RecipeList.css";
+import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
 
 /**
@@ -16,9 +16,8 @@ export default function RecipeList({ category, nameQuery }) {
   useEffect(() => {
     async function fetchRecipes() {
       if (category) setRecipes(await getRecipesByCategory(category));
+      else if (nameQuery) setRecipes(await getRecipes(nameQuery));
       else setRecipes(await getRecipes());
-
-      if (nameQuery) setRecipes(await getRecipes(nameQuery));
     }
     fetchRecipes();
   }, [category, nameQuery]);
@@ -28,7 +27,7 @@ export default function RecipeList({ category, nameQuery }) {
       {recipes.map((recipe) => (
         <li key={recipe.id}>
           <Link to={`recipes/${recipe.id}`}>
-            <RecipeCard id={recipe.id} />
+            <RecipeCard recipe={recipe} />
           </Link>
         </li>
       ))}
