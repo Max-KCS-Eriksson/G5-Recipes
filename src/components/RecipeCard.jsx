@@ -9,7 +9,18 @@ export default function RecipeCard({ recipe }) {
       <img src={imageUrl || "/placeholder.jpg"} alt={name || "Recipe image"} />
       <p>Rating: {avgRating ?? "No rating yet"}</p>
       <p>Time: {timeInMins ? `${timeInMins} minutes` : "Unknown time"}</p>
-      <p>Number of ingredients: {ingredients?.length ?? 0}</p>
+      <h3>Ingredients:</h3>
+      {ingredients?.items?.length ? (
+        <ul>
+          {ingredients.items.map((ingredients, i) => (
+            <li key={i}>
+              {ingredients.amount} {ingredients.unit} {ingredients.name}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No ingredients added</p>
+      )}
     </div>
   );
 }
