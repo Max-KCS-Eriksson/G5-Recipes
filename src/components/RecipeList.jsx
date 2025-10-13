@@ -16,9 +16,8 @@ export default function RecipeList({ category, nameQuery }) {
   useEffect(() => {
     async function fetchRecipes() {
       if (category) setRecipes(await getRecipesByCategory(category));
+      else if (nameQuery) setRecipes(await getRecipes(nameQuery));
       else setRecipes(await getRecipes());
-
-      if (nameQuery) setRecipes(await getRecipes(nameQuery));
     }
     fetchRecipes();
   }, [category, nameQuery]);
