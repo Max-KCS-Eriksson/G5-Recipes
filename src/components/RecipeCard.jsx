@@ -3,7 +3,8 @@ import "./RecipeCard.css";
 export default function RecipeCard({ recipe }) {
   if (!recipe) return <div>No recipe found</div>;
 
-  const { name, imageUrl, avgRating, timeInMins, ingredients } = recipe;
+  const { name, imageUrl, avgRating, instructions, ingredients } = recipe;
+  const { timeInMins } = instructions;
 
   return (
     <div className="recipe-card">
