@@ -1,11 +1,17 @@
-import RecipeList from "../components/RecipeList";
+import { useState } from "react";
+import SearchBar from "../components/SearchBar.jsx";
+import RecipeList from "../components/RecipeList.jsx";
 
-function HomePage() {
+export default function HomePage() {
+  const [nameQuery, setNameQuery] = useState("");
+
   return (
     <>
-      <RecipeList category={""} nameQuery={""} />
+      <section className="hero">
+        <SearchBar onSearch={setNameQuery} />
+      </section>
+
+      <RecipeList nameQuery={nameQuery} />
     </>
   );
 }
-
-export default HomePage;
