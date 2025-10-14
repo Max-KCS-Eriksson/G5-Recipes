@@ -17,7 +17,6 @@ import "./CategoryList.css";
 function CategoryList({ categories, categoryRecipeCount }) {
   const navigate = useNavigate();
 
-  // Felhantering
   if (!categories || categories.length === 0) {
     return (
       <aside className="category-list">
@@ -35,8 +34,7 @@ function CategoryList({ categories, categoryRecipeCount }) {
           <li key={category}>
             <Category
               name={category}
-              // Fallback
-              count={categoryRecipeCount[category] ?? 0}
+              recipeCount={categoryRecipeCount?.[category] ?? 0}
               variant="link"
               onClick={() => navigate(`/categories/${category}`)}
             />

@@ -6,7 +6,7 @@
  * Kan användas i både HomePage (variant="link") och CategoryPage (variant="toggle").
  *
  * @param {string} name - Namn på kategorin.
- * @param {number} [count=0] - Antal recept i kategorin (visas inom parentes).
+ * @param {number} [recipeCount=0] - Antal recept i kategorin (visas inom parentes).
  * @param {boolean} [isActive=false] - True om kategorin är markerad (aktiv).
  * @param {() => void} onClick - Klick-händelse (navigering eller toggling).
  * @param {"link"|"toggle"} [variant="link"] - Visuellt läge: länk i HomePage eller toggle i CategoryPage.
@@ -17,7 +17,7 @@ import "./Category.css";
 
 function Category({
   name,
-  count = 0,
+  recipeCount = 0,
   isActive = false,
   onClick,
   variant = "link",
@@ -32,7 +32,7 @@ function Category({
       onClick={onClick}
     >
       <span className="category-name">{name}</span>
-      <span className="category-recipe-count">({count ?? 0})</span>
+      <span className="category-recipe-count">({recipeCount ?? 0})</span>
     </button>
   );
 }
