@@ -11,7 +11,7 @@ export default function HomePage() {
         <SearchBar onSearch={setNameQuery} />
       </section>
 
-      <RecipeList nameQuery={nameQuery} />
+      <RecipeList category={""} nameQuery={nameQuery} />
     </>
   );
 }
