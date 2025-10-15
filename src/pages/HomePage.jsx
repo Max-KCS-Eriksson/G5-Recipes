@@ -9,12 +9,15 @@
  */
 
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getCategories, getRecipesByCategory } from "../api/connection";
 import SearchBar from "../components/SearchBar.jsx";
 import RecipeList from "../components/RecipeList.jsx";
 import CategoryList from "../components/CategoryList.jsx";
 
 export default function HomePage() {
+  const { categoryName } = useParams();
+
   const [nameQuery, setNameQuery] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryRecipeCount, setCategoryRecipeCount] = useState({});
@@ -70,7 +73,7 @@ export default function HomePage() {
           categories={categories}
           categoryRecipeCount={categoryRecipeCount}
         />
-        <RecipeList category={""} nameQuery={nameQuery} />
+        <RecipeList category={categoryName} nameQuery={nameQuery} />
       </section>
     </main>
   );

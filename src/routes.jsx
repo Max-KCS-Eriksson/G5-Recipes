@@ -11,7 +11,7 @@ function AppRoutes() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="categories" element={<CategoryPage />} />
-        <Route path="categories/:categoryName" element={<CategoryPage />} />
+        <Route path="categories/:categoryName" element={<HomePage />} />
         <Route path="recipes/:recipeId" element={<RecipePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
