@@ -1,6 +1,6 @@
-import Recipe from "./dto/Recipe";
-import Comment from "./dto/Comment";
-import { getData, postData, isHex } from "./helpers";
+import Recipe from "./dto/Recipe.js";
+import Comment from "./dto/Comment.js";
+import { getData, postData, isHex } from "./helpers.js";
 
 const API_URL = "https://grupp5-hzqem.reky.se";
 
