@@ -1,7 +1,5 @@
-const API_URL = "https://grupp5-hzqem.reky.se";
-
 async function getData(endpoint) {
-  const response = await fetch(`${API_URL}${endpoint}`, {
+  const response = await fetch(endpoint, {
     method: "GET",
     headers: {
       Accept: "application/json",

@@ -2,6 +2,8 @@ import Recipe from "./dto/Recipe";
 import Comment from "./dto/Comment";
 import { getData, postData, isHex } from "./helpers";
 
+const API_URL = "https://grupp5-hzqem.reky.se";
+
 /**
  * Fetch all `Recipe`.
  *
@@ -10,7 +12,7 @@ import { getData, postData, isHex } from "./helpers";
  * @returns {Array<Recipe>} All `Recipe` stored in the database.
  */
 export async function getRecipes(nameQuery) {
-  const API_ENDPOINT = "/recipes";
+  const API_ENDPOINT = `${API_URL}/recipes`;
   let data;
   if (nameQuery) {
     const QUERY_PARAM = `?query=${nameQuery}`;
@@ -30,7 +32,7 @@ export async function getRecipes(nameQuery) {
  * @returns {Recipe} A `Recipe` with details.
  */
 export async function getRecipeById(id) {
-  const API_ENDPOINT = "/recipes";
+  const API_ENDPOINT = `${API_URL}/recipes`;
 
   validateId(id);
 
@@ -44,7 +46,7 @@ export async function getRecipeById(id) {
  * @returns {Array<string>} Category names.
  */
 export async function getCategories() {
-  const API_ENDPOINT = "/categories";
+  const API_ENDPOINT = `${API_URL}/categories`;
 
   const data = await getData(API_ENDPOINT);
   return data.map((category) => category.name);
@@ -58,7 +60,7 @@ export async function getCategories() {
  * @returns {Array<Recipe>} Narrowed down list of `Recipe`.
  */
 export async function getRecipesByCategory(category) {
-  const API_ENDPOINT = "/categories";
+  const API_ENDPOINT = `${API_URL}/categories`;
   const API_PATH = `/${category}/recipes`;
 
   const data = await getData(`${API_ENDPOINT}${API_PATH}`);
@@ -73,7 +75,7 @@ export async function getRecipesByCategory(category) {
  * @returns {boolean} Success confirmation in the form of a `Boolean`.
  */
 export async function rateRecipeById(id, rating) {
-  const API_ENDPOINT = "/recipes";
+  const API_ENDPOINT = `${API_URL}/recipes`;
   const API_PATH = `/${id}/ratings`;
 
   validateId(id);
@@ -89,7 +91,7 @@ export async function rateRecipeById(id, rating) {
  * @returns {Array<Comment>} All stored `Comment` of the `Recipe`.
  */
 export async function getCommentsByRecipeId(id) {
-  const API_ENDPOINT = "/recipes";
+  const API_ENDPOINT = `${API_URL}/recipes`;
   const API_PATH = `/${id}/comments`;
 
   validateId(id);
@@ -110,7 +112,7 @@ export async function getCommentsByRecipeId(id) {
  * @returns {boolean} Success confirmation in the form of a `Boolean`.
  */
 export async function commentRecipeById(id, comment, author) {
-  const API_ENDPOINT = "/recipes";
+  const API_ENDPOINT = `${API_URL}/recipes`;
   const API_PATH = `/${id}/comments`;
 
   validateId(id);
