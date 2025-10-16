@@ -1,8 +1,6 @@
 import Recipe from "./dto/Recipe";
 import Comment from "./dto/Comment";
-import { isHex } from "./helpers";
-
-const API_URL = "https://grupp5-hzqem.reky.se";
+import { getData, postData, isHex } from "./helpers";
 
 /**
  * Fetch all `Recipe`.
@@ -121,30 +119,6 @@ export async function commentRecipeById(id, comment, author) {
 }
 
 // Helpers
-
-async function getData(endpoint) {
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
-  if (!response.ok) throw new Error(response.status);
-
-  return await response.json();
-}
-
-async function postData(endpoint, data) {
-  await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-}
 
 function validateId(id) {
   if (!(isHex(id) && id.length === 24))

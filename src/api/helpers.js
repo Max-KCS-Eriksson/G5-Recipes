@@ -1,3 +1,29 @@
+const API_URL = "https://grupp5-hzqem.reky.se";
+
+async function getData(endpoint) {
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) throw new Error(response.status);
+
+  return await response.json();
+}
+
+async function postData(endpoint, data) {
+  await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
 function isHex(str) {
   const pattern = /^[a-fA-F0-9]+$/;
 
@@ -5,4 +31,4 @@ function isHex(str) {
   return pattern.test(str);
 }
 
-export { isHex };
+export { getData, postData, isHex };
