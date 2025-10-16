@@ -1,4 +1,4 @@
-async function getData(endpoint) {
+export async function getData(endpoint) {
   const response = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -11,7 +11,7 @@ async function getData(endpoint) {
   return await response.json();
 }
 
-async function postData(endpoint, data) {
+export async function postData(endpoint, data) {
   await fetch(endpoint, {
     method: "POST",
     headers: {
@@ -22,11 +22,9 @@ async function postData(endpoint, data) {
   });
 }
 
-function isHex(str) {
+export function isHex(str) {
   const pattern = /^[a-fA-F0-9]+$/;
 
   str = str.startsWith("0x") ? str.slice(2) : str; // Common optional prefix
   return pattern.test(str);
 }
-
-export { getData, postData, isHex };
