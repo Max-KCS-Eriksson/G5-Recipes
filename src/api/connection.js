@@ -2,7 +2,7 @@ import Recipe from "./dto/Recipe.js";
 import Comment from "./dto/Comment.js";
 import { getData, postData, isHex } from "./helpers.js";
 
-const API_URL = "https://grupp5-hzqem.reky.se";
+export const API_URL = "https://grupp5-hzqem.reky.se";
 
 /**
  * Fetch all `Recipe`.
