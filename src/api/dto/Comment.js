@@ -23,7 +23,7 @@ export default class Comment {
    * @param {Object} data - API response body.
    */
   static fromJSON(data) {
-    return new Comment(data.name, data.comment, data.recipeId, {
+    return new Comment(data.name, data.comment, {
       id: data._id,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,
