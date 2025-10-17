@@ -9,7 +9,7 @@ const API_URL = "https://grupp5-hzqem.reky.se";
  *
  * @async
  * @param {string} [nameQuery] - Optionally narrow down list by search term.
- * @returns {Array<Recipe>} All `Recipe` stored in the database.
+ * @returns {Promise<Array<Recipe>>} All `Recipe` stored in the database.
  */
 export async function getRecipes(nameQuery) {
   const API_ENDPOINT = "/recipes";
@@ -29,7 +29,7 @@ export async function getRecipes(nameQuery) {
  *
  * @async
  * @param {string} id - A 24 character hexadecimal.
- * @returns {Recipe} A `Recipe` with details.
+ * @returns {Promise<Recipe>} A `Recipe` with details.
  */
 export async function getRecipeById(id) {
   const API_ENDPOINT = "/recipes";
@@ -43,7 +43,7 @@ export async function getRecipeById(id) {
  * Fetch all categories stored in the database.
  *
  * @async
- * @returns {Array<string>} Category names.
+ * @returns {Promise<Array<string>>} Category names.
  */
 export async function getCategories() {
   const API_ENDPOINT = "/categories";
@@ -57,7 +57,7 @@ export async function getCategories() {
  *
  * @async
  * @param {string} category - Name of category.
- * @returns {Array<Recipe>} Narrowed down list of `Recipe`.
+ * @returns {Promise<Array<Recipe>>} Narrowed down list of `Recipe`.
  */
 export async function getRecipesByCategory(category) {
   const API_ENDPOINT = "/categories";
@@ -72,7 +72,7 @@ export async function getRecipesByCategory(category) {
  *
  * @param {string} id - A 24 character hexadecimal, specifying rated `Recipe`.
  * @param {number} rating - Rating of `Recipe`
- * @returns {boolean} Success confirmation in the form of a `Boolean`.
+ * @returns {Promise<boolean>} Success confirmation in the form of a `Boolean`.
  */
 export async function rateRecipeById(id, rating) {
   const API_ENDPOINT = "/recipes";
@@ -88,7 +88,7 @@ export async function rateRecipeById(id, rating) {
  *
  * @async
  * @param {string} id - A 24 character hexadecimal `Recipe` id.
- * @returns {Array<Comment>} All stored `Comment` of the `Recipe`.
+ * @returns {Promise<Array<Comment>>} All stored `Comment` of the `Recipe`.
  */
 export async function getCommentsByRecipeId(id) {
   const API_ENDPOINT = "/recipes";
@@ -109,7 +109,7 @@ export async function getCommentsByRecipeId(id) {
  * @param {string} id - A 24 character hexadecimal `Recipe` id.
  * @param {string} comment - `Comment` description.
  * @param {string} author - Name of `Comment`'s author.
- * @returns {boolean} Success confirmation in the form of a `Boolean`.
+ * @returns {Promise<boolean>} Success confirmation in the form of a `Boolean`.
  */
 export async function commentRecipeById(id, comment, author) {
   const API_ENDPOINT = "/recipes";
