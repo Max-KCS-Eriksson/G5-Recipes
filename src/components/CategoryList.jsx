@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  fetchCategoryHierarchy,
-  getRecipesByCategory,
-} from "../api/connection";
+import { getCategoryHierarchy, getRecipesByCategory } from "../api/connection";
 import Category from "./Category.jsx";
 import "./CategoryList.css";
 
@@ -27,7 +24,7 @@ function CategoryList() {
   useEffect(() => {
     async function fetchCategoriesAndCounts() {
       try {
-        const categoryHierarchy = await fetchCategoryHierarchy();
+        const categoryHierarchy = await getCategoryHierarchy();
         const mainCategoryList = Object.keys(categoryHierarchy);
         const categoryList = mainCategoryList;
         setCategories(categoryList);

@@ -58,7 +58,7 @@ export async function getCategories() {
  * @async
  * @returns {Object<string, Array<string>>} Category hierarchy.
  */
-export async function fetchCategoryHierarchy() {
+export async function getCategoryHierarchy() {
   let categoryHierarchy = {};
 
   // HACK: API endpoint to fetch categories treats them equally.
