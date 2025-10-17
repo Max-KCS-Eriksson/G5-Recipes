@@ -1,0 +1,25 @@
+/* Reset */
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Component style */
+
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+  .recipe-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
