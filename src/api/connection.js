@@ -53,6 +53,29 @@ export async function getCategories() {
 }
 
 /**
+ * Fetch categories as a hierarchically.
+ *
+ * @async
+ * @returns {Object<string, Array<string>>} Category hierarchy.
+ */
+export async function fetchCategoryHierarchy() {
+  let categoryHierarchy = {};
+
+  // HACK: API endpoint to fetch categories treats them equally.
+  const recipeList = await getRecipes();
+  recipeList.forEach((recipe) => {
+    const mainCategory = recipe.categories[0];
+    const subCategories = recipe.categories.splice(1);
+
+    if (!(mainCategory in categoryHierarchy))
+      categoryHierarchy[mainCategory] = subCategories;
+    else categoryHierarchy[mainCategory].push(subCategories);
+  });
+
+  return categoryHierarchy;
+}
+
+/**
  * Fetch a categorized list of `Recipe`.
  *
  * @async
