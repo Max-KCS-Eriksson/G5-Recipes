@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCategories, getRecipesByCategory } from "../api/connection";
+import { getRecipes, getRecipesByCategory } from "../api/connection";
 import Category from "./Category.jsx";
 import "./CategoryList.css";
 
@@ -22,6 +22,22 @@ function CategoryList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    async function fetchCategoryHierarchy() {
+      let categoryHierarchy = {};
+
+      // HACK: API endpoint to fetch categories treats them equally.
+      const recipeList = await getRecipes();
+      recipeList.forEach((recipe) => {
+        const mainCategory = recipe.categories[0];
+        const subCategories = recipe.categories.splice(1);
+
+        if (!(mainCategory in categoryHierarchy))
+          categoryHierarchy[mainCategory] = subCategories;
+        else categoryHierarchy[mainCategory].push(subCategories);
+      });
+
+      return categoryHierarchy;
+    }
     async function fetchCategoriesAndCounts() {
       try {
         const categoryList = await getCategories();
