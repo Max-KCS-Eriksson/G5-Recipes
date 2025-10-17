@@ -1,3 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import Category from "./Category.jsx";
+import "./CategoryList.css";
+
 /**
  * CategoryList Component
  *
@@ -9,11 +13,6 @@
  * @param {Object.<string, number>} categoryRecipeCount - Objekt som mappar varje kategori till antal recept.
  * @returns {JSX.Element} Renderad kategorilista eller fallback-meddelande.
  */
-
-import { useNavigate } from "react-router-dom";
-import Category from "./Category.jsx";
-import "./CategoryList.css";
-
 function CategoryList({ categories, categoryRecipeCount }) {
   const navigate = useNavigate();
 
