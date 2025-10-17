@@ -40,7 +40,9 @@ function CategoryList() {
     }
     async function fetchCategoriesAndCounts() {
       try {
-        const categoryList = await getCategories();
+        const categoryHierarchy = await fetchCategoryHierarchy();
+        const mainCategoryList = Object.keys(categoryHierarchy);
+        const categoryList = mainCategoryList;
         setCategories(categoryList);
 
         const results = await Promise.all(
