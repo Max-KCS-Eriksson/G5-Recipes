@@ -56,7 +56,7 @@ export async function getCategories() {
  * Fetch categories as a hierarchically.
  *
  * @async
- * @returns {Object<string, Array<string>>} Category hierarchy.
+ * @returns {Promise<Object<string, Array<string>>>} Category hierarchy.
  */
 export async function getCategoryHierarchy() {
   let categoryHierarchy = {};
