@@ -26,7 +26,7 @@ export default function RecipeList({ category, nameQuery }) {
     <ul className="recipe-list">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
-          <Link to={`recipes/${recipe.id}`}>
+          <Link to={`/recipes/${recipe.id}`}>
             <RecipeCard recipe={recipe} />
           </Link>
         </li>
