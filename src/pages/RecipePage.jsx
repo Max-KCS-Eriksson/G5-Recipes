@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import DisplayComments from "../components/DisplayComments.jsx";
 
 function RecipePage() {
   const { recipeId } = useParams();
@@ -14,6 +15,9 @@ function RecipePage() {
           <strong>Go back to Home/Main</strong>
         </Link>
       </p>
+      <section>
+        <DisplayComments recipeId={recipeId} />
+      </section>
     </>
   );
 }
