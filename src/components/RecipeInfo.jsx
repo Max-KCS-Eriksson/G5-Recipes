@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { getRecipeById } from "../api/connection";
+import { calculateDifficulty } from "../utils/calculateDifficulty";
 
 export default function RecipeInfo({ recipeId }) {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const difficulty = calculateDifficulty(
+    recipe.instructions.timeInMins,
+    recipe.ingredients.items.length,
+    recipe.ingredients.price,
+  );
 
   useEffect(() => {
     async function fetchRecipe() {
@@ -27,7 +34,8 @@ export default function RecipeInfo({ recipeId }) {
       <h2>{recipe.name}</h2>
       <img src={recipe.imageUrl} alt={recipe.name} />
       <p>Tid: {recipe.instructions.timeInMins} mins</p>
-      <p>Svårighetsgrad:</p>
+      <p>Pris: {recipe.ingredients.price} kr</p>
+      <p>Svårighetsgrad: {difficulty}</p>
       <h3>Ingredienser:</h3>
       <ul>
         {recipe.ingredients.items.map((ingredient, index) => (
