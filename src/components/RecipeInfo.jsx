@@ -6,12 +6,6 @@ export default function RecipeInfo({ recipeId }) {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const difficulty = calculateDifficulty(
-    recipe.instructions.timeInMins,
-    recipe.ingredients.items.length,
-    recipe.ingredients.price,
-  );
-
   useEffect(() => {
     async function fetchRecipe() {
       try {
@@ -28,6 +22,12 @@ export default function RecipeInfo({ recipeId }) {
 
   if (loading) return <p>Loading...</p>;
   if (!recipe) return <p>No recipe found.</p>;
+
+  const difficulty = calculateDifficulty(
+    recipe.instructions.timeInMins,
+    recipe.ingredients.items.length,
+    recipe.ingredients.price,
+  );
 
   return (
     <div className="recipe-info">
