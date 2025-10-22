@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import DisplayComments from "../components/DisplayComments.jsx";
 import CommentForm from "../components/CommentForm.jsx";
+import RecipeInfo from "../components/RecipeInfo.jsx";
 
 function RecipePage() {
   const { recipeId } = useParams();
@@ -8,9 +9,9 @@ function RecipePage() {
   return (
     <>
       <h1>Receptet..</h1>
-      <p>
-        Recept ID: <strong>{recipeId}</strong>
-      </p>
+      <section>
+        <RecipeInfo recipeId={recipeId} />
+      </section>
       <p>
         <Link to="/">
           <strong>Go back to Home/Main</strong>
