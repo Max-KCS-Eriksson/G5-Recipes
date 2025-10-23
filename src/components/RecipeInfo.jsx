@@ -20,8 +20,8 @@ export default function RecipeInfo({ recipeId }) {
     fetchRecipe();
   }, [recipeId]);
 
-  if (loading) return <p>Loading...</p>;
-  if (!recipe) return <p>No recipe found.</p>;
+  if (loading) return <p>Laddar...</p>;
+  if (!recipe) return <p>Inget recept hittades.</p>;
 
   const difficulty = calculateDifficulty(
     recipe.instructions.timeInMins,
@@ -34,8 +34,8 @@ export default function RecipeInfo({ recipeId }) {
       <h2>{recipe.name}</h2>
       <img src={recipe.imageUrl} alt={recipe.name} />
       <p>Tid: {recipe.instructions.timeInMins} mins</p>
-      <p>Pris: {recipe.ingredients.price} kr</p>
       <p>Svårighetsgrad: {difficulty}</p>
+      <p>Info: {recipe.description}</p>
       <h3>Ingredienser:</h3>
       <ul>
         {recipe.ingredients.items.map((ingredient, index) => (

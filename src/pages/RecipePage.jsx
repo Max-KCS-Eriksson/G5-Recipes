@@ -9,15 +9,9 @@ function RecipePage() {
 
   return (
     <>
-      <h1>Receptet..</h1>
       <section>
         <RecipeInfo recipeId={recipeId} />
       </section>
-      <p>
-        <Link to="/">
-          <strong>Go back to Home/Main</strong>
-        </Link>
-      </p>
       <section>
         <RecipeRating recipeId={recipeId} readOnly={false} />
         <CommentForm recipeId={recipeId} />

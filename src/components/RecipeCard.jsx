@@ -9,27 +9,20 @@ export default function RecipeCard({ recipe }) {
 
   return (
     <div className="recipe-card">
-      <h2>{name}</h2>
       <img
         className="recipe-image"
         src={imageUrl || "/placeholder.jpg"}
         alt={name || "Recipe image"}
       />
+      <h2>{name}</h2>
       <p>
         <RecipeRating recipeId={recipe.id} readOnly={true} />
       </p>
-      <p>Time: {timeInMins ? `${timeInMins} minutes` : "Unknown time"}</p>
-      <h3 className="ingredients-title">Ingredients:</h3>
+      <p>{timeInMins ? `${timeInMins} min` : "Okänd tid"}</p>
       {ingredients?.items?.length ? (
-        <ul className="ingredients-list">
-          {ingredients.items.map((ingredients, i) => (
-            <li key={i}>
-              {ingredients.amount} {ingredients.unit} {ingredients.name}
-            </li>
-          ))}
-        </ul>
+        <p>{ingredients.items.length} ingredienser</p>
       ) : (
-        <p>No ingredients added</p>
+        <p>Inga tillsatta ingredienser</p>
       )}
     </div>
   );
