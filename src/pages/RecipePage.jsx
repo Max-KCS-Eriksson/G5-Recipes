@@ -2,7 +2,6 @@ import { Link, useParams } from "react-router-dom";
 import DisplayComments from "../components/DisplayComments.jsx";
 import CommentForm from "../components/CommentForm.jsx";
 import RecipeInfo from "../components/RecipeInfo.jsx";
-import CommentForm from "../components/CommentForm.jsx";
 import RecipeRating from "../components/RecipeRating.jsx";
 
 function RecipePage() {
