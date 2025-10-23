@@ -6,7 +6,7 @@
  * @param {{ locale?: string, timeZone?: string }} [options] - Defaults to "sv-SE" & "Europe/Stockholm".
  * @returns {string} Localized "YYYY-MM-DD HH:mm", or "" if input is invalid
  */
-export function formatTimestamp(
+export function formateDateFromISO(
   isoString,
   { locale = "sv-SE", timeZone = "Europe/Stockholm" } = {},
 ) {
