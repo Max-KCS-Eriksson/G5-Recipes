@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { roundHalf } from "../utils/math";
 import { useEffect, useState } from "react";
-import { getRecipeById } from "../api/connection";
+import { getRecipeById, rateRecipeById } from "../api/connection";
 
 const MIN_RATING = 1;
 const MAX_RATING = 5;
@@ -17,6 +17,7 @@ const MAX_RATING = 5;
  */
 function RecipeRating({ recipeId, readOnly = true }) {
   const [recipe, setRecipe] = useState(null);
+  const [hasRated, setHasRated] = useState(false);
 
   useEffect(() => {
     async function fetchRecipe() {
@@ -31,6 +32,21 @@ function RecipeRating({ recipeId, readOnly = true }) {
   }, [recipeId]);
 
   if (recipe && readOnly) return <>{ratingToIcons(recipe.avgRating)}</>;
+
+  if (hasRated) return <p>Tack för ditt betyg!</p>;
+
+  async function rateRecipe(rating) {
+    setHasRated(true);
+    await rateRecipeById(recipeId, rating);
+  }
+  const icons = createEmptyRatingIconList();
+  return (
+    <>
+      {icons.map((icon, index) => (
+        <span onClick={() => rateRecipe(index + 1)}>{icon}</span>
+      ))}
+    </>
+  );
 }
 
 export default RecipeRating;
