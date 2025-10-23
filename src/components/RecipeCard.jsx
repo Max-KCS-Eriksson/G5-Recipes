@@ -16,7 +16,7 @@ export default function RecipeCard({ recipe }) {
         alt={name || "Recipe image"}
       />
       <p>
-        <RecipeRating recipe={recipe} readOnly={true} />
+        <RecipeRating recipeId={recipe.id} readOnly={true} />
       </p>
       <p>Time: {timeInMins ? `${timeInMins} minutes` : "Unknown time"}</p>
       <h3 className="ingredients-title">Ingredients:</h3>
