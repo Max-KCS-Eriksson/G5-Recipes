@@ -1,3 +1,5 @@
+/* eslint-env node, vitest */
+/* global describe, it, expect, afterEach */
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
 import RecipeList from "../../components/RecipeList.jsx";
