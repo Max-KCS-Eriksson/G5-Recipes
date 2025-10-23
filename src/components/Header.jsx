@@ -17,7 +17,15 @@ function Header() {
         />
       </div>
       <nav className="header-nav">
-        <Link to="/" className="nav-btn">
+        <Link
+          to="/"
+          className="nav-btn"
+          onClick={() => {
+            if (window.location.pathname === "/") {
+              window.location.reload();
+            }
+          }}
+        >
           Hem
         </Link>
         <Link to="/categories" className="nav-btn">
