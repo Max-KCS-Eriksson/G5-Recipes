@@ -5,6 +5,8 @@ import {
   faStarHalfStroke as halfStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { roundHalf } from "../utils/math";
+import { useEffect, useState } from "react";
+import { getRecipeById, rateRecipeById } from "../api/connection";
 
 const MIN_RATING = 1;
 const MAX_RATING = 5;
@@ -13,10 +15,38 @@ const MAX_RATING = 5;
  * @param {string} recipe - Instance of (to be) rated `Recipe`.
  * @param {boolean} readOnly - Get average rating, or place a new rating. Default = `true`.
  */
-function RecipeRating({ recipe, readOnly = true }) {
-  const { avgRating } = recipe;
+function RecipeRating({ recipeId, readOnly = true }) {
+  const [recipe, setRecipe] = useState(null);
+  const [hasRated, setHasRated] = useState(false);
 
-  if (readOnly) return <>{ratingToIcons(avgRating)}</>;
+  useEffect(() => {
+    async function fetchRecipe() {
+      try {
+        const data = await getRecipeById(recipeId);
+        setRecipe(data);
+      } catch (err) {
+        console.error("Failed to load recipe:", err);
+      }
+    }
+    fetchRecipe();
+  }, [recipeId]);
+
+  if (recipe && readOnly) return <>{ratingToIcons(recipe.avgRating)}</>;
+
+  if (hasRated) return <p>Tack för ditt betyg!</p>;
+
+  async function rateRecipe(rating) {
+    setHasRated(true);
+    await rateRecipeById(recipeId, rating);
+  }
+  const icons = createEmptyRatingIconList();
+  return (
+    <>
+      {icons.map((icon, index) => (
+        <span onClick={() => rateRecipe(index + 1)}>{icon}</span>
+      ))}
+    </>
+  );
 }
 
 export default RecipeRating;
