@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getCommentsByRecipeId } from "../api/connection.js";
-import { formatTimestamp } from "../utils/datetime.js";
+import { formateDateFromISO } from "../utils/formatDate.js";
 
 export default function DisplayComments({ recipeId }) {
   const [comments, setComments] = useState([]);
@@ -77,7 +77,7 @@ export default function DisplayComments({ recipeId }) {
         {sortedCommentTimeDesc.map((c) => {
           const submitIsoTime = c.createdAt ?? c.updatedAt;
           const renderedDisplayTime = submitIsoTime
-            ? formatTimestamp(submitIsoTime)
+            ? formateDateFromISO(submitIsoTime)
             : "";
           return (
             <li key={c.id}>
