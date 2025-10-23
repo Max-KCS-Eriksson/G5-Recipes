@@ -1,16 +1,14 @@
-/* eslint-env node, vitest */
-/* global describe, it, expect, afterEach */
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { vi } from "vitest";
 import RecipeList from "../../components/RecipeList.jsx";
 
 vi.mock("../../api/connection.js", () => ({
   getRecipes: vi.fn(),
 }));
 
-const { getRecipes } = await import("../../api/connection.js");
+import { getRecipes } from "../../api/connection.js";
 
-describe("Integration 6.2.3 - RecipeList fallback states", () => {
+describe("Integration 6.2.3 - RecipeList - Fallback States", () => {
   afterEach(() => {
     vi.clearAllMocks();
   });
