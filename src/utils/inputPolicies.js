@@ -18,6 +18,14 @@ export const COMMENT_TEXT_POLICY = {
   normalizeWhitespace: true,
 };
 
+export const NAME_POLICY = {
+  minLength: 1,
+  maxLength: 30,
+  allowedCharsRegex: /^(?=.{2,30}$)\p{L}+(?:-\p{L}+)?$/u,
+  errorMessage:
+    "Namnet får endast innehålla bokstäver och högst ett bindestreck (inte först eller sist), och vara 2–30 tecken långt.",
+};
+
 /**
  * Collapse internal whitespace to a single space and trim ends.
  * @param {string} rawText - Unsanitized text from user input
@@ -46,7 +54,7 @@ export function compileTextValidator(policy) {
       : normalizedText.trim();
 
     if (!normalizedText) {
-      return { ok: false, message: "Söktext saknas. Vänligen ange text." };
+      return { ok: false, message: "Text saknas. Vänligen ange text." };
     }
     if (normalizedText.length < minLength) {
       return { ok: false, message: `Vänligen ange minst ${minLength} tecken.` };

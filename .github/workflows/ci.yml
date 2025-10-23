@@ -48,5 +48,5 @@ jobs:
         run: npm run build
 
       # Run tests (optional)
-      # - name: Run tests
-      #   run:
+      - name: Run tests
+        run: npm run test:ci

@@ -13,8 +13,8 @@ export default class Comment {
     this.comment = comment;
 
     if (optional.id) this.id = optional.id;
-    if (optional.createdAt) this.created = optional.createdAt;
-    if (optional.updatedAt) this.updated = optional.updatedAt;
+    if (optional.createdAt) this.createdAt = optional.createdAt;
+    if (optional.updatedAt) this.updatedAt = optional.updatedAt;
   }
 
   /**
@@ -23,7 +23,7 @@ export default class Comment {
    * @param {Object} data - API response body.
    */
   static fromJSON(data) {
-    return new Comment(data.name, data.comment, data.recipeId, {
+    return new Comment(data.name, data.comment, {
       id: data._id,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,

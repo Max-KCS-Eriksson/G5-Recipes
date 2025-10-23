@@ -1,9 +1,10 @@
 import "./RecipeCard.css";
+import RecipeRating from "./RecipeRating";
 
 export default function RecipeCard({ recipe }) {
   if (!recipe) return <div>No recipe found</div>;
 
-  const { name, imageUrl, avgRating, instructions, ingredients } = recipe;
+  const { name, imageUrl, instructions, ingredients } = recipe;
   const { timeInMins } = instructions;
 
   return (
@@ -14,7 +15,9 @@ export default function RecipeCard({ recipe }) {
         src={imageUrl || "/placeholder.jpg"}
         alt={name || "Recipe image"}
       />
-      <p>Rating: {avgRating ?? "No rating yet"}</p>
+      <p>
+        <RecipeRating recipe={recipe} readOnly={true} />
+      </p>
       <p>Time: {timeInMins ? `${timeInMins} minutes` : "Unknown time"}</p>
       <h3 className="ingredients-title">Ingredients:</h3>
       {ingredients?.items?.length ? (
