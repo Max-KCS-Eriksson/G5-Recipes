@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getCommentsByRecipeId } from "../api/connection.js";
 import { formateDateFromISO } from "../utils/formatDate.js";
 
-export default function DisplayComments({ recipeId }) {
+export default function DisplayComments({ recipeId, refreshFlag = false }) {
   const [comments, setComments] = useState([]);
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ export default function DisplayComments({ recipeId }) {
     return () => {
       cancelled = true;
     };
-  }, [recipeId]);
+  }, [recipeId, refreshFlag]);
 
   const sortedCommentTimeDesc = useMemo(() => {
     return [...comments].sort((a, b) => {
