@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./RecipeList.css";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
-import { useNavigate } from "react-router-dom";
 
 /**
  * Dynamically list `Recipe`s.
@@ -13,32 +12,41 @@ import { useNavigate } from "react-router-dom";
  */
 export default function RecipeList({ category, nameQuery }) {
   const [recipes, setRecipes] = useState([]);
-  const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchRecipes() {
-      if (category) setRecipes(await getRecipesByCategory(category));
-      else if (nameQuery) setRecipes(await getRecipes(nameQuery));
-      else setRecipes(await getRecipes());
+      try {
+        if (category) setRecipes(await getRecipesByCategory(category));
+        else if (nameQuery) setRecipes(await getRecipes(nameQuery));
+        else setRecipes(await getRecipes());
+      } catch (err) {
+        console.error("Fel vid hämtning av recept:", err);
+        setError("Kunde inte ladda recept.");
+      } finally {
+        setLoading(false);
+      }
     }
     fetchRecipes();
   }, [category, nameQuery]);
 
-  const handleRecipeClick = (recipeId) => {
-    navigate(`/recipes/${recipeId}`);
-    window.scrollTo(0, 0);
-  };
+  if (loading) return <p>Laddar recept...</p>;
+  if (error)
+    return (
+      <p style={{ color: "red" }}>
+        {error} <br /> Försök igen senare.
+      </p>
+    );
+  if (!recipes || recipes.length === 0) return <p>Inga recept hittades.</p>;
 
   return (
     <ul className="recipe-list">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
-          <div
-            onClick={() => handleRecipeClick(recipe.id)}
-            style={{ cursor: "pointer" }}
-          >
+          <Link to={`/recipes/${recipe.id}`}>
             <RecipeCard recipe={recipe} />
-          </div>
+          </Link>
         </li>
       ))}
     </ul>
