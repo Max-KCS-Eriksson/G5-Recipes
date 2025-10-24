@@ -41,7 +41,7 @@ export default function RecipeList({ category, nameQuery }) {
   if (!recipes || recipes.length === 0) return <p>Inga recept hittades.</p>;
 
   return (
-    <ul className="recipe-list">
+    <ul className="recipe-list" aria-label="Receptlista">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
           <Link to={`/recipes/${recipe.id}`}>
