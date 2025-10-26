@@ -17,15 +17,7 @@ function Header() {
         />
       </div>
       <nav className="header-nav">
-        <Link
-          to="/"
-          className="nav-btn"
-          onClick={() => {
-            if (window.location.pathname === "/") {
-              window.location.reload();
-            }
-          }}
-        >
+        <Link to={{ pathname: "/", search: "" }} className="nav-btn">
           Hem
         </Link>
         <Link to="/categories" className="nav-btn">

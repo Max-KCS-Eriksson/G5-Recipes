@@ -8,21 +8,26 @@
  * @returns {JSX.Element} Startsidan för Receptsajten.
  */
 
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar.jsx";
 import RecipeList from "../components/RecipeList.jsx";
 import CategoryList from "../components/CategoryList.jsx";
 
 export default function HomePage() {
   const { categoryName } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const nameQuery = searchParams.get("search") || "";
 
-  const [nameQuery, setNameQuery] = useState("");
+  function handleSearch(next) {
+    const nextQuery = (next ?? "").trim();
+    if (nextQuery) setSearchParams({ search: nextQuery }, { replace: true });
+    else setSearchParams({}, { replace: true });
+  }
 
   return (
     <main>
       <section className="hero">
-        <SearchBar onSearch={setNameQuery} />
+        <SearchBar initialValue={nameQuery} onSearch={handleSearch} />
       </section>
 
       <section className="content">
