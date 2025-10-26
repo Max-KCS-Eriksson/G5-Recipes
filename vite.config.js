@@ -12,7 +12,7 @@ export default defineConfig({
       "node_modules",
       "playwright-report",
       "test-results",
-      "./src/tests/e2e/**",
+      "./src/test/e2e/**",
     ],
   },
 });

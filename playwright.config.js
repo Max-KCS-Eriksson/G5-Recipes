@@ -5,7 +5,7 @@ const PORT = isCI ? 4173 : 5173;
 const COMMAND = isCI ? "npm run preview" : "npm run dev";
 
 export default defineConfig({
-  testDir: "src/tests/e2e",
+  testDir: "src/test/e2e",
   use: {
     baseURL: `http://localhost:${PORT}`,
     trace: "on-first-retry",
