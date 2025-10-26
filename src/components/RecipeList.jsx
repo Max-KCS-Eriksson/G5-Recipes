@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./RecipeList.css";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
+import { filterRecipes } from "../utils/filterRecipes";
 
 /**
  * Dynamically list `Recipe`s.
@@ -18,9 +19,18 @@ export default function RecipeList({ category, nameQuery }) {
   useEffect(() => {
     async function fetchRecipes() {
       try {
-        if (category) setRecipes(await getRecipesByCategory(category));
-        else if (nameQuery) setRecipes(await getRecipes(nameQuery));
-        else setRecipes(await getRecipes());
+        let data;
+
+        if (category) {
+          data = await getRecipesByCategory(category);
+        } else if (nameQuery) {
+          data = await getRecipes();
+          data = filterRecipes(data, nameQuery);
+        } else {
+          data = await getRecipes();
+        }
+
+        setRecipes(data);
       } catch (err) {
         console.error("Fel vid hämtning av recept:", err);
         setError("Kunde inte ladda recept.");
@@ -28,6 +38,7 @@ export default function RecipeList({ category, nameQuery }) {
         setLoading(false);
       }
     }
+
     fetchRecipes();
   }, [category, nameQuery]);
 
