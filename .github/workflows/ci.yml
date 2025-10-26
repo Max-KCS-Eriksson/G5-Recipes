@@ -50,3 +50,11 @@ jobs:
       # Run tests (optional)
       - name: Run tests
         run: npm run test:ci
+
+      # Install Playwright browsers
+      - name: Install Playwright browsers
+        uses: microsoft/playwright-github-action@v1
+
+      # Run Playwright e2e tests
+      - name: Run Playwright E2E tests
+        run: npm run e2e
