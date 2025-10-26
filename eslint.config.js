@@ -14,6 +14,10 @@ export default defineConfig([
     "node_modules/**",
   ]),
   {
+    files: ["playwright.config.*"],
+    languageOptions: { globals: globals.node },
+  },
+  {
     files: ["**/*.{js,jsx}"],
     extends: [
       js.configs.recommended,
