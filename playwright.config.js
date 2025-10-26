@@ -1,14 +1,18 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const isCI = process.env.CI === "true";
+const PORT = isCI ? 4173 : 5173;
+const COMMAND = isCI ? "npm run preview" : "npm run dev";
+
 export default defineConfig({
   testDir: "src/tests/e2e",
   use: {
-    baseURL: "http://localhost:4173",
+    baseURL: `http://localhost:${PORT}`,
     trace: "on-first-retry",
   },
   webServer: {
-    command: "npm run preview",
-    url: "http://localhost:4173",
+    command: COMMAND,
+    url: `http://localhost:${PORT}`,
     timeout: 60_000,
   },
   projects: [
