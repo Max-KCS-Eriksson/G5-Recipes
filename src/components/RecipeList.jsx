@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useInRouterContext } from "react-router-dom";
 import "./RecipeList.css";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
@@ -11,15 +11,31 @@ import { filterRecipes } from "../utils/filterRecipes";
  * @param {string} [category] - Optionally narrow down list by category.
  * @param {string} [nameQuery] - Optionally narrow down list by search term.
  */
+
+function useSafeNavigate() {
+  try {
+    return useNavigate();
+  } catch {
+    return null; // om ingen router finns
+  }
+}
+
 export default function RecipeList({ category, nameQuery }) {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+
+  // ✅ Kolla om vi faktiskt är i en Router-kontext
+  const inRouter = useInRouterContext();
+  const navigate = useSafeNavigate();
 
   const handleRecipeClick = (recipeId) => {
-    navigate(`/recipes/${recipeId}`);
-    window.scrollTo(0, 0); // scrollar upp till toppen vid sidbyte
+    if (inRouter && navigate) {
+      navigate(`/recipes/${recipeId}`);
+      window.scrollTo(0, 0);
+    } else {
+      console.warn("Ingen router tillgänglig – navigering hoppades över.");
+    }
   };
 
   useEffect(() => {
