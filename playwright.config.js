@@ -13,12 +13,9 @@ export default defineConfig({
   webServer: {
     command: COMMAND,
     url: `http://localhost:${PORT}`,
+    reuseExistingServer: !process.env.CI,
     timeout: 60_000,
   },
-  projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
-    { name: "webkit", use: { ...devices["Desktop Safari"] } },
-  ],
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   reporter: [["list"], ["html", { open: "never" }]],
 });

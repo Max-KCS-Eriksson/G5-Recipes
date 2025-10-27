@@ -51,10 +51,10 @@ jobs:
       - name: Run tests
         run: npm run test:ci
 
-      # Install Playwright browsers
-      - name: Install Playwright browsers
-        uses: microsoft/playwright-github-action@v1
+      # --- Playwright (Chromium only) ---
+      - name: Install Playwright (Chromium)
+        run: npx playwright install chromium
 
       # Run Playwright e2e tests
-      - name: Run Playwright E2E tests
+      - name: Run Playwright e2e tests (Chromium)
         run: npm run e2e
