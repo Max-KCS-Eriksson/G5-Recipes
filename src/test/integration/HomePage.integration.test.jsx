@@ -8,7 +8,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import HomePage from "../../pages/HomePage.jsx";
 
-// Mocka API-anrop
 vi.mock("../../api/connection", () => ({
   getRecipes: vi.fn(),
   getRecipesByCategory: vi.fn(),
@@ -21,7 +20,6 @@ import {
   getCategoryHierarchy,
 } from "../../api/connection";
 
-// Mocka RecipeCard och Category-komponenter (förenkla UI)
 vi.mock("../../components/RecipeCard.jsx", () => ({
   default: ({ recipe }) => <div data-testid="recipe-card">{recipe.name}</div>,
 }));
@@ -39,7 +37,6 @@ describe("HomePage integration test", () => {
   });
 
   it("visar laddningsmeddelanden och sedan recept + kategorier", async () => {
-    // Mockdata
     getCategoryHierarchy.mockResolvedValue([
       { name: "Matpaj" },
       { name: "Dessertpaj" },
@@ -92,17 +89,14 @@ describe("HomePage integration test", () => {
       </MemoryRouter>,
     );
 
-    // Kontrollera att laddningsindikatorer visas först
     expect(screen.getByText(/Laddar recept/i)).toBeInTheDocument();
     expect(screen.getByText(/Laddar kategorier/i)).toBeInTheDocument();
 
-    // Vänta tills data laddats och UI uppdaterats
     await waitFor(() => {
       expect(screen.getAllByTestId("recipe-card")).toHaveLength(3);
       expect(screen.getAllByTestId("category-item")).toHaveLength(5);
     });
 
-    // Verifiera att rätt data visas
     expect(
       screen.getByText(/Paj med broccoli, kalkonskinka och ost/i),
     ).toBeInTheDocument();
