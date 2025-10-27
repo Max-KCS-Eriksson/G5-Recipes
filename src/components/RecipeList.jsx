@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./RecipeList.css";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
@@ -15,6 +15,12 @@ export default function RecipeList({ category, nameQuery }) {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const handleRecipeClick = (recipeId) => {
+    navigate(`/recipes/${recipeId}`);
+    window.scrollTo(0, 0); // scrollar upp till toppen vid sidbyte
+  };
 
   useEffect(() => {
     async function fetchRecipes() {
@@ -55,9 +61,12 @@ export default function RecipeList({ category, nameQuery }) {
     <ul className="recipe-list" aria-label="Receptlista">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
-          <Link to={`/recipes/${recipe.id}`}>
+          <div
+            onClick={() => handleRecipeClick(recipe.id)}
+            style={{ cursor: "pointer" }}
+          >
             <RecipeCard recipe={recipe} />
-          </Link>
+          </div>
         </li>
       ))}
     </ul>
