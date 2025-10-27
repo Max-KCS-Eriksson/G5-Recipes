@@ -22,11 +22,22 @@ function CategoryList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [empty, setEmpty] = useState(false);
+
   useEffect(() => {
     async function fetchCategoriesAndCounts() {
       try {
+        setLoading(true);
+        setError(null);
+        setEmpty(false);
+
         const recipes = await getRecipes();
         const categoryData = await recipesPerCategory(recipes);
+
+        if (!categoryData || Object.keys(categoryData).length === 0) {
+          setEmpty(true);
+          return;
+        }
 
         setCategories(Object.keys(categoryData));
         setCategoryRecipeCount(categoryData);
@@ -42,6 +53,7 @@ function CategoryList() {
   }, []);
 
   if (loading) return <p>Laddar kategorier...</p>;
+
   if (error)
     return (
       <p style={{ color: "red" }}>
@@ -49,7 +61,7 @@ function CategoryList() {
       </p>
     );
 
-  if (!categories || categories.length === 0) {
+  if (empty || !categories || categories.length === 0) {
     return (
       <aside className="category-list">
         <h3>Kategorier</h3>
