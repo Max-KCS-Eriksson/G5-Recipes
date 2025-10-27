@@ -20,6 +20,10 @@ function RecipeRating({ recipeId, readOnly = true }) {
   const [hasRated, setHasRated] = useState(false);
 
   useEffect(() => {
+    if (!recipeId) {
+      return;
+    }
+
     async function fetchRecipe() {
       try {
         const data = await getRecipeById(recipeId);
@@ -39,11 +43,15 @@ function RecipeRating({ recipeId, readOnly = true }) {
     setHasRated(true);
     await rateRecipeById(recipeId, rating);
   }
+
   const icons = createEmptyRatingIconList();
+
   return (
     <>
       {icons.map((icon, index) => (
-        <span onClick={() => rateRecipe(index + 1)}>{icon}</span>
+        <span key={index} onClick={() => rateRecipe(index + 1)}>
+          {icon}
+        </span>
       ))}
     </>
   );
@@ -72,6 +80,5 @@ function ratingToIcons(rating) {
 function createEmptyRatingIconList() {
   let ratingIcons = new Array(MAX_RATING);
   ratingIcons.fill(<FontAwesomeIcon icon={emptyStar} />);
-
   return ratingIcons;
 }
