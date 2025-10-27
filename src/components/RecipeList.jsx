@@ -5,6 +5,14 @@ import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
 import { filterRecipes } from "../utils/filterRecipes";
 
+function useSafeNavigate() {
+  try {
+    return useNavigate();
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Dynamically list `Recipe`s.
  *
@@ -12,20 +20,11 @@ import { filterRecipes } from "../utils/filterRecipes";
  * @param {string} [nameQuery] - Optionally narrow down list by search term.
  */
 
-function useSafeNavigate() {
-  try {
-    return useNavigate();
-  } catch {
-    return null; // om ingen router finns
-  }
-}
-
 export default function RecipeList({ category, nameQuery }) {
   const [recipes, setRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Kolla om vi faktiskt är i en Router-kontext
   const inRouter = useInRouterContext();
   const navigate = useSafeNavigate();
 
