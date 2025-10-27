@@ -50,3 +50,11 @@ jobs:
       # Run tests (optional)
       - name: Run tests
         run: npm run test:ci
+
+      # --- Playwright (Chromium only) ---
+      - name: Install Playwright (Chromium)
+        run: npx playwright install chromium
+
+      # Run Playwright e2e tests
+      - name: Run Playwright e2e tests (Chromium)
+        run: npm run e2e
