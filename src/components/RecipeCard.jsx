@@ -8,7 +8,7 @@ export default function RecipeCard({ recipe }) {
   const { timeInMins } = instructions;
 
   return (
-    <div className="recipe-card">
+    <div className="recipe-card" data-testid="recipe-card">
       <img
         className="recipe-image"
         src={imageUrl || "/placeholder.jpg"}
