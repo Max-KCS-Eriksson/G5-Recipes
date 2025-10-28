@@ -51,7 +51,9 @@ export default function RecipeList({ category, nameQuery }) {
           data = await getRecipes();
         }
 
-        setRecipes(data);
+        let sortedData = data.sort((a, b) => b.avgRating - a.avgRating);
+
+        setRecipes(sortedData);
       } catch (err) {
         console.error("Fel vid hämtning av recept:", err);
         setError("Kunde inte ladda recept.");
