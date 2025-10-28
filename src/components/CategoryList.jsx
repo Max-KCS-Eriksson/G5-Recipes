@@ -79,7 +79,7 @@ function CategoryList() {
           const subCategories = categoryData?.subCategories ?? {};
 
           return (
-            <li key={category}>
+            <li key={category} data-testid="category-item">
               {/* Main category */}
               <Category
                 name={category}
@@ -93,7 +93,7 @@ function CategoryList() {
                 <ul className="subcategory-list">
                   {Object.entries(subCategories).map(
                     ([subCategory, subCount]) => (
-                      <li key={subCategory}>
+                      <li key={subCategory} data-testid="category-item">
                         <Category
                           name={subCategory}
                           recipeCount={subCount}
