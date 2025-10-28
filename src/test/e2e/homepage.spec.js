@@ -6,14 +6,14 @@ test.describe("Startsida", () => {
     await page.goto("http://localhost:5173/");
 
     //Vänta tills minst ett receptkort finns i DOM:en
-    const recipeCards = page.locator('[data-testid="recipe-card"]');
+    const recipeCards = page.locator('[data-testid="recipe-card-test"]');
     await expect(recipeCards.first()).toBeVisible();
 
     //Kontrollera att det finns minst ett receptkort
     expect(await recipeCards.count()).toBeGreaterThan(0);
 
     //Vänta tills minst en kategori syns
-    const categoryList = page.locator('[data-testid="category-item"]');
+    const categoryList = page.locator('[data-testid="category-item-test"]');
     await expect(categoryList.first()).toBeVisible();
 
     //Kontrollera att det finns minst en kategori
