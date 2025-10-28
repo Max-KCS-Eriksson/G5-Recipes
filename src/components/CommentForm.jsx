@@ -5,10 +5,11 @@ import {
   compileTextValidator,
   normalizeSpaces,
 } from "../utils/inputPolicies.js";
+import { sanitizeInput } from "../utils/sanitizeInput.js";
 import { commentRecipeById } from "../api/connection.js";
 import "./CommentForm.css";
 
-function CommentForm({ recipeId, onCommentAdded }) {
+export default function CommentForm({ recipeId, onCommentAdded }) {
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,17 +35,19 @@ function CommentForm({ recipeId, onCommentAdded }) {
       return;
     }
 
+    const cleanName = sanitizeInput(nameValidation.normalizedText);
+    const cleanComment = sanitizeInput(commentValidation.normalizedText);
+
     try {
       setIsSubmitting(true);
-      await commentRecipeById(
-        recipeId,
-        commentValidation.normalizedText,
-        nameValidation.normalizedText,
-      );
+      await commentRecipeById(recipeId, cleanComment, cleanName);
+
       setIsSubmitted(true);
-      setAuthor("");
-      setComment("");
-      if (onCommentAdded) onCommentAdded();
+      if (onCommentAdded) {
+        onCommentAdded();
+        setAuthor("");
+        setComment("");
+      }
     } catch {
       setErrorMessage("Något gick fel vid inskickning. Försök igen.");
     } finally {
@@ -53,11 +56,15 @@ function CommentForm({ recipeId, onCommentAdded }) {
   };
 
   if (isSubmitted) {
-    return <div className="comment-form success">Tack för din kommentar!</div>;
+    return (
+      <div className="comment-form success">
+        <p>Tack för din kommentar!</p>
+      </div>
+    );
   }
 
   return (
-    <div className="comment-form">
+    <div className={isSubmitted ? "comment-form success" : "comment-form"}>
       <h2>Lämna en kommentar</h2>
       <form onSubmit={handleSubmit} noValidate>
         <div className="comment-form-group">
@@ -87,12 +94,14 @@ function CommentForm({ recipeId, onCommentAdded }) {
 
         {errorMessage && <p className="error-text">{errorMessage}</p>}
 
-        <button type="submit" disabled={isSubmitting}>
+        <button
+          type="submit"
+          aria-label="Skicka kommentar"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Skickar..." : "Skicka kommentar"}
         </button>
       </form>
     </div>
   );
 }
-
-export default CommentForm;
