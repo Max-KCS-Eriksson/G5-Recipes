@@ -1,0 +1,83 @@
+/* CATEGORY LIST - CONTAINER */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  max-width: 260px;
+
+  transition: all 0.2s ease;
+}
+
+/* CATEGORY LIST - TITLE */
+.category-list h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CATEGORY LIST */
+.category-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* CATEGORY LIST - LIST ITEMS */
+.category-list li {
+  margin: 0.3rem 0;
+  width: 100%;
+}
+
+/* SUBCATEGORY LIST */
+.subcategory-list {
+  list-style: none;
+  margin: 0.2rem 0 0.4rem 1.2rem;
+  padding: 0;
+}
+
+/* SUBCATEGORY ITEMS */
+.subcategory-list li {
+  margin: 0.25rem 0;
+  padding-left: 1rem;
+  width: auto;
+}
+
+/* CATEGORY LIST - STATE - Loading/Error */
+.category-list p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.4rem 0;
+}
+
+/* CATEGORY LIST - SCROLL */
+.category-list ul {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.category-list ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.category-list ul::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+/* CATEGORY LIST - Hover container */
+.category-list:hover {
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
+}

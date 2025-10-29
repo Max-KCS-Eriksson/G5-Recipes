@@ -1,0 +1,26 @@
+.recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  max-width: 300px;
+  height: 95%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.ingredients-title {
+  font-size: 1.2em;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.ingredients-list {
+  padding-left: 1px;
+}
