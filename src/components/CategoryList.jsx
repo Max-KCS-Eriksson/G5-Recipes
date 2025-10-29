@@ -56,9 +56,39 @@ function CategoryList() {
 
   if (error)
     return (
-      <p style={{ color: "red" }}>
-        {error} <br /> Försök igen senare.
-      </p>
+      <div style={{ color: "red" }}>
+        <p>
+          {error} <br />
+          Försök igen senare.
+        </p>
+        <button
+          onClick={async () => {
+            try {
+              setError(null);
+              setLoading(true);
+              setEmpty(false);
+
+              const recipes = await getRecipes();
+              const categoryData = await recipesPerCategory(recipes);
+
+              if (!categoryData || Object.keys(categoryData).length === 0) {
+                setEmpty(true);
+                return;
+              }
+
+              setCategories(Object.keys(categoryData));
+              setCategoryRecipeCount(categoryData);
+            } catch (err) {
+              console.error("Fel vid hämtning av kategorier:", err);
+              setError("Kunde inte ladda kategorier.");
+            } finally {
+              setLoading(false);
+            }
+          }}
+        >
+          Försök igen
+        </button>
+      </div>
     );
 
   if (empty || !categories || categories.length === 0) {
