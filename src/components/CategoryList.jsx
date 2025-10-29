@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecipes } from "../api/connection";
 import Category from "./Category.jsx";
-import "./CategoryList.css";
+import styles from "./CategoryList.module.css";
 import { recipesPerCategory } from "../utils/categories.js";
 
 /**
@@ -93,7 +93,7 @@ function CategoryList() {
 
   if (empty || !categories || categories.length === 0) {
     return (
-      <aside className="category-list">
+      <aside className={styles.categoryList}>
         <h3>Kategorier</h3>
         <p>Inga kategorier hittades.</p>
       </aside>
@@ -101,7 +101,7 @@ function CategoryList() {
   }
 
   return (
-    <aside className="category-list">
+    <aside className={styles.categoryList}>
       <h3>Kategorier</h3>
       <ul>
         {categories.map((category) => {
@@ -120,7 +120,7 @@ function CategoryList() {
 
               {/* Subcategories */}
               {Object.keys(subCategories).length > 0 && (
-                <ul className="subcategory-list">
+                <ul className={styles.subcategoryList}>
                   {Object.entries(subCategories).map(
                     ([subCategory, subCount]) => (
                       <li key={subCategory} data-testid="category-item-test">

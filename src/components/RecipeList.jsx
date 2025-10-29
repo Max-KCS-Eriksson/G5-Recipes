@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useInRouterContext } from "react-router-dom";
-import "./RecipeList.css";
+import styles from "./RecipeList.module.css";
 import { getRecipes, getRecipesByCategory } from "../api/connection";
 import RecipeCard from "./RecipeCard";
 import { filterRecipes } from "../utils/filterRecipes";
@@ -86,7 +86,7 @@ export default function RecipeList({ category, nameQuery }) {
   if (!recipes || recipes.length === 0) return <p>Inga recept hittades.</p>;
 
   return (
-    <ul className="recipe-list" aria-label="Receptlista">
+    <ul className={styles.recipeList} aria-label="Receptlista">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
           <div
