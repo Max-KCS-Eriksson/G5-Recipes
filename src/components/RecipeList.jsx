@@ -69,7 +69,7 @@ export default function RecipeList({ category, nameQuery }) {
   if (error)
     return (
       <div>
-        <p>{error}</p>
+        <p style={{ color: "red" }}>{error}</p>
         <button onClick={() => window.location.reload()}>Försök igen</button>
       </div>
     );
