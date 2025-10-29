@@ -58,3 +58,25 @@ jobs:
       # Run Playwright e2e tests
       - name: Run Playwright e2e tests (Chromium)
         run: npm run e2e
+
+      # OWASP ZAP Baseline Scan
+      - name: Start app
+        run: |
+          npm run preview &
+          sleep 10
+
+      - name: Run ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.15.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: "http://localhost:4173"
+          fail_level: "high"
+          cmd_options: "-a"
+          output_file: "zap-report.html"
+
+      - name: Upload ZAP Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-report
+          path: zap-report.html
