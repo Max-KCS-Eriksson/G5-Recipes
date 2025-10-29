@@ -70,9 +70,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: "http://localhost:4173"
-          fail_level: "high"
           cmd_options: "-a"
-          output_file: "zap-report.html"
+          allow_issue_writing: false
+          artifact_name: "zap-report"
 
       - name: Upload ZAP Report
         if: always()
