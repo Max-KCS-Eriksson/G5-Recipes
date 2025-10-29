@@ -1,0 +1,22 @@
+:root {
+  /* page */
+  --page-bg: #fbf2eb; /* soft cream */
+  --page-fg: #000000; /* body text */
+  --page-bg-image: url("../assets/page-bg.webp");
+  --page-bg-size: cover;
+  --page-bg-position: center;
+
+  /* header/footer (same color) */
+  --chrome-bg: #996666; /* header/footer background */
+  --chrome-fg: #ffffff; /* header/footer text */
+
+  /* type (keep minimal) */
+  --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --lh-1: 1.6;
+
+  /* spacing & radius (just one of each for now) */
+  --space-3: 1rem; /* 16px */
+  --radius-1: 0.5rem;
+}

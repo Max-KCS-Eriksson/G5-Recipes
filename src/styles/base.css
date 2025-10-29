@@ -1,0 +1,21 @@
+/* minimal base */
+html,
+body,
+#root {
+  height: 100%;
+} /* ensures image covers full page */
+body {
+  margin: 0;
+  color: var(--page-fg);
+  background-color: var(--page-bg);
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-1);
+
+  /* sticky (fixed) background image */
+  background-image: var(--page-bg-image);
+  background-attachment: fixed; /* Sticky img */
+  background-repeat: no-repeat;
+  background-size: var(--page-bg-size);
+  background-position: var(--page-bg-position);
+}
