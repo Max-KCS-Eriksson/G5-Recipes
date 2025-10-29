@@ -67,7 +67,7 @@ describe("HomePage — search filters recipe list and reset shows all", () => {
     expect(within(recipeList).getAllByRole("listitem")).toHaveLength(3);
 
     const input = screen.getByRole("searchbox");
-    const submit = screen.getByRole("button", { name: /sök/i });
+    const submit = await screen.findByRole("button", { name: /^sök$/i });
 
     await user.clear(input);
     await user.type(input, "kyc");
