@@ -68,9 +68,10 @@ export default function RecipeList({ category, nameQuery }) {
   if (loading) return <p>Laddar recept...</p>;
   if (error)
     return (
-      <p style={{ color: "red" }}>
-        {error} <br /> Försök igen senare.
-      </p>
+      <div>
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Försök igen</button>
+      </div>
     );
   if (!recipes || recipes.length === 0) return <p>Inga recept hittades.</p>;
 
