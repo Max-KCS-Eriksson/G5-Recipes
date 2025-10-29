@@ -37,40 +37,50 @@ export default function RecipeList({ category, nameQuery }) {
     }
   };
 
-  useEffect(() => {
-    async function fetchRecipes() {
-      try {
-        let data;
+  async function fetchRecipes() {
+    try {
+      let data;
 
-        if (category) {
-          data = await getRecipesByCategory(category);
-        } else if (nameQuery) {
-          data = await getRecipes();
-          data = filterRecipes(data, nameQuery);
-        } else {
-          data = await getRecipes();
-        }
-
-        let sortedData = data.sort((a, b) => b.avgRating - a.avgRating);
-
-        setRecipes(sortedData);
-      } catch (err) {
-        console.error("Fel vid hämtning av recept:", err);
-        setError("Kunde inte ladda recept.");
-      } finally {
-        setLoading(false);
+      if (category) {
+        data = await getRecipesByCategory(category);
+      } else if (nameQuery) {
+        data = await getRecipes();
+        data = filterRecipes(data, nameQuery);
+      } else {
+        data = await getRecipes();
       }
-    }
 
+      let sortedData = data.sort((a, b) => b.avgRating - a.avgRating);
+
+      setRecipes(sortedData);
+      setError(null);
+    } catch (err) {
+      console.error("Fel vid hämtning av recept:", err);
+      setError("Kunde inte ladda recept.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    setLoading(true);
     fetchRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, nameQuery]);
 
   if (loading) return <p>Laddar recept...</p>;
   if (error)
     return (
       <div>
-        <p style={{ color: "red" }}>{error}</p>
-        <button onClick={() => window.location.reload()}>Försök igen</button>
+        <p>{error}</p>
+        <button
+          onClick={() => {
+            setLoading(true);
+            fetchRecipes();
+          }}
+        >
+          Försök igen
+        </button>
       </div>
     );
   if (!recipes || recipes.length === 0) return <p>Inga recept hittades.</p>;
