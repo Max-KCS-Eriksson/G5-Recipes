@@ -12,7 +12,7 @@ vi.mock("../../utils/inputPolicies.js", async (importOriginal) => {
   return {
     ...actual,
     compileTextValidator: (policy) => {
-      return (text) => ({
+      return () => ({
         ok: true,
         message: "",
         normalizedText:
