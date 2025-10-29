@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// Fixtures/payloads with potential XSS content
+// Fixtures including "evil" payloads with potential XSS content
 const RECIPES_FIXTURE = Object.freeze([
   Object.freeze({
     id: "68flkgsht43848375987sdlf",
@@ -46,20 +46,16 @@ function attachNoExecCaptors(page) {
 
     const text = msg.text();
 
-    // Ignore React’s dev warning about missing list keys
     if (text.includes('Each child in a list should have a unique "key" prop')) {
       return;
     }
-
     state.consoleErrors.push(text);
   });
-
   return state;
 }
 
 // Helper: mock API responses to inject known "spicy" data (list + detail)
 async function mockRecipeRoutes(page, list, detail) {
-  // Detail: /recipes/:id
   await page.route("**/recipes/*", async (route) => {
     await route.fulfill({
       status: 200,
@@ -68,7 +64,6 @@ async function mockRecipeRoutes(page, list, detail) {
     });
   });
 
-  // List: /recipes and /recipes/
   for (const pattern of ["**/recipes", "**/recipes/"]) {
     await page.route(pattern, async (route) => {
       await route.fulfill({
@@ -79,7 +74,6 @@ async function mockRecipeRoutes(page, list, detail) {
     });
   }
 
-  // Categories: /categories and /categories/
   for (const pattern of ["**/categories", "**/categories/"]) {
     await page.route(pattern, async (route) => {
       await route.fulfill({
@@ -91,7 +85,7 @@ async function mockRecipeRoutes(page, list, detail) {
   }
 }
 
-test.describe("6.3.4 XSS — render without execution (HomePage, RecipePage)", () => {
+test.describe("XSS render without execution (HomePage, RecipePage)", () => {
   let captors;
 
   test.beforeEach(async ({ page }) => {
@@ -110,21 +104,27 @@ test.describe("6.3.4 XSS — render without execution (HomePage, RecipePage)", (
   test("no dialogs, no console errors, no live tags", async ({ page }) => {
     // HomePage
     await page.goto("/");
-    await Promise.all([
-      page.waitForResponse((r) => r.url().includes("/recipes") && r.ok()),
-      page.waitForResponse((r) => r.url().includes("/categories") && r.ok()),
-    ]);
-    await page.waitForLoadState("networkidle");
+    await expect(page.getByText("Harmless Recipe")).toBeVisible();
 
-    const homeHTML = await page.content();
-    expect(homeHTML).not.toContain('<script>alert("XSS")</script>');
-    expect(homeHTML).not.toMatch(/<img[^>]+onerror=/i);
+    // 1) No real onerror attributes on any <img>
+    await expect(page.locator("img[onerror]")).toHaveCount(0);
+
+    // 2) No script tags inside recipe cards
+    await expect(
+      page.locator('[data-testid="recipe-card-test"] script'),
+    ).toHaveCount(0);
+
+    const firstCard = page.getByTestId("recipe-card-test").first();
+    await expect(firstCard.getByRole("heading", { level: 2 })).toHaveText(
+      "<img src=x onerror=alert('XSS')>",
+    );
 
     // RecipePage
-    await page.goto("/recipes/1");
-    const detailHTML = await page.content();
-    expect(detailHTML).not.toContain('<script>alert("XSS")</script>');
-    expect(detailHTML).not.toMatch(/<img[^>]+onerror=/i);
+    await page.goto("/recipes/68flkgsht43848375987sdlf");
+    await expect(page.locator("img[onerror]")).toHaveCount(0);
+    await expect(
+      page.locator('[data-testid="recipe-card-test"] script'),
+    ).toHaveCount(0);
 
     // Global safety checks
     expect(captors.dialogTriggered).toBe(false);
