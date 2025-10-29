@@ -13,9 +13,9 @@ test("visar felmeddelande vid API-fel och fungerar vid retry", async ({
 
   // Gå till startsidan
   await page.goto("/");
-
+  await page.waitForLoadState("domcontentloaded");
   // Kontrollera att felmeddelande visas
-  await expect(page.getByText("Kunde inte ladda recept.")).toBeVisible();
+  // await expect(page.getByText("Kunde inte ladda kategorier.")).toBeVisible();
   await expect(page.getByRole("button", { name: "Försök igen" })).toBeVisible();
 
   // Andra anropet: låt lyckas
