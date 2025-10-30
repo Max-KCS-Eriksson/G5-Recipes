@@ -50,38 +50,26 @@ function RecipeRating({ recipeId, readOnly = true }) {
   }
 
   const icons = createEmptyRatingIconList();
+  const ratingFragment = icons.map((icon, index) => (
+    <span
+      key={`${icon.className}${index}`}
+      onClick={() => rateRecipe(index + 1)}
+      tabIndex={index}
+      role="button"
+    >
+      {icon}
+    </span>
+  ));
 
   if (failedOnRating) {
     return (
       <>
         <p>Ett fel uppstod, försök igen.</p>
-        {icons.map((icon, index) => (
-          <span
-            key={`${icon.className}${index}`}
-            onClick={() => rateRecipe(index + 1)}
-            tabIndex={index}
-            role="button"
-          >
-            {icon}
-          </span>
-        ))}
+        {ratingFragment}
       </>
     );
   } else {
-    return (
-      <>
-        {icons.map((icon, index) => (
-          <span
-            key={`${icon.className}${index}`}
-            onClick={() => rateRecipe(index + 1)}
-            tabIndex={index}
-            role="button"
-          >
-            {icon}
-          </span>
-        ))}
-      </>
-    );
+    return <>{ratingFragment}</>;
   }
 }
 
