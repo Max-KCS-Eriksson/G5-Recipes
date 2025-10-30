@@ -1,26 +1,18 @@
 import { Link } from "react-router-dom";
-import "./Header.css";
+import styles from "./Header.module.css";
 import Logo from "./Logo.jsx";
 
 function Header() {
   return (
-    <header className="header-container">
-      <img
-        className="header-bg-image"
-        src="/images/header_bg_image.jpg"
-        alt="Pajbakgrund"
-      />
-      <div className="header-logo-container">
-        <Logo
-          variant="default"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        />
+    <header className={styles.headerContainer}>
+      <div className={styles.headerLogoContainer}>
+        <Logo variant="default" />
       </div>
-      <nav className="header-nav">
-        <Link to={{ pathname: "/", search: "" }} className="nav-btn">
+      <nav className={styles.headerNav}>
+        <Link to={{ pathname: "/", search: "" }} className={styles.navBtn}>
           Hem
         </Link>
-        <Link to="/categories" className="nav-btn">
+        <Link to="/categories" className={styles.navBtn}>
           Kategorier
         </Link>
       </nav>

@@ -1,4 +1,4 @@
-import "./RecipeCard.css";
+import styles from "./RecipeCard.module.css";
 import RecipeRating from "./RecipeRating";
 
 export default function RecipeCard({ recipe }) {
@@ -8,9 +8,9 @@ export default function RecipeCard({ recipe }) {
   const { timeInMins } = instructions;
 
   return (
-    <div className="recipe-card" data-testid="recipe-card-test">
+    <div className={styles.recipeCard} data-testid="recipe-card-test">
       <img
-        className="recipe-image"
+        className={styles.recipeImage}
         src={imageUrl || "/placeholder.jpg"}
         alt={name || "Recipe image"}
       />

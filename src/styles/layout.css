@@ -1,0 +1,76 @@
+/* layout.css — global, reusable layout primitives */
+
+/* 1) Page width constraint */
+.container {
+  width: min(100% - 2rem, var(--container-max));
+  margin-inline: auto;
+}
+
+/* 2) Flow/stacks (vertical rhythm) */
+.stack > * + * {
+  margin-block-start: var(--gutter);
+}
+
+/* 3) Row/cluster (wrap row with gap) */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+  align-items: center;
+}
+
+/* 4) Simple grid, overridable via CSS vars */
+.grid {
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: repeat(var(--cols, 1), minmax(0, 1fr));
+}
+@media (min-width: var(--bp-md)) {
+  .grid {
+    --cols: 2;
+  }
+}
+@media (min-width: var(--bp-lg)) {
+  .grid {
+    --cols: 3;
+  }
+}
+
+.page {
+  height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header | main | footer */
+}
+.page > main {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: none;
+  padding-block: 1px;
+  margin-block: -1px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-gutter: stable both-edges;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Chromium/Safari/Edge (non-standard but widely supported) */
+/* WebKit scrollbar styling */
+.page > main::-webkit-scrollbar {
+  width: 10px;
+}
+.page > main::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border: none;
+}
+.page > main::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.page > main::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--chrome-bg) 85%, black);
+}
+.page > main::-webkit-scrollbar-thumb:active {
+  background-color: color-mix(in srgb, var(--chrome-bg) 75%, black);
+}

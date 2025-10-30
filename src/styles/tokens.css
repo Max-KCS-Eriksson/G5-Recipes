@@ -1,0 +1,49 @@
+:root {
+  /* breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+  --container-max: 1200px;
+  --gutter: 1rem;
+
+  /* header/footer (same color) */
+  --chrome-bg: #996666; /* header/footer background */
+  --chrome-fg: #ffffff; /* header/footer text */
+
+  /* hero */
+  --hero-bg-image: url("../assets/hero-bg.webp"); /* set your file */
+  --hero-bg-size: cover;
+  --hero-bg-position: center;
+
+  --hero-min-h: min(65svh, 640px); /* responsive height cap */
+  --hero-curve-height: 80px; /* the arc divider height */
+  --hero-curve-color: var(--page-bg);
+
+  /* search bar */
+  --search-icon: url("../assets/search-button.svg");
+
+  /* page */
+  --page-bg: #fbf2eb; /* soft cream */
+  --page-fg: #000000; /* body text */
+  --page-bg-image: url("../assets/page-bg.webp");
+  --page-bg-size: cover;
+  --page-bg-position: center;
+
+  /* comment card */
+  --comment-img: url("../assets/commenter-symbol.svg");
+
+  /* type */
+  --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --lh-1: 1.6;
+
+  /* spacing & radius */
+  --space-3: 1rem;
+  --radius-1: 0.5rem;
+
+  /* scrollbar */
+  --scrollbar-thumb: var(--chrome-bg);
+  --scrollbar-track: transparent; /* or var(--page-bg) */
+}

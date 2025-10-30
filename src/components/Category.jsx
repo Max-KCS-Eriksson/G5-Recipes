@@ -13,7 +13,8 @@
  * @returns {JSX.Element} Renderad kategori-komponent.
  */
 
-import "./Category.css";
+import styles from "./Category.module.css";
+import { joinClassNames } from "../utils/joinClassNames.js";
 
 function Category({
   name,
@@ -22,7 +23,11 @@ function Category({
   onClick,
   variant = "link",
 }) {
-  const className = `category-item ${variant} ${isActive ? "active" : ""}`;
+  const className = joinClassNames(
+    styles.categoryItem,
+    styles[variant],
+    isActive && styles.active,
+  );
 
   return (
     <button
@@ -31,8 +36,8 @@ function Category({
       aria-pressed={isActive}
       onClick={onClick}
     >
-      <span className="category-name">{name}</span>
-      <span className="category-recipe-count">({recipeCount ?? 0})</span>
+      <span className={styles.categoryName}>{name}</span>
+      <span className={styles.categoryRecipeCount}>({recipeCount ?? 0})</span>
     </button>
   );
 }

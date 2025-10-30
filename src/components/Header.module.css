@@ -1,0 +1,39 @@
+/* Header.module.css */
+.headerContainer {
+  position: static; /* <- NOT sticky/fixed */
+  inset: auto;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.8rem 1.5rem;
+  background: var(--chrome-bg); /* use tokens */
+  color: var(--chrome-fg);
+  box-shadow: none; /* remove drop shadow for now */
+}
+
+.headerLogoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navBtn {
+  background: transparent;
+  color: var(--chrome-fg);
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  text-decoration: none;
+}
+
+.navBtn:hover {
+  opacity: 0.9;
+}

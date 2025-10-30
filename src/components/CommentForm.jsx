@@ -7,7 +7,7 @@ import {
 } from "../utils/inputPolicies.js";
 import { sanitizeInput } from "../utils/sanitizeInput.js";
 import { commentRecipeById } from "../api/connection.js";
-import "./CommentForm.css";
+import styles from "./CommentForm.module.css";
 
 export default function CommentForm({ recipeId, onCommentAdded }) {
   const [author, setAuthor] = useState("");
@@ -67,7 +67,7 @@ export default function CommentForm({ recipeId, onCommentAdded }) {
     <div className={isSubmitted ? "comment-form success" : "comment-form"}>
       <h2>Lämna en kommentar</h2>
       <form onSubmit={handleSubmit} noValidate>
-        <div className="comment-form-group">
+        <div className={styles.commentFormGroup}>
           <label htmlFor="author">Namn</label>
           <input
             id="author"
@@ -80,7 +80,7 @@ export default function CommentForm({ recipeId, onCommentAdded }) {
           />
         </div>
 
-        <div className="comment-form-group">
+        <div className={styles["comment-form-group"]}>
           <label htmlFor="comment">Kommentar</label>
           <textarea
             id="comment"
@@ -92,7 +92,7 @@ export default function CommentForm({ recipeId, onCommentAdded }) {
           />
         </div>
 
-        {errorMessage && <p className="error-text">{errorMessage}</p>}
+        {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
 
         <button
           type="submit"

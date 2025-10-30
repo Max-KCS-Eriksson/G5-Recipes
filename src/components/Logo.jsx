@@ -1,10 +1,26 @@
-import "./Logo.css";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./Logo.module.css";
+import { joinClassNames } from "../utils/joinClassNames.js";
 
-function Logo({ variant = "default", onClick }) {
+function Logo({ variant = "default" }) {
+  const { pathname } = useLocation();
+
+  const handleClick = (e) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
-    <p className={`logo-text ${variant}`} onClick={onClick} role="button">
+    <Link
+      to="/"
+      onClick={handleClick}
+      aria-label="Gå till startsidan"
+      className={joinClassNames(styles.logoText, styles[variant])}
+    >
       Pajparadiset
-    </p>
+    </Link>
   );
 }
 

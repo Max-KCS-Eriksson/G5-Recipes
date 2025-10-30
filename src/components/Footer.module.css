@@ -1,0 +1,33 @@
+/* Footer.module.css */
+.footerContainer {
+  position: static; /* <- NOT sticky/fixed */
+  inset: auto;
+
+  background: var(--chrome-bg);
+  color: var(--chrome-fg);
+  padding: 1rem 1.5rem;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footerLinks a {
+  color: var(--chrome-fg);
+  text-decoration: none;
+}
+
+.footerCopy {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
