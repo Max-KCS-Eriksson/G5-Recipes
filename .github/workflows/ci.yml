@@ -66,7 +66,7 @@ jobs:
           sleep 10
 
       - name: Run ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.15.0
+        uses: zaproxy/action-baseline@de8ad967d3548d44ef623df22cf95c3b0baf8b25
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: "http://localhost:4173"
