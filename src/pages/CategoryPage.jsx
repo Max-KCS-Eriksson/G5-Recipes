@@ -47,14 +47,12 @@ function CategoryPage() {
     );
 
   return (
-    <>
-      <section className="content">
-        <CategoryList
-          categories={categories}
-          categoryRecipeCount={categoryRecipeCount}
-        />
-      </section>
-    </>
+    <section className="content">
+      <CategoryList
+        categories={categories}
+        categoryRecipeCount={categoryRecipeCount}
+      />
+    </section>
   );
 }
 
