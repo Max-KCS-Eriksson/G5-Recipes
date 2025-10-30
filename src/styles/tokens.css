@@ -27,4 +27,8 @@
   /* spacing & radius */
   --space-3: 1rem;
   --radius-1: 0.5rem;
+
+  /* scrollbar */
+  --scrollbar-thumb: var(--chrome-bg);
+  --scrollbar-track: transparent; /* or var(--page-bg) */
 }

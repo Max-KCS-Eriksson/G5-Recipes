@@ -6,8 +6,10 @@ function Layout() {
   return (
     <div className="page">
       <Header />
-      <main className="container stack">
-        <Outlet />
+      <main className="app-main">
+        <div className="container stack">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

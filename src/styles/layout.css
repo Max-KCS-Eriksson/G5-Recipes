@@ -43,7 +43,35 @@
 }
 .page > main {
   min-height: 0;
-  overflow: auto; /* <- the only scroller */
+  overflow: auto;
   overscroll-behavior-y: contain;
-  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.app-main {
+  width: 100%;
+}
+
+/* Chromium/Safari/Edge (non-standard but widely supported) */
+/* WebKit scrollbar styling */
+.page > main::-webkit-scrollbar {
+  width: 10px;
+}
+.page > main::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border: none;
+}
+.page > main::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.page > main::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--chrome-bg) 85%, black);
+}
+.page > main::-webkit-scrollbar-thumb:active {
+  background-color: color-mix(in srgb, var(--chrome-bg) 75%, black);
 }
