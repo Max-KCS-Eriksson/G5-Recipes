@@ -18,6 +18,7 @@ const MAX_RATING = 5;
 function RecipeRating({ recipeId, readOnly = true }) {
   const [recipe, setRecipe] = useState(null);
   const [hasRated, setHasRated] = useState(false);
+  const [failedOnRating, setFailedOnRating] = useState(false);
 
   useEffect(() => {
     if (!recipeId) {
@@ -40,21 +41,38 @@ function RecipeRating({ recipeId, readOnly = true }) {
   if (hasRated) return <p>Tack för ditt betyg!</p>;
 
   async function rateRecipe(rating) {
-    setHasRated(true);
-    await rateRecipeById(recipeId, rating);
+    try {
+      await rateRecipeById(recipeId, rating);
+      setHasRated(true);
+    } catch {
+      setFailedOnRating(true);
+    }
   }
 
   const icons = createEmptyRatingIconList();
 
-  return (
-    <>
-      {icons.map((icon, index) => (
-        <span key={index} onClick={() => rateRecipe(index + 1)}>
-          {icon}
-        </span>
-      ))}
-    </>
-  );
+  if (failedOnRating) {
+    return (
+      <>
+        <p>Ett fel uppstod, försök igen.</p>
+        {icons.map((icon, index) => (
+          <span key={index} onClick={() => rateRecipe(index + 1)}>
+            {icon}
+          </span>
+        ))}
+      </>
+    );
+  } else {
+    return (
+      <>
+        {icons.map((icon, index) => (
+          <span key={index} onClick={() => rateRecipe(index + 1)}>
+            {icon}
+          </span>
+        ))}
+      </>
+    );
+  }
 }
 
 export default RecipeRating;
