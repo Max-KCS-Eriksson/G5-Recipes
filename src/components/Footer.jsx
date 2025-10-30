@@ -7,7 +7,7 @@ function Footer() {
       <div className={styles.footerContent}>
         <Logo variant="small" />
         <nav className={styles.footerLinks}>
-          <a href="#">info@pajparadiset.se</a>
+          <p>info@pajparadiset.se</p>
         </nav>
         <p className={styles.footerCopy}>
           © {new Date().getFullYear()} Pajparadiset. Alla rättigheter

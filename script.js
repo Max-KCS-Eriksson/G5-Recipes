@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "node:fs";
 import { API_URL } from "./src/api/connection.js";
 import { postData } from "./src/api/helpers.js";
 
@@ -19,9 +19,9 @@ async function clearDB() {
 }
 
 async function postDataCollection(endpoint, dataCollection) {
-  dataCollection.forEach((data) => {
+  for (const data of dataCollection) {
     postData(endpoint, data);
-  });
+  }
 }
 
 await clearDB();

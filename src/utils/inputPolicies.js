@@ -7,7 +7,7 @@
 export const SEARCH_QUERY_POLICY = {
   minLength: 2,
   maxLength: 80,
-  allowedCharsRegex: /^[\p{L}\p{N}\s'’..-]+$/u,
+  allowedCharsRegex: /^[\p{L}\p{N}\s'’. -]+$/u,
   normalizeWhitespace: true,
 };
 

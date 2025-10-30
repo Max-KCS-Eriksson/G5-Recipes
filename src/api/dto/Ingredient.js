@@ -15,7 +15,7 @@ export default class Ingredient {
     this.amount = amount;
     this.unit = unit;
 
-    if (optional && optional.id) this.id = optional.id;
+    if (optional?.id) this.id = optional.id;
   }
 
   /**
