@@ -56,7 +56,10 @@ function RecipeRating({ recipeId, readOnly = true }) {
       <>
         <p>Ett fel uppstod, försök igen.</p>
         {icons.map((icon, index) => (
-          <span key={index} onClick={() => rateRecipe(index + 1)}>
+          <span
+            key={`${icon.className}${index}`}
+            onClick={() => rateRecipe(index + 1)}
+          >
             {icon}
           </span>
         ))}
@@ -66,7 +69,10 @@ function RecipeRating({ recipeId, readOnly = true }) {
     return (
       <>
         {icons.map((icon, index) => (
-          <span key={index} onClick={() => rateRecipe(index + 1)}>
+          <span
+            key={`${icon.className}${index}`}
+            onClick={() => rateRecipe(index + 1)}
+          >
             {icon}
           </span>
         ))}
