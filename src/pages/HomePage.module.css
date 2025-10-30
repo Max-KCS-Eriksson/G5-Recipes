@@ -1,35 +1,56 @@
+/* Prefer dynamic viewport units if supported to avoid 1px overflow from scrollbars */
+:root {
+  --hero-vw: 100vw;
+}
+@supports (width: 100svw) {
+  :root {
+    --hero-vw: 100svw;
+  }
+}
+
 .hero {
   position: relative;
-  min-height: var(--hero-min-h);
 
-  display: grid;
-  place-items: center; /* center SearchBar both axes */
+  /* full-bleed inside a max-width container */
+  inline-size: var(--hero-vw);
+  margin-inline: calc(50% - 50vw); /* <-- this was margin-block before */
+  /* keep whatever vertical spacing you want: */
+  margin-block: 0;
 
   background-image: var(--hero-bg-image);
-  background-size: var(--hero-bg-size);
-  background-position: var(--hero-bg-position);
-  overflow: visible;
+  background-size: var(--hero-bg-size, cover);
+  background-position: var(--hero-bg-position, center);
+  background-repeat: no-repeat;
+
+  /* prevents a stray horizontal scrollbar on some setups */
+  overflow-x: clip;
+
+  --header-overlap: 24px;
+  margin-block-start: cal(-1 * var(--header-overlap));
 }
 
 .heroCenter {
-  width: min(90vw, 640px); /* limit width for the search bar */
+  /* keep content clear of the header */
+  padding-block-start: calc(var(--header-overlap) + var(--gutter));
+  max-inline-size: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+
+  min-height: var(--hero-min-h);
   display: grid;
-  place-items: center; /* re-center the input inside */
-  text-align: center;
+  place-items: center;
 }
 
-/* optional wrapper for content below the hero */
 .content {
   margin-block: var(--gutter);
 }
 
-/* Arch-style bottom — use an SVG curve for a true arch */
 .curve {
   position: absolute;
   left: 0;
   right: 0;
   bottom: -1px;
-  height: 80px; /* adjust depth */
+  height: 120px;
   pointer-events: none;
 }
 .curve svg {

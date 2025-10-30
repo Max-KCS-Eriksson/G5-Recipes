@@ -34,7 +34,7 @@ export default function HomePage() {
         <div className={styles.curve} aria-hidden="true">
           <svg viewBox="0 0 100 20" preserveAspectRatio="none">
             <path
-              d="M0,0 C 25,20 75,20 100,0 L100,20 L0,20 Z"
+              d="M0,0 C 25,25 75,25 100,0 L100,25 L0,25 Z"
               fill="var(--hero-curve-color)"
             />
           </svg>
