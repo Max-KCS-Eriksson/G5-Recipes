@@ -11,6 +11,15 @@
   --chrome-bg: #996666; /* header/footer background */
   --chrome-fg: #ffffff; /* header/footer text */
 
+  /* hero */
+  --hero-bg-image: url("../assets/hero-bg.webp"); /* set your file */
+  --hero-bg-size: cover;
+  --hero-bg-position: center;
+
+  --hero-min-h: min(65svh, 640px); /* responsive height cap */
+  --hero-curve-height: 80px; /* the arc divider height */
+  --hero-curve-color: var(--page-bg);
+
   /* page */
   --page-bg: #fbf2eb; /* soft cream */
   --page-fg: #000000; /* body text */

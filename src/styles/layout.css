@@ -44,10 +44,13 @@
 .page > main {
   min-height: 0;
   overflow: auto;
-  overscroll-behavior-y: contain;
-  scrollbar-gutter: stable both-edges;
+  overscroll-behavior: none;
+  padding-block: 1px;
+  margin-block: -1px;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-gutter: stable both-edges;
+  -webkit-overflow-scrolling: touch;
 }
 
 .app-main {

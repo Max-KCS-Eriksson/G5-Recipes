@@ -12,6 +12,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import SearchBar from "../components/SearchBar.jsx";
 import RecipeList from "../components/RecipeList.jsx";
 import CategoryList from "../components/CategoryList.jsx";
+import styles from "./HomePage.module.css";
 
 export default function HomePage() {
   const { categoryName } = useParams();
@@ -25,15 +26,25 @@ export default function HomePage() {
   }
 
   return (
-    <main>
-      <section className="hero">
-        <SearchBar initialValue={nameQuery} onSearch={handleSearch} />
+    <>
+      <section className={styles.hero} aria-label="Hero">
+        <div className={styles.heroCenter}>
+          <SearchBar initialValue={nameQuery} onSearch={handleSearch} />
+        </div>
+        <div className={styles.curve} aria-hidden="true">
+          <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+            <path
+              d="M0,0 C 25,20 75,20 100,0 L100,20 L0,20 Z"
+              fill="var(--hero-curve-color)"
+            />
+          </svg>
+        </div>
       </section>
 
-      <section className="content">
+      <section className={styles.content}>
         <CategoryList />
         <RecipeList category={categoryName} nameQuery={nameQuery} />
       </section>
-    </main>
+    </>
   );
 }
