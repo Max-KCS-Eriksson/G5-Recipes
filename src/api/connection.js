@@ -63,7 +63,7 @@ export async function getCategoryHierarchy() {
 
   // HACK: API endpoint to fetch categories treats them equally.
   const recipeList = await getRecipes();
-  recipeList.forEach((recipe) => {
+  for (const recipe of recipeList) {
     const mainCategory = recipe.categories[0];
     const subCategories = recipe.categories.splice(1);
 
