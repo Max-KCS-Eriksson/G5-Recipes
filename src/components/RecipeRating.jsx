@@ -72,6 +72,7 @@ function RecipeRating({ recipeId, readOnly = true }) {
           <span
             key={`${icon.className}${index}`}
             onClick={() => rateRecipe(index + 1)}
+            role="button"
           >
             {icon}
           </span>
