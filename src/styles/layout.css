@@ -53,10 +53,6 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.app-main {
-  width: 100%;
-}
-
 /* Chromium/Safari/Edge (non-standard but widely supported) */
 /* WebKit scrollbar styling */
 .page > main::-webkit-scrollbar {

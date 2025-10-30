@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./Logo.module.css";
 import { joinClassNames } from "../utils/joinClassNames.js";
 
-function Logo({ variant = "default", onClick }) {
+function Logo({ variant = "default" }) {
   const { pathname } = useLocation();
 
   const handleClick = (e) => {

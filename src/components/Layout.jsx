@@ -5,13 +5,13 @@ import Footer from "./Footer.jsx";
 function Layout() {
   return (
     <div className="page">
-      <Header />
-      <main className="app-main">
+      <main>
+        <Header />
         <div className="container stack">
           <Outlet />
         </div>
+        <Footer />
       </main>
-      <Footer />
     </div>
   );
 }
