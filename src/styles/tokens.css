@@ -20,12 +20,18 @@
   --hero-curve-height: 80px; /* the arc divider height */
   --hero-curve-color: var(--page-bg);
 
+  /* search bar */
+  --search-icon: url("../assets/search-button.svg");
+
   /* page */
   --page-bg: #fbf2eb; /* soft cream */
   --page-fg: #000000; /* body text */
   --page-bg-image: url("../assets/page-bg.webp");
   --page-bg-size: cover;
   --page-bg-position: center;
+
+  /* comment card */
+  --comment-img: url("../assets/commenter-symbol.svg");
 
   /* type */
   --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
