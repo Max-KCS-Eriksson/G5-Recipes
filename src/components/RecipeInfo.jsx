@@ -38,16 +38,16 @@ export default function RecipeInfo({ recipeId }) {
       <p>Info: {recipe.description}</p>
       <h3>Ingredienser:</h3>
       <ul>
-        {recipe.ingredients.items.map((ingredient, index) => (
-          <li key={index}>
+        {recipe.ingredients.items.map((ingredient) => (
+          <li key={ingredient.name}>
             {ingredient.amount} {ingredient.unit} {ingredient.name}
           </li>
         ))}
       </ul>
       <h3>Gör så här:</h3>
       <ol>
-        {recipe.instructions.steps.map((step, index) => (
-          <li key={index}>{step}</li>
+        {recipe.instructions.steps.map((step) => (
+          <li key={step}>{step}</li>
         ))}
       </ol>
     </div>
