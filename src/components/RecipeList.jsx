@@ -89,12 +89,12 @@ export default function RecipeList({ category, nameQuery }) {
     <ul className={styles.recipeList} aria-label="Receptlista">
       {recipes.map((recipe) => (
         <li key={recipe.id}>
-          <div
+          <button
             onClick={() => handleRecipeClick(recipe.id)}
             style={{ cursor: "pointer" }}
           >
             <RecipeCard recipe={recipe} />
-          </div>
+          </button>
         </li>
       ))}
     </ul>
