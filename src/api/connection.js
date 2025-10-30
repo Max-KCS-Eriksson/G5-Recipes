@@ -67,10 +67,10 @@ export async function getCategoryHierarchy() {
     const mainCategory = recipe.categories[0];
     const subCategories = recipe.categories.splice(1);
 
-    if (!(mainCategory in categoryHierarchy))
-      categoryHierarchy[mainCategory] = subCategories;
-    else categoryHierarchy[mainCategory].push(subCategories);
-  });
+    if (mainCategory in categoryHierarchy)
+      categoryHierarchy[mainCategory].push(subCategories);
+    else categoryHierarchy[mainCategory] = subCategories;
+  }
 
   return categoryHierarchy;
 }
