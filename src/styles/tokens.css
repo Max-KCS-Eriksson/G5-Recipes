@@ -1,4 +1,16 @@
 :root {
+  /* breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+  --container-max: 1200px;
+  --gutter: 1rem;
+
+  /* header/footer (same color) */
+  --chrome-bg: #996666; /* header/footer background */
+  --chrome-fg: #ffffff; /* header/footer text */
+
   /* page */
   --page-bg: #fbf2eb; /* soft cream */
   --page-fg: #000000; /* body text */
@@ -6,17 +18,13 @@
   --page-bg-size: cover;
   --page-bg-position: center;
 
-  /* header/footer (same color) */
-  --chrome-bg: #996666; /* header/footer background */
-  --chrome-fg: #ffffff; /* header/footer text */
-
-  /* type (keep minimal) */
+  /* type */
   --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --fw-regular: 400;
   --fw-semibold: 600;
   --lh-1: 1.6;
 
-  /* spacing & radius (just one of each for now) */
-  --space-3: 1rem; /* 16px */
+  /* spacing & radius */
+  --space-3: 1rem;
   --radius-1: 0.5rem;
 }

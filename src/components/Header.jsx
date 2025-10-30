@@ -5,11 +5,6 @@ import Logo from "./Logo.jsx";
 function Header() {
   return (
     <header className={styles.headerContainer}>
-      <img
-        className={styles.headerBgImage}
-        src="/images/header_bg_image.jpg"
-        alt="Pajbakgrund"
-      />
       <div className={styles.headerLogoContainer}>
         <Logo variant="default" />
       </div>

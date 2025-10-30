@@ -1,21 +1,39 @@
 /* minimal base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* lock the outer frame */
 html,
 body,
 #root {
   height: 100%;
-} /* ensures image covers full page */
+}
+html,
 body {
-  margin: 0;
-  color: var(--page-fg);
-  background-color: var(--page-bg);
-  font-family: var(--font-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-1);
+  overflow: hidden;
+  overscroll-behavior-y: none;
+}
 
-  /* sticky (fixed) background image */
+/* fixed background layer */
+body {
+  background-color: var(--page-bg);
+  background-image: none;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
   background-image: var(--page-bg-image);
-  background-attachment: fixed; /* Sticky img */
   background-repeat: no-repeat;
   background-size: var(--page-bg-size);
   background-position: var(--page-bg-position);
+  z-index: -1;
+  will-change: transform;
+
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-1);
 }
