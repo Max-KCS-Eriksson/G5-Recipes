@@ -1,0 +1,58 @@
+.commentsSection {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 40px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.statusMessage {
+  color: #555;
+  padding: 10px 0;
+}
+
+.commentsList {
+  list-style: none;
+  padding: 10px;
+  margin-top: -40px;
+  margin-bottom: 0px;
+}
+
+.commentItem {
+  border-bottom: 1px solid #7e7e7e;
+  padding: 25px 0;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.commentLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commentIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.commentAuthor {
+  font-weight: heavy;
+}
+
+.commentTime {
+  color: #000000;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.commentText {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
