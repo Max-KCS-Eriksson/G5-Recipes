@@ -1,7 +1,7 @@
 .recipeHeader {
   display: flex;                  
   align-items: flex-start;        
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 40px;
   padding: 16px;
   max-width: 1000px;
@@ -49,7 +49,7 @@
 /* -------------------------------------*/
 
 .recipeDetails {
-  background-color: #fafafa;
+  background-color: #ffffff;
   border-radius: 40px;
   padding: 20px;
   margin: 20px auto;
