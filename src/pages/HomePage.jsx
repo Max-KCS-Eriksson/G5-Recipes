@@ -41,9 +41,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.content}>
-        <CategoryList />
-        <RecipeList category={categoryName} nameQuery={nameQuery} />
+      <section className={styles.gridContainer} aria-label="Content">
+        <aside className={styles.sidebar} aria-label="Categories">
+          <div className={styles.sidebarBox}>
+            <CategoryList />
+          </div>
+        </aside>
+        <div className={styles.contentCards} aria-label="Content">
+          <RecipeList category={categoryName} nameQuery={nameQuery} />
+        </div>
+        {/* Right-side invisible block to center the cards (desktop only via CSS) */}
+        <div className={styles.spacer} aria-hidden="true" />
       </section>
     </>
   );

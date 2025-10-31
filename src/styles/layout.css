@@ -2,8 +2,10 @@
 
 /* 1) Page width constraint */
 .container {
-  width: min(100% - 2rem, var(--container-max));
-  margin-inline: auto;
+  max-width: var(--container-max); /* cap on ultrawide */
+  margin-inline: auto; /* center when capped */
+  padding-inline: var(--gutter); /* gutters on all screens */
+  width: 100%; /* fill browser width until cap */
 }
 
 /* 2) Flow/stacks (vertical rhythm) */

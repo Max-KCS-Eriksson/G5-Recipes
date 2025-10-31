@@ -13,8 +13,7 @@
 
   /* full-bleed inside a max-width container */
   inline-size: var(--hero-vw);
-  margin-inline: calc(50% - 50vw); /* <-- this was margin-block before */
-  /* keep whatever vertical spacing you want: */
+  margin-inline: calc(50% - 50vw);
   margin-block: 0;
 
   background-image: var(--hero-bg-image);
@@ -41,10 +40,6 @@
   place-items: center;
 }
 
-.content {
-  margin-block: var(--gutter);
-}
-
 .curve {
   position: absolute;
   left: 0;
@@ -57,4 +52,73 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.gridContainer {
+  /*HomePage specific breakout*/
+  inline-size: min(1880px, 100svw);
+  margin-inline: calc(50% - min(1880px, 100svw) / 2);
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: var(--gutter);
+  margin-block: var(--gutter);
+  /* Desktop default (≥992px): [aside][content][spacer] */
+  grid-template-columns: minmax(260px, 320px) 1fr minmax(260px, 320px);
+  grid-template-areas: "sidebar contentCards spacer";
+}
+
+.sidebar {
+  grid-area: sidebar;
+  /*Sticky on desktop view*/
+  position: sticky;
+  top: calc(var(--gutter) + 8px);
+  align-self: start;
+}
+
+.contentCards {
+  grid-area: contentCards;
+  /* Center the content cards */
+  max-inline-size: 996px;
+  margin-inline: auto;
+}
+
+.spacer {
+  grid-area: spacer;
+}
+
+/* 1200px–1440px — 2 columns: [sidebar][content], remove spacer */
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .gridContainer {
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    grid-template-areas: "sidebar contentCards";
+    --cards-gap: 2rem;
+  }
+  .spacer {
+    display: none;
+  }
+}
+
+/* 992px–1199px — 2 columns, smaller sidebar, tighter gaps */
+@media (min-width: 767.98px) and (max-width: 1199px) {
+  .gridContainer {
+    grid-template-columns: minmax(200px, 260px) 1fr;
+    grid-template-areas: "sidebar contentCards";
+    --cards-gap: 1.5rem; /* tighter at ≤1200px */
+  }
+  .spacer {
+    display: none;
+  }
+}
+
+/* Mobile: stack (wire hamburger later) */
+@media (max-width: 767.98px) {
+  .gridContainer {
+    padding-inline: 0;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-areas: "contentCards"; /* Sidebar will be off-canvas / toggled later */
+  }
+  .sidebar {
+    display: none; /* placeholder until hamburger is implemented */
+  }
 }
