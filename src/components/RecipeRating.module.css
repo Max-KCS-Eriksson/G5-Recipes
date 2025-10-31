@@ -1,0 +1,31 @@
+.rating {
+  display: flex;
+  flex-direction: column;               
+  align-items: center;        
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 35px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.title {
+  color: #000000;
+  margin-bottom: 8px;  /* extra luft under rubriken */
+    
+}
+
+.stars {
+  display: flex;           /* 👈 stjärnorna i rad igen */
+  justify-content: center; /* centrerar stjärnorna */
+}
+
+.star {
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
