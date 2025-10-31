@@ -4,6 +4,7 @@ import DisplayComments from "../components/DisplayComments.jsx";
 import CommentForm from "../components/CommentForm.jsx";
 import RecipeInfo from "../components/RecipeInfo.jsx";
 import RecipeRating from "../components/RecipeRating.jsx";
+import styles from "./RecipePage.module.css";
 
 function RecipePage() {
   const { recipeId } = useParams();
@@ -15,13 +16,19 @@ function RecipePage() {
 
   return (
     <>
-      <section>
+      <section className={styles.recipe}>
         <RecipeInfo recipeId={recipeId} />
       </section>
-      <section>
-        <RecipeRating recipeId={recipeId} readOnly={false} />
-        <CommentForm recipeId={recipeId} onCommentAdded={handleNewComment} />
-        <DisplayComments recipeId={recipeId} refreshFlag={refreshComments} />
+      <section className={styles.interaction}>
+        <div className={styles.rating}>
+          <RecipeRating recipeId={recipeId} readOnly={false} />
+        </div>
+        <div className={styles.form}>
+          <CommentForm recipeId={recipeId} onCommentAdded={handleNewComment} />
+        </div>
+        <div className={styles.comments}>
+          <DisplayComments recipeId={recipeId} refreshFlag={refreshComments} />
+        </div>
       </section>
     </>
   );
