@@ -56,13 +56,12 @@
 
 .gridContainer {
   /*HomePage specific breakout*/
-  inline-size: min(1880px, 100svw);
-  margin-inline: calc(50% - min(1880px, 100svw) / 2);
+  inline-size: min(1880px, 100vw);
+  margin-inline: calc(50% - min(1880px, 100vw) / 2);
   padding-inline: var(--gutter);
   display: grid;
   gap: var(--gutter);
   margin-block: var(--gutter);
-  /* Desktop default (≥992px): [aside][content][spacer] */
   grid-template-columns: minmax(260px, 320px) 1fr minmax(260px, 320px);
   grid-template-areas: "sidebar contentCards spacer";
 }
@@ -84,6 +83,7 @@
 
 .spacer {
   grid-area: spacer;
+  display: none;
 }
 
 /* 1200px–1440px — 2 columns: [sidebar][content], remove spacer */
@@ -98,15 +98,30 @@
   }
 }
 
-/* 992px–1199px — 2 columns, smaller sidebar, tighter gaps */
-@media (min-width: 767.98px) and (max-width: 1199px) {
+/* 992px–1199px — 2 columns, smaller sidebar*/
+@media (min-width: 992px) and (max-width: 1199px) {
   .gridContainer {
     grid-template-columns: minmax(200px, 260px) 1fr;
     grid-template-areas: "sidebar contentCards";
-    --cards-gap: 1.5rem; /* tighter at ≤1200px */
+    --cards-gap: 1.5rem;
   }
   .spacer {
     display: none;
+  }
+}
+
+/* 768–991 px — 2 columns: [sidebar][2-card content] */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .gridContainer {
+    grid-template-columns: minmax(220px, 280px) 1fr;
+    grid-template-areas: "sidebar contentCards";
+    --cards-gap: 2rem;
+  }
+  .spacer {
+    display: none;
+  }
+  .contentCards {
+    max-inline-size: none;
   }
 }
 
