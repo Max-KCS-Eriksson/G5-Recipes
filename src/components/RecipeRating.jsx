@@ -40,7 +40,12 @@ function RecipeRating({ recipeId, readOnly = true }) {
 
   if (recipe && readOnly) return <>{ratingToIcons(recipe.avgRating)}</>;
 
-  if (hasRated) return <p>Tack för ditt betyg!</p>;
+  if (hasRated)
+    return (
+      <div className={styles.rating}>
+        <p className={styles.thankYou}>Tack för ditt betyg!</p>
+      </div>
+    );
 
   async function rateRecipe(rating) {
     try {
@@ -55,14 +60,20 @@ function RecipeRating({ recipeId, readOnly = true }) {
 
   if (failedOnRating) {
     return (
-      <>
-        <p>Ett fel uppstod, försök igen.</p>
-        {icons.map((icon, index) => (
-          <span key={index} onClick={() => rateRecipe(index + 1)}>
-            {icon}
-          </span>
-        ))}
-      </>
+      <div className={styles.rating}>
+        <p className={styles.error}>Ett fel uppstod, försök igen.</p>
+        <div className={styles.stars}>
+          {icons.map((icon, index) => (
+            <span
+              key={index}
+              className={styles.star}
+              onClick={() => rateRecipe(index + 1)}
+            >
+              {icon}
+            </span>
+          ))}
+        </div>
+      </div>
     );
   } else {
     return (

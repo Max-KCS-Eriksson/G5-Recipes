@@ -35,3 +35,22 @@
 .hovered {
   color: gold;             
 }
+
+.thankYou {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0px;
+  padding: 8px 20px;
+  max-width: 300px;
+}
+
+.error {
+  color: #b00020;               /* röd text */
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
