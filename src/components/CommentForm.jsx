@@ -57,15 +57,14 @@ export default function CommentForm({ recipeId, onCommentAdded }) {
 
   if (isSubmitted) {
     return (
-      <div className="comment-form success">
+      <div className={styles.success}>
         <p>Tack för din kommentar!</p>
       </div>
     );
   }
 
   return (
-    <div className={isSubmitted ? "comment-form success" : "comment-form"}>
-      <h2>Lämna en kommentar</h2>
+    <div className={styles.commentForm}>
       <form onSubmit={handleSubmit} noValidate>
         <div className={styles.commentFormGroup}>
           <label htmlFor="author">Namn</label>
@@ -80,7 +79,7 @@ export default function CommentForm({ recipeId, onCommentAdded }) {
           />
         </div>
 
-        <div className={styles["comment-form-group"]}>
+        <div className={styles.commentFormGroup}>
           <label htmlFor="comment">Kommentar</label>
           <textarea
             id="comment"
@@ -95,11 +94,12 @@ export default function CommentForm({ recipeId, onCommentAdded }) {
         {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
 
         <button
+          className={styles.button}
           type="submit"
-          aria-label="Skicka kommentar"
+          aria-label="Skicka"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Skickar..." : "Skicka kommentar"}
+          {isSubmitting ? "Skickar..." : "Skicka"}
         </button>
       </form>
     </div>
