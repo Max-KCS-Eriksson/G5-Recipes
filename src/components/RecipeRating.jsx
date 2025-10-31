@@ -7,6 +7,7 @@ import {
 import { roundHalf } from "../utils/math";
 import { useEffect, useState } from "react";
 import { getRecipeById, rateRecipeById } from "../api/connection";
+import styles from "./RecipeRating.module.css";
 
 const MIN_RATING = 1;
 const MAX_RATING = 5;
@@ -19,6 +20,7 @@ function RecipeRating({ recipeId, readOnly = true }) {
   const [recipe, setRecipe] = useState(null);
   const [hasRated, setHasRated] = useState(false);
   const [failedOnRating, setFailedOnRating] = useState(false);
+  
 
   useEffect(() => {
     if (!recipeId) {
@@ -64,14 +66,20 @@ function RecipeRating({ recipeId, readOnly = true }) {
     );
   } else {
     return (
-      <>
-        <h3>Vad tycker du om receptet?</h3>
-        {icons.map((icon, index) => (
-          <span key={index} onClick={() => rateRecipe(index + 1)}>
-            {icon}
-          </span>
-        ))}
-      </>
+      <div className={styles.rating}>
+        <h3 className={styles.title}>Vad tyckte du om receptet?</h3>
+        <div className={styles.stars}>
+          {icons.map((icon, index) => (
+            <span
+              key={index}
+              className={styles.star}
+              onClick={() => rateRecipe(index + 1)}
+            >
+              {icon}
+            </span>
+          ))}
+        </div>
+      </div>
     );
   }
 }
