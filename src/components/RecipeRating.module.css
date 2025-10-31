@@ -11,21 +11,26 @@
 
 .title {
   color: #000000;
-  margin-bottom: 8px;  /* extra luft under rubriken */
+  margin-bottom: 8px;  
     
 }
 
 .stars {
-  display: flex;           /* 👈 stjärnorna i rad igen */
-  justify-content: center; /* centrerar stjärnorna */
+  display: flex;           
+  justify-content: center; 
 }
 
 .star {
   cursor: pointer;
-  font-size: 1.2rem;
-  transition: transform 0.2s ease;
+  font-size: 1.4rem;
+  color: #000000;               
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .star:hover {
   transform: scale(1.2);
+}
+
+.hovered {
+  color: gold;             
 }

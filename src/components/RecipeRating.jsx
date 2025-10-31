@@ -20,7 +20,7 @@ function RecipeRating({ recipeId, readOnly = true }) {
   const [recipe, setRecipe] = useState(null);
   const [hasRated, setHasRated] = useState(false);
   const [failedOnRating, setFailedOnRating] = useState(false);
-  
+  const [hovered, setHovered] = useState(0);
 
   useEffect(() => {
     if (!recipeId) {
@@ -72,7 +72,9 @@ function RecipeRating({ recipeId, readOnly = true }) {
           {icons.map((icon, index) => (
             <span
               key={index}
-              className={styles.star}
+              className={`${styles.star} ${index < hovered ? styles.hovered : ""}`}
+              onMouseEnter={() => setHovered(index + 1)}
+              onMouseLeave={() => setHovered(0)}
               onClick={() => rateRecipe(index + 1)}
             >
               {icon}
