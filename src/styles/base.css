@@ -15,6 +15,10 @@ html,
 body {
   overflow: hidden;
   overscroll-behavior-y: none;
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-1);
+  font-synthesis: none;
 }
 
 /* fixed background layer */
@@ -32,8 +36,4 @@ body::before {
   background-position: var(--page-bg-position);
   z-index: -1;
   will-change: transform;
-
-  font-family: var(--font-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-1);
 }
