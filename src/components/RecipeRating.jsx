@@ -65,6 +65,7 @@ function RecipeRating({ recipeId, readOnly = true }) {
   } else {
     return (
       <>
+        <h3>Vad tycker du om receptet?</h3>
         {icons.map((icon, index) => (
           <span key={index} onClick={() => rateRecipe(index + 1)}>
             {icon}
