@@ -40,6 +40,11 @@
   place-items: center;
 }
 
+.searchbarDock {
+  justify-self: center;
+  transform: translateY(-5.5rem);
+}
+
 .curve {
   position: absolute;
   left: 0;

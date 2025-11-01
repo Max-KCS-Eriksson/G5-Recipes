@@ -1,6 +1,6 @@
 .searchbar {
   position: relative;
-  width: min(40%, 70vw, 56rem);
+  width: clamp(20rem, 30vw, 56rem); /*clamp (MIN, PREFERRED, MAX) */
   margin-inline: auto;
 
   /* ~2x a default field */
