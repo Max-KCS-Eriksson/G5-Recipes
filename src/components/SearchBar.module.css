@@ -1,10 +1,10 @@
 .searchbar {
   position: relative;
-  width: min(70%, 70vw, 56rem);
+  width: min(40%, 70vw, 56rem);
   margin-inline: auto;
 
   /* ~2x a default field */
-  --field-size: clamp(2.25rem, 4vw, 3.5rem); /* input height */
+  --field-size: clamp(2.75rem, 4vw, 3.5rem); /* input height */
   --radius: 16px; /* adjust corner roundness */
 }
 
@@ -18,7 +18,7 @@
   line-height: 1;
 
   color: var(--text-color, #111);
-  background: var(--field-bg, #fff);
+  background: var(--field-bg, var(--page-bg));
 
   border: 2px solid var(--chrome-bg);
   border-radius: var(--radius); /* <— corner control */
@@ -26,9 +26,6 @@
 
   /* space for the inside button on the right */
   padding-inline: clamp(0.9rem, 2vw, 1rem) clamp(3.25rem, 5.5vw, 4rem);
-
-  -webkit-appearance: none;
-  appearance: none;
 }
 
 .input::placeholder {
