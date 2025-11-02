@@ -1,19 +1,23 @@
-.recipe {
-    background-color: aqua;
+.allComments {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 35px;
+  max-width: 1000px;
+  margin: 0 auto 100px;
+  gap: 20px;
 }
 
-.interaction {
-    background-color: green;
-}
-
-.rating {
-    background-color: yellow;
-}
-
-.form {
-    background-color: orange;
-}
-
-.comments {
-    background-color: lightgreen;
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .allComments {
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 10px;
+    margin-bottom: 50px;
+    gap: 15px;
+  }
 }

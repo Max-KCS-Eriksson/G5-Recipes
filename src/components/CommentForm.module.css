@@ -1,15 +1,13 @@
 .commentForm {
-  background-color: #ffffff;
-  padding: 35px;
-  border-radius: 30px;
-  max-width: 1000px;
-  margin: 40px auto;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .commentFormGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .commentFormGroup label {
@@ -24,6 +22,8 @@
   border: 1px solid #000000;
   font-size: 1rem;
   resize: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .commentFormGroup textarea {
@@ -47,20 +47,61 @@
 
 .errorText {
   color: #b00020;
-  background-color: #ffffff;
-  border-radius: 5px;
   padding: 8px;
   margin-bottom: 10px;
-  text-align: center;
   max-width: 300px;
 }
 
 .success {
-  background-color: #ffffff;
-  border-radius: 30px;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   font-weight: 600;
   color: #000000;
   font-size: 1.2rem;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .commentForm {
+    padding: 15px;
+    margin: 0 10px 40px;
+  }
+
+  .commentFormGroup {
+    margin-bottom: 12px;
+  }
+
+  .commentFormGroup label {
+    font-size: 0.9rem;
+  }
+
+  .commentFormGroup input,
+  .commentFormGroup textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .commentFormGroup textarea {
+    height: 80px;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .errorText,
+  .success {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .success {
+    padding: 20px;
+  }
 }

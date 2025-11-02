@@ -1,12 +1,12 @@
 .recipeHeader {
-  display: flex;                  
-  align-items: flex-start;        
+  display: flex;
+  align-items: flex-start;
   background-color: #ffffff;
   border-radius: 40px;
   padding: 16px;
   max-width: 1000px;
   margin: 40px auto;
-  gap: 20px;                      
+  gap: 20px;
 }
 
 .recipeImage {
@@ -17,7 +17,7 @@
 }
 
 .recipeInfo {
-  flex: 1;                        
+  flex: 1;
   text-align: left;
 }
 
@@ -28,14 +28,14 @@
 }
 
 .recipeMeta {
-  display: flex;               
-  gap: 16px;                     
+  display: flex;
+  gap: 16px;
   margin: 6px 0;
 }
 
 .recipeTime,
 .recipeDifficulty {
-  margin: 0;                     
+  margin: 0;
   color: #000;
   font-size: 0.95rem;
 }
@@ -46,27 +46,25 @@
   font-size: 0.95rem;
 }
 
-/* -------------------------------------*/
-
 .recipeDetails {
   background-color: #ffffff;
   border-radius: 40px;
   padding: 20px;
   margin: 20px auto;
-  max-width: 1000px;                     
+  max-width: 1000px;
 }
 
 .recipeColumns {
   display: flex;
-  gap: 40px;                            
+  gap: 40px;
   justify-content: space-between;
-  flex-wrap: wrap;                      
+  flex-wrap: wrap;
 }
 
 .ingredients,
 .instructions {
-  flex: 1;                              
-  min-width: 300px;                     
+  flex: 1;
+  min-width: 300px;
 }
 
 .recipeDetails h3 {
@@ -85,4 +83,66 @@
   margin-bottom: 6px;
   color: #000000;
   font-size: 0.95rem;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .recipeHeader {
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 25px;
+    margin: 20px 10px;
+    gap: 12px;
+  }
+
+  .recipeImage {
+    width: 100%;
+    border-radius: 20px;
+    max-height: 200px;
+  }
+
+  .recipeInfo {
+    text-align: left;
+  }
+
+  .recipeTitle {
+    font-size: 1.2rem;
+  }
+
+  .recipeMeta {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .recipeTime,
+  .recipeDifficulty,
+  .recipeDescription {
+    font-size: 0.9rem;
+  }
+
+  .recipeDetails {
+    padding: 16px;
+    border-radius: 25px;
+    margin: 15px 10px 20px;
+  }
+
+  .recipeColumns {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ingredients,
+  .instructions {
+    min-width: unset;
+  }
+
+  .recipeDetails h3 {
+    font-size: 1rem;
+  }
+
+  .recipeDetails li {
+    font-size: 0.9rem;
+  }
 }

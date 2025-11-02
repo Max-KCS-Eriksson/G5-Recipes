@@ -23,11 +23,19 @@ function RecipePage() {
         <div className={styles.rating}>
           <RecipeRating recipeId={recipeId} readOnly={false} />
         </div>
-        <div className={styles.form}>
-          <CommentForm recipeId={recipeId} onCommentAdded={handleNewComment} />
-        </div>
-        <div className={styles.comments}>
-          <DisplayComments recipeId={recipeId} refreshFlag={refreshComments} />
+        <div className={styles.allComments}>
+          <div className={styles.form}>
+            <CommentForm
+              recipeId={recipeId}
+              onCommentAdded={handleNewComment}
+            />
+          </div>
+          <div className={styles.comments}>
+            <DisplayComments
+              recipeId={recipeId}
+              refreshFlag={refreshComments}
+            />
+          </div>
         </div>
       </section>
     </>

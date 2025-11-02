@@ -1,11 +1,3 @@
-.commentsSection {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 40px;
-  max-width: 1000px;
-  margin: 40px auto;
-}
-
 .statusMessage {
   color: #555;
   padding: 10px 0;
@@ -14,7 +6,6 @@
 .commentsList {
   list-style: none;
   padding: 10px;
-  margin-top: -40px;
   margin-bottom: 0px;
 }
 
@@ -42,7 +33,7 @@
 }
 
 .commentAuthor {
-  font-weight: heavy;
+  font-weight: 600;
 }
 
 .commentTime {
@@ -55,4 +46,50 @@
   font-size: 1rem;
   line-height: 1.5;
   margin: 0;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .commentsList {
+    padding: 8px;
+  }
+
+  .commentItem {
+    padding: 15px 0;
+  }
+
+  .commentHeader {
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .commentLeft {
+    gap: 6px;
+  }
+
+  .commentIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .commentAuthor {
+    font-size: 0.95rem;
+  }
+
+  .commentTime {
+    font-size: 0.85rem;
+  }
+
+  .commentText {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .statusMessage {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px 0;
+  }
 }
