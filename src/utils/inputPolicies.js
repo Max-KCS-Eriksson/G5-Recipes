@@ -5,9 +5,8 @@
  * Comment text: allow letters, numbers, spaces, common punctuation
  */
 export const SEARCH_QUERY_POLICY = {
-  minLength: 2,
   maxLength: 80,
-  allowedCharsRegex: /^[\p{L}\p{N}\s'’. -]+$/u,
+  allowedCharsRegex: /[\p{L}\p{N}\s'’. -]/u,
   normalizeWhitespace: true,
 };
 
@@ -67,4 +66,28 @@ export function compileTextValidator(policy) {
     }
     return { ok: true, normalizedText };
   };
+}
+
+/**
+ * Sanitize Search Query: normalize/trim whitespace, drop chars via `allowedCharsRegex`, trim extra characters beyond `maxLength`.
+ * @param {unknown} raw;
+ * @param {{normalizeWhitespace?:boolean,maxLength?:number,allowedCharsRegex?:RegExp}} [policy={}] ;
+ * @returns {string}
+ */
+export function sanitizeSearchQuery(raw, policy = {}) {
+  let query = String(raw ?? "");
+  query = policy.normalizeWhitespace ? normalizeSpaces(query) : query.trim();
+
+  if (policy.allowedCharsRegex) {
+    // Drop any char not in the allowed class
+    query = Array.from(query)
+      .filter((ch) => policy.allowedCharsRegex.test(ch))
+      .join("");
+  }
+
+  const max = policy.maxLength;
+  if (Number.isFinite(max) && query.length > max) {
+    query = query.slice(0, max);
+  }
+  return query;
 }

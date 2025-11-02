@@ -1,25 +1,40 @@
-/* Reset */
-
-li {
+.recipeList li {
   list-style: none;
 }
-
-a {
+.recipeList a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Component style */
-
-.recipe-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.recipeList > li > button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: inherit;
+  cursor: pointer;
 }
 
-@media screen and (min-width: 992px) {
-  .recipe-list {
-    flex-direction: row;
-    flex-wrap: wrap;
+/* Grid layout */
+.recipeList {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--cards-gap, 2rem); /* inherits 1.5rem from container ≤1200px */
+  grid-template-columns: 1fr; /* mobile */
+}
+
+/* ≥768px: 2 cards */
+@media (min-width: 768px) {
+  .recipeList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ≥992px: 3 cards (card width ≈ 295–300px inside the 996px lane) */
+@media (min-width: 992px) {
+  .recipeList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
