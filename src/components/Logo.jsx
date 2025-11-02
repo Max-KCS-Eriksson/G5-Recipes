@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Logo.module.css";
+import pajIcon from "../assets/paj-icon.svg";
 import { joinClassNames } from "../utils/joinClassNames.js";
 
 function Logo({ variant = "default" }) {
@@ -19,7 +20,15 @@ function Logo({ variant = "default" }) {
       aria-label="Gå till startsidan"
       className={joinClassNames(styles.logoText, styles[variant])}
     >
-      Pajparadiset
+      <span className={styles.logo} aria-hidden="true">
+        <img
+          src={pajIcon}
+          alt=""
+          className={styles.logoIcon}
+          decoding="async"
+        />
+        <span className={styles.logoText}>PajParadiset</span>
+      </span>
     </Link>
   );
 }
