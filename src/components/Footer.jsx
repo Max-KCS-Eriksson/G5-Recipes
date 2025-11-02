@@ -3,7 +3,7 @@ import Logo from "./Logo.jsx";
 
 function Footer() {
   return (
-    <footer className={styles.footerContainer}>
+    <footer className={styles.footerContainer} id="contact">
       <div className={styles.footerContent}>
         <Logo variant="small" />
         <nav className={styles.footerLinks}>
