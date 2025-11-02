@@ -1,6 +1,5 @@
-/* Header.module.css */
 .headerContainer {
-  position: static; /* <- NOT sticky/fixed */
+  position: relative;
   inset: auto;
   z-index: 1;
 
@@ -9,14 +8,42 @@
   justify-content: space-between;
 
   padding: 0.8rem 1.5rem;
-  background: var(--chrome-bg); /* use tokens */
   color: var(--chrome-fg);
-  box-shadow: none; /* remove drop shadow for now */
+  background: var(--chrome-bg);
+}
+
+/* Remove this and change headerContainer position:static to remove gradient bottom */
+.headerContainer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 26px;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    var(--chrome-bg) 0%,
+    var(--chrome-bg) 60%,
+    #b07c7c 85%,
+    var(--page-bg) 100%
+  );
 }
 
 .headerLogoContainer {
   display: flex;
   align-items: center;
+  padding-block-start: clamp(2px, 0.8vh, 10px);
+  padding-block-end: clamp(2px, 0.8vh, 10px);
+}
+
+.slogan {
+  margin: 0;
+  margin-left: 0.8rem;
+  font-size: clamp(0.8rem, 3.6vw, 1.3rem);
+  line-height: 1.2;
+  opacity: 0.85;
 }
 
 .headerNav {
@@ -26,12 +53,18 @@
 }
 
 .navBtn {
-  background: transparent;
-  color: var(--chrome-fg);
-  border: 1px solid currentColor;
-  border-radius: 6px;
+  /* background: transparent; */
+  background: var(--page-bg);
+  color: var(--chrome-bg);
+  /* border: 1px solid currentColor; */
+  border-radius: 12px;
   padding: 0.45rem 1rem;
   text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3rem;
+  min-width: 7rem;
 }
 
 .navBtn:hover {
