@@ -8,7 +8,7 @@
   border-radius: 10px;
   max-width: 260px;
 
-  background-color: var(--page-bg);
+  background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 
   transition: all 0.2s ease;
