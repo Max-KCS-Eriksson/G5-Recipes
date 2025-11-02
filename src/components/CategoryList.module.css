@@ -5,12 +5,11 @@
   align-items: flex-start;
 
   padding: 1rem;
-  margin: 1rem;
   border-radius: 10px;
-
-  background-color: #fafafa;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
   max-width: 260px;
+
+  background-color: var(--page-bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 
   transition: all 0.2s ease;
 }
