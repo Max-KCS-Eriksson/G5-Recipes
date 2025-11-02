@@ -1,7 +1,7 @@
 .headerContainer {
   position: relative;
   inset: auto;
-  z-index: 1;
+  z-index: 10;
 
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: -3px;
-  height: 26px;
+  height: 18px;
   pointer-events: none;
 
   background: linear-gradient(
@@ -39,8 +39,7 @@
 }
 
 .slogan {
-  margin: 0;
-  margin-left: 0.8rem;
+  margin: 0 0 0 0.8rem;
   font-size: clamp(0.8rem, 3.6vw, 1.3rem);
   line-height: 1.2;
   opacity: 0.85;
@@ -53,10 +52,8 @@
 }
 
 .navBtn {
-  /* background: transparent; */
   background: var(--page-bg);
   color: var(--chrome-bg);
-  /* border: 1px solid currentColor; */
   border-radius: 12px;
   padding: 0.45rem 1rem;
   text-decoration: none;
@@ -69,4 +66,87 @@
 
 .navBtn:hover {
   opacity: 0.9;
+}
+
+/* --- Burger + Drawer (mobile) --- */
+.navToggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.bar {
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--page-bg);
+  margin: 4px 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Right drawer panel */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 260px;
+  background: var(--chrome-bg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding: 5rem 1.25rem 2rem;
+  z-index: 9; /* under header so gradient edge is fine */
+}
+.mobileMenu.open {
+  transform: translateX(0);
+}
+
+/* Buttons centered in overlay */
+.mobileList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+/* --- Responsive rules --- */
+@media (max-width: 768px) {
+  .headerNav {
+    display: none;
+  } /* hide desktop nav */
+  .navToggle {
+    display: inline-flex;
+    flex-direction: column;
+    z-index: 999;
+  } /* show burger */
+  .navToggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navToggle.active .bar:nth-child(1) {
+    transform: translateY(14px) rotate(45deg);
+  }
+  .navToggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .bar {
+    background-color: var(--page-bg);
+  }
+}
+
+@media (max-width: 425px) {
+  .slogan {
+    display: none;
+  }
 }
