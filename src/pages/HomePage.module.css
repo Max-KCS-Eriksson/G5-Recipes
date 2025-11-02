@@ -106,7 +106,7 @@
 /* 992px–1199px — 2 columns, smaller sidebar*/
 @media (min-width: 992px) and (max-width: 1199px) {
   .gridContainer {
-    grid-template-columns: minmax(200px, 260px) 1fr;
+    grid-template-columns: minmax(200px, 230px) 1fr;
     grid-template-areas: "sidebar contentCards";
     --cards-gap: 1.5rem;
   }
@@ -118,7 +118,7 @@
 /* 768–991 px — 2 columns: [sidebar][2-card content] */
 @media (min-width: 425px) and (max-width: 991.98px) {
   .gridContainer {
-    grid-template-columns: minmax(220px, 280px) 1fr;
+    grid-template-columns: minmax(220px, 230px) 1fr;
     grid-template-areas: "sidebar contentCards";
     --cards-gap: 2rem;
   }
