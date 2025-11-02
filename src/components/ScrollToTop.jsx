@@ -17,9 +17,7 @@ export default function ScrollToTop() {
       ].filter(Boolean);
 
       for (const el of scrollers) {
-        try {
-          el.scrollTo?.({ top: 0, left: 0, behavior: "auto" });
-        } catch {}
+        el.scrollTo?.({ top: 0, left: 0, behavior: "auto" });
       }
     });
   }, [pathname, search]);
