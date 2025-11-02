@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import Logo from "./Logo.jsx";
 
@@ -8,7 +8,6 @@ function Header() {
   const drawerRef = useRef(null);
   const btnRef = useRef(null);
   const { pathname, search, hash } = useLocation();
-  const navigate = useNavigate();
 
   // Close on route change
   useEffect(() => {
@@ -43,22 +42,9 @@ function Header() {
     return () => document.removeEventListener("mousedown", onClick);
   }, [open]);
 
-  // “Kontakter” -> jump to footer
-  const handleContacts = async (e) => {
-    e.preventDefault();
-    if (pathname !== "/") {
-      navigate("/", { replace: false });
-      // wait a tick for the home to render before scrolling
-      setTimeout(() => {
-        document
-          .getElementById("contact")
-          ?.scrollIntoView({ behavior: "smooth" });
-      }, 0);
-    } else {
-      document
-        .getElementById("contact")
-        ?.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollToFooter = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setOpen(false);
   };
 
@@ -76,7 +62,7 @@ function Header() {
         <Link to={{ pathname: "/", search: "" }} className={styles.navBtn}>
           Hem
         </Link>
-        <a href="#contact" onClick={handleContacts} className={styles.navBtn}>
+        <a href="#contact" onClick={scrollToFooter} className={styles.navBtn}>
           Kontakter
         </a>
       </nav>
@@ -116,7 +102,7 @@ function Header() {
             <a
               href="#contact"
               className={styles.navBtn}
-              onClick={handleContacts}
+              onClick={scrollToFooter}
             >
               Kontakter
             </a>
