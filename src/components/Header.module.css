@@ -62,6 +62,7 @@
   align-items: center;
   min-height: 3rem;
   min-width: 7rem;
+  font-weight: 800;
 }
 
 .navBtn:hover {
