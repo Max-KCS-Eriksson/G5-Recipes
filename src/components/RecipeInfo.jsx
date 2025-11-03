@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRecipeById } from "../api/connection";
 import { calculateDifficulty } from "../utils/calculateDifficulty";
+import styles from "./RecipeInfo.module.css";
 
 export default function RecipeInfo({ recipeId }) {
   const [recipe, setRecipe] = useState(null);
@@ -30,26 +31,52 @@ export default function RecipeInfo({ recipeId }) {
   );
 
   return (
-    <div className="recipe-info">
-      <h2>{recipe.name}</h2>
-      <img src={recipe.imageUrl} alt={recipe.name} />
-      <p>Tid: {recipe.instructions.timeInMins} mins</p>
-      <p>Svårighetsgrad: {difficulty}</p>
-      <p>Info: {recipe.description}</p>
-      <h3>Ingredienser:</h3>
-      <ul>
-        {recipe.ingredients.items.map((ingredient) => (
-          <li key={ingredient.name}>
-            {ingredient.amount} {ingredient.unit} {ingredient.name}
-          </li>
-        ))}
-      </ul>
-      <h3>Gör så här:</h3>
-      <ol>
-        {recipe.instructions.steps.map((step) => (
-          <li key={step}>{step}</li>
-        ))}
-      </ol>
+    <div className={styles.recipeInfo}>
+      <div className={styles.recipeHeader}>
+        <img
+          src={recipe.imageUrl}
+          alt={recipe.name}
+          className={styles.recipeImage}
+        />
+        <div className={styles.recipeInfo}>
+          <h2 className={styles.recipeTitle}>{recipe.name}</h2>
+
+          <div className={styles.recipeMeta}>
+            <p className={styles.recipeTime}>
+              {recipe.instructions.timeInMins} min
+            </p>
+            <p className={styles.recipeDifficulty}>
+              Svårighetsgrad: {difficulty}
+            </p>
+          </div>
+
+          <p className={styles.recipeDescription}>{recipe.description}</p>
+        </div>
+      </div>
+
+      <div className={styles.recipeDetails}>
+        <div className={styles.recipeColumns}>
+          <div className={styles.ingredients}>
+            <h3>Ingredienser</h3>
+            <ul>
+              {recipe.ingredients.items.map((ingredient) => (
+                <li key={ingredient.name}>
+                  {ingredient.amount} {ingredient.unit} {ingredient.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.instructions}>
+            <h3>Gör så här:</h3>
+            <ol>
+              {recipe.instructions.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

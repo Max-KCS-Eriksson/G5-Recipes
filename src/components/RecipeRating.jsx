@@ -7,6 +7,7 @@ import {
 import { roundHalf } from "../utils/math";
 import { useEffect, useState } from "react";
 import { getRecipeById, rateRecipeById } from "../api/connection";
+import styles from "./RecipeRating.module.css";
 
 const MIN_RATING = 1;
 const MAX_RATING = 5;
@@ -19,6 +20,7 @@ function RecipeRating({ recipeId, readOnly = true }) {
   const [recipe, setRecipe] = useState(null);
   const [hasRated, setHasRated] = useState(false);
   const [failedOnRating, setFailedOnRating] = useState(false);
+  const [hovered, setHovered] = useState(0);
 
   useEffect(() => {
     if (!recipeId) {
@@ -38,7 +40,12 @@ function RecipeRating({ recipeId, readOnly = true }) {
 
   if (recipe && readOnly) return <>{ratingToIcons(recipe.avgRating)}</>;
 
-  if (hasRated) return <p>Tack för ditt betyg!</p>;
+  if (hasRated)
+    return (
+      <div className={styles.rating}>
+        <p className={styles.thankYou}>Tack för ditt betyg!</p>
+      </div>
+    );
 
   async function rateRecipe(rating) {
     try {
@@ -53,9 +60,10 @@ function RecipeRating({ recipeId, readOnly = true }) {
   const ratingFragment = icons.map((icon, index) => (
     <span
       key={`${icon.className}${index}`}
+      className={`${styles.star} ${index < hovered ? styles.hovered : ""}`}
+      onMouseEnter={() => setHovered(index + 1)}
+      onMouseLeave={() => setHovered(0)}
       onClick={() => rateRecipe(index + 1)}
-      tabIndex={index}
-      role="button"
     >
       {icon}
     </span>
@@ -63,13 +71,18 @@ function RecipeRating({ recipeId, readOnly = true }) {
 
   if (failedOnRating) {
     return (
-      <>
-        <p>Ett fel uppstod, försök igen.</p>
-        {ratingFragment}
-      </>
+      <div className={styles.rating}>
+        <p className={styles.error}>Ett fel uppstod, försök igen.</p>
+        <div className={styles.stars}>{ratingFragment}</div>
+      </div>
     );
   } else {
-    return <>{ratingFragment}</>;
+    return (
+      <div className={styles.rating}>
+        <h3 className={styles.title}>Vad tyckte du om receptet?</h3>
+        <div className={styles.stars}>{ratingFragment}</div>
+      </div>
+    );
   }
 }
 
