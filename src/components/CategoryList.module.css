@@ -14,16 +14,6 @@
   transition: all 0.2s ease;
 }
 
-/* CATEGORY LIST - TITLE */
-.category-list h3 {
-  margin: 0 0 0.8rem 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #222;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
 /* CATEGORY LIST */
 .category-list ul {
   list-style: none;
