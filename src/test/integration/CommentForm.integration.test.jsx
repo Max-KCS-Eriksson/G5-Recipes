@@ -37,7 +37,7 @@ describe("Integration - CommentForm - Sanitering av <script> (OWASP A03)", () =>
     const nameInput = screen.getByLabelText(/namn/i);
     const commentInput = screen.getByRole("textbox", { name: /kommentar/i });
     const submitButton = screen.getByRole("button", {
-      name: /skicka kommentar/i,
+      name: /skicka/i,
     });
 
     fireEvent.change(nameInput, {
