@@ -31,11 +31,14 @@
   justify-items: center;
   text-align: center;
   gap: 0.6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 .brandTitle {
   grid-area: brand;
   margin: 0;
   font-weight: 700;
+  font-size: 2em;
 }
 .footerLeft {
   grid-area: left;
