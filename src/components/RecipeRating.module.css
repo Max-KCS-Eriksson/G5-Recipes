@@ -24,7 +24,9 @@
   cursor: pointer;
   font-size: 1.3rem;
   color: #000000;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .star:hover {
