@@ -71,6 +71,10 @@
   list-style-type: none;
 }
 
+.instructions ol {
+  list-style-position: inside;
+}
+
 .recipeDetails h3 {
   color: #050505;
   margin-bottom: 2px;
