@@ -73,7 +73,22 @@
 }
 
 .instructions ol {
-  list-style-position: inside;
+  list-style: none;
+  counter-reset: step;
+  padding-left: 0;
+}
+
+.instructions li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 0.7em 1fr;
+  gap: 1em;
+  margin-bottom: 0.5em;
+}
+
+.instructions li::before {
+  content: counter(step) ".";
+  text-align: left;
 }
 
 .recipeDetails h3 {
