@@ -1,40 +1,19 @@
-/* CATEGORY */
-.category-item {
+/* Make NavLink look like the existing button */
+.category-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  text-decoration: none;
+  color: inherit;
   width: 100%;
-  max-width: 220px;
-  padding: 0.5rem 0.9rem;
+  padding: 0.3rem 0.9rem;
+}
 
-  background-color: #f9f9f9;
-  color: #222;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  cursor: pointer;
-
-  font-size: 1rem;
+.category-link.active {
+  /* color: var(--chrome-bg); */
   font-weight: bolder;
   font-family: var(--font-fw-bold);
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.15s ease;
-}
-
-.category-item:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-2px);
-}
-
-/* CATEGORY - TOGGLE-STATE - ACTIVE */
-.category-item.active {
-  background-color: #ffeea2;
-  border-color: #e0c96b;
-  color: #000;
-  font-weight: 600;
+  font-size: 1.15rem;
 }
 
 /* CATEGORY - RECIPE COUNT  */
@@ -43,7 +22,10 @@
   font-weight: 500;
 }
 
-/* CATEGORY - Variants */
+.category-recipe-count:hover {
+  color: var(--chrome-bg);
+  font-weight: 500;
+}
 
 /* Variant: LINK (HomePage) */
 .category-item.link {
@@ -54,8 +36,8 @@
 }
 
 .category-item.link:hover {
-  color: #3b2ba5;
-  text-decoration: underline;
+  color: var(--chrome-bg);
+  text-decoration: none;
 }
 
 /* Variant: TOGGLE (CategoryPage) */
