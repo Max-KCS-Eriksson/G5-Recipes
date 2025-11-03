@@ -15,9 +15,9 @@ export default function RecipeCard({ recipe }) {
         alt={name || "Recipe image"}
       />
       <h2>{name}</h2>
-      <p>
+      <div className={styles.recipeRating}>
         <RecipeRating recipeId={recipe.id} readOnly={true} />
-      </p>
+      </div>
       <p>{timeInMins ? `${timeInMins} min` : "Okänd tid"}</p>
       {ingredients?.items?.length ? (
         <p>{ingredients.items.length} ingredienser</p>
