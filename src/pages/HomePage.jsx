@@ -34,16 +34,24 @@ export default function HomePage() {
         <div className={styles.curve} aria-hidden="true">
           <svg viewBox="0 0 100 20" preserveAspectRatio="none">
             <path
-              d="M0,0 C 25,20 75,20 100,0 L100,20 L0,20 Z"
+              d="M0,0 C 25,25 75,25 100,0 L100,25 L0,25 Z"
               fill="var(--hero-curve-color)"
             />
           </svg>
         </div>
       </section>
 
-      <section className={styles.content}>
-        <CategoryList />
-        <RecipeList category={categoryName} nameQuery={nameQuery} />
+      <section className={styles.gridContainer} aria-label="Content">
+        <aside className={styles.sidebar} aria-label="Categories">
+          <div className={styles.sidebarBox}>
+            <CategoryList />
+          </div>
+        </aside>
+        <div className={styles.contentCards} aria-label="Content">
+          <RecipeList category={categoryName} nameQuery={nameQuery} />
+        </div>
+        {/* Right-side invisible block to center the cards (desktop only via CSS) */}
+        <div className={styles.spacer} aria-hidden="true" />
       </section>
     </>
   );

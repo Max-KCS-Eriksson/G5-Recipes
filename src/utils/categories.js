@@ -1,7 +1,7 @@
 export async function recipesPerCategory(recipes) {
   const result = {};
 
-  recipes.forEach((recipe) => {
+  for (const recipe of recipes) {
     const [mainCategory, ...subs] = recipe.categories;
 
     if (!result[mainCategory]) {
@@ -9,13 +9,13 @@ export async function recipesPerCategory(recipes) {
     }
     result[mainCategory].count += 1;
 
-    subs.forEach((sub) => {
+    for (const sub of subs) {
       if (!result[mainCategory].subCategories[sub]) {
         result[mainCategory].subCategories[sub] = 0;
       }
       result[mainCategory].subCategories[sub] += 1;
-    });
-  });
+    }
+  }
 
   return result;
 }

@@ -1,9 +1,7 @@
 .recipe-card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--chrome-bg);
   border-radius: 8px;
-  padding: 16px;
-  margin: 16px;
-  max-width: 300px;
+  padding: 12px;
   height: 95%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

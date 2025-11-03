@@ -13,7 +13,7 @@ afterEach(() => {
 });
 
 describe("Integration 6.2.5 - SearchBar - XSS-sanering", () => {
-  it("visar felmeddelande och blockerar exekvering vid skadlig query", async () => {
+  it("sanitiserar skadlig query och exekverar inte script", async () => {
     const mockSearch = vi.fn();
 
     render(
@@ -27,10 +27,9 @@ describe("Integration 6.2.5 - SearchBar - XSS-sanering", () => {
     await userEvent.click(submitButton);
 
     expect(window.alert).not.toHaveBeenCalled();
-    expect(
-      screen.getByText(/ogiltiga tecken\. vänligen försök igen\./i),
-    ).toBeInTheDocument();
-    expect(mockSearch).not.toHaveBeenCalled();
+    expect(mockSearch).toHaveBeenCalledTimes(1);
+    expect(mockSearch).toHaveBeenCalledWith("scriptalert1script");
+    expect(screen.queryByText(/ogiltiga tecken/i)).not.toBeInTheDocument();
   });
 
   it("tillåter normal text och anropar onSearch", async () => {

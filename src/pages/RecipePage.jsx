@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import DisplayComments from "../components/DisplayComments.jsx";
 import CommentForm from "../components/CommentForm.jsx";
