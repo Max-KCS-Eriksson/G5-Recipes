@@ -85,6 +85,13 @@
   font-size: 0.95rem;
 }
 
+.recipeRating {
+  display: flex;
+  gap: 1px;
+  color: #cc9900ff;
+  font-size: 1.3rem;
+}
+
 /* ------------------------------
    RESPONSIV DESIGN FÖR MOBIL
    ------------------------------*/
@@ -144,5 +151,10 @@
 
   .recipeDetails li {
     font-size: 0.9rem;
+  }
+
+  .recipeRating {
+    gap: 1px;
+    margin-top: 4px;
   }
 }

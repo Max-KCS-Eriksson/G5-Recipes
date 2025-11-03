@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRecipeById } from "../api/connection";
 import { calculateDifficulty } from "../utils/calculateDifficulty";
+import RecipeRating from "./RecipeRating";
 import styles from "./RecipeInfo.module.css";
 
 export default function RecipeInfo({ recipeId }) {
@@ -40,7 +41,9 @@ export default function RecipeInfo({ recipeId }) {
         />
         <div className={styles.recipeInfo}>
           <h2 className={styles.recipeTitle}>{recipe.name}</h2>
-
+          <p className={styles.recipeRating}>
+            <RecipeRating recipeId={recipe.id} readOnly={true} />
+          </p>
           <div className={styles.recipeMeta}>
             <p className={styles.recipeTime}>
               {recipe.instructions.timeInMins} min
