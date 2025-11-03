@@ -41,11 +41,8 @@ function Category({
           )
         }
       >
-        {/* <span className={styles.categoryName}>{name}</span>
-        <span className={styles.categoryRecipeCount}>({recipeCount ?? 0})</span> */}
-        <span className={styles.categoryLabel}>
-          {name} ({recipeCount ?? 0})
-        </span>
+        <span className={styles.categoryName}>{name}</span>
+        <span className={styles.categoryRecipeCount}>({recipeCount ?? 0})</span>
       </NavLink>
     );
   }
