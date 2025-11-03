@@ -5,10 +5,11 @@ import {
   compileTextValidator,
   normalizeSpaces,
 } from "../utils/inputPolicies.js";
+import { sanitizeInput } from "../utils/sanitizeInput.js";
 import { commentRecipeById } from "../api/connection.js";
-import "./CommentForm.css";
+import styles from "./CommentForm.module.css";
 
-function CommentForm({ recipeId, onCommentAdded }) {
+export default function CommentForm({ recipeId, onCommentAdded }) {
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,17 +35,19 @@ function CommentForm({ recipeId, onCommentAdded }) {
       return;
     }
 
+    const cleanName = sanitizeInput(nameValidation.normalizedText);
+    const cleanComment = sanitizeInput(commentValidation.normalizedText);
+
     try {
       setIsSubmitting(true);
-      await commentRecipeById(
-        recipeId,
-        commentValidation.normalizedText,
-        nameValidation.normalizedText,
-      );
+      await commentRecipeById(recipeId, cleanComment, cleanName);
+
       setIsSubmitted(true);
-      setAuthor("");
-      setComment("");
-      if (onCommentAdded) onCommentAdded();
+      if (onCommentAdded) {
+        onCommentAdded();
+        setAuthor("");
+        setComment("");
+      }
     } catch {
       setErrorMessage("Något gick fel vid inskickning. Försök igen.");
     } finally {
@@ -53,14 +56,17 @@ function CommentForm({ recipeId, onCommentAdded }) {
   };
 
   if (isSubmitted) {
-    return <div className="comment-form success">Tack för din kommentar!</div>;
+    return (
+      <div className={styles.success}>
+        <p>Tack för din kommentar!</p>
+      </div>
+    );
   }
 
   return (
-    <div className="comment-form">
-      <h2>Lämna en kommentar</h2>
+    <div className={styles.commentForm}>
       <form onSubmit={handleSubmit} noValidate>
-        <div className="comment-form-group">
+        <div className={styles.commentFormGroup}>
           <label htmlFor="author">Namn</label>
           <input
             id="author"
@@ -73,7 +79,7 @@ function CommentForm({ recipeId, onCommentAdded }) {
           />
         </div>
 
-        <div className="comment-form-group">
+        <div className={styles.commentFormGroup}>
           <label htmlFor="comment">Kommentar</label>
           <textarea
             id="comment"
@@ -85,14 +91,17 @@ function CommentForm({ recipeId, onCommentAdded }) {
           />
         </div>
 
-        {errorMessage && <p className="error-text">{errorMessage}</p>}
+        {errorMessage && <p className={styles.errorText}>{errorMessage}</p>}
 
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Skickar..." : "Skicka kommentar"}
+        <button
+          className={styles.button}
+          type="submit"
+          aria-label="Skicka"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Skickar..." : "Skicka"}
         </button>
       </form>
     </div>
   );
 }
-
-export default CommentForm;

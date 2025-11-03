@@ -1,0 +1,107 @@
+.commentForm {
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.commentFormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.commentFormGroup label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.commentFormGroup input,
+.commentFormGroup textarea {
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  font-size: 1rem;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.commentFormGroup textarea {
+  height: 100px;
+}
+
+.button {
+  background-color: #996666ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: rgb(98, 63, 63);
+}
+
+.errorText {
+  color: #b00020;
+  padding: 8px;
+  margin-bottom: 10px;
+  max-width: 300px;
+}
+
+.success {
+  padding: 30px;
+  text-align: center;
+  font-weight: 600;
+  color: #000000;
+  font-size: 1.2rem;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .commentForm {
+    padding: 15px;
+    margin: 0 10px 40px;
+  }
+
+  .commentFormGroup {
+    margin-bottom: 12px;
+  }
+
+  .commentFormGroup label {
+    font-size: 0.9rem;
+  }
+
+  .commentFormGroup input,
+  .commentFormGroup textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .commentFormGroup textarea {
+    height: 80px;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .errorText,
+  .success {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .success {
+    padding: 20px;
+  }
+}

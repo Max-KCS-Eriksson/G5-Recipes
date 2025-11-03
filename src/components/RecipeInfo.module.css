@@ -1,0 +1,148 @@
+.recipeHeader {
+  display: flex;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 16px;
+  max-width: 1000px;
+  margin: 40px auto;
+  gap: 20px;
+}
+
+.recipeImage {
+  width: 45%;
+  height: auto;
+  border-radius: 40px 0 0 40px;
+  object-fit: cover;
+}
+
+.recipeInfo {
+  flex: 1;
+  text-align: left;
+}
+
+.recipeTitle {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.recipeMeta {
+  display: flex;
+  gap: 16px;
+  margin: 6px 0;
+}
+
+.recipeTime,
+.recipeDifficulty {
+  margin: 0;
+  color: #000;
+  font-size: 0.95rem;
+}
+
+.recipeDescription {
+  margin-top: 25px;
+  color: #000;
+  font-size: 0.95rem;
+}
+
+.recipeDetails {
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.recipeColumns {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.ingredients,
+.instructions {
+  flex: 1;
+  min-width: 300px;
+}
+
+.recipeDetails h3 {
+  color: #050505;
+  margin-bottom: 2px;
+  padding-bottom: 4px;
+}
+
+.recipeDetails ul,
+.recipeDetails ol {
+  margin: 0 0 0 2px;
+  padding: 0;
+}
+
+.recipeDetails li {
+  margin-bottom: 6px;
+  color: #000000;
+  font-size: 0.95rem;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .recipeHeader {
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 25px;
+    margin: 20px 10px;
+    gap: 12px;
+  }
+
+  .recipeImage {
+    width: 100%;
+    border-radius: 20px;
+    max-height: 200px;
+  }
+
+  .recipeInfo {
+    text-align: left;
+  }
+
+  .recipeTitle {
+    font-size: 1.2rem;
+  }
+
+  .recipeMeta {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .recipeTime,
+  .recipeDifficulty,
+  .recipeDescription {
+    font-size: 0.9rem;
+  }
+
+  .recipeDetails {
+    padding: 16px;
+    border-radius: 25px;
+    margin: 15px 10px 20px;
+  }
+
+  .recipeColumns {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ingredients,
+  .instructions {
+    min-width: unset;
+  }
+
+  .recipeDetails h3 {
+    font-size: 1rem;
+  }
+
+  .recipeDetails li {
+    font-size: 0.9rem;
+  }
+}

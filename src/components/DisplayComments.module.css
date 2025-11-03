@@ -1,0 +1,95 @@
+.statusMessage {
+  color: #555;
+  padding: 10px 0;
+}
+
+.commentsList {
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.commentItem {
+  border-bottom: 1px solid #7e7e7e;
+  padding: 25px 0;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.commentLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commentIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.commentAuthor {
+  font-weight: 600;
+}
+
+.commentTime {
+  color: #000000;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.commentText {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .commentsList {
+    padding: 8px;
+  }
+
+  .commentItem {
+    padding: 15px 0;
+  }
+
+  .commentHeader {
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .commentLeft {
+    gap: 6px;
+  }
+
+  .commentIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .commentAuthor {
+    font-size: 0.95rem;
+  }
+
+  .commentTime {
+    font-size: 0.85rem;
+  }
+
+  .commentText {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .statusMessage {
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 8px 0;
+  }
+}

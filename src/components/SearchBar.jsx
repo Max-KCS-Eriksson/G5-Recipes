@@ -1,68 +1,46 @@
 import { useState } from "react";
 import {
-  compileTextValidator,
   SEARCH_QUERY_POLICY,
-  normalizeSpaces,
+  sanitizeSearchQuery,
 } from "../utils/inputPolicies";
+import styles from "./SearchBar.module.css";
+import searchIcon from "../assets/search-button.svg";
 
-/**
- * - Empty/whitespace submit: shows error AND resets RecipeList via onSearch("")
- */
 export default function SearchBar({
   onSearch,
   initialValue = "",
   policy = SEARCH_QUERY_POLICY,
-  onInvalid,
 }) {
   const [inputValue, setInputValue] = useState(initialValue);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const validate = compileTextValidator(policy);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const normalizedProbe = policy.normalizeWhitespace
-      ? normalizeSpaces(inputValue)
-      : String(inputValue ?? "").trim();
+    const searchQuery = sanitizeSearchQuery(inputValue, policy);
 
-    const result = validate(inputValue);
-
-    if (!result.ok) {
-      setErrorMessage(result.message);
-      onInvalid?.(result.message);
-
-      if (!normalizedProbe) {
-        setInputValue("");
-        await onSearch("");
-      }
-      return;
-    }
-
-    setErrorMessage("");
-    setInputValue(result.normalizedText);
-    await onSearch(result.normalizedText);
+    await onSearch(searchQuery);
   }
 
   function handleChange(event) {
     setInputValue(event.target.value);
-    if (errorMessage) setErrorMessage("");
   }
 
   return (
-    <form onSubmit={handleSubmit} className="searchbar">
+    <form onSubmit={handleSubmit} className={styles.searchbar}>
       <input
         id="recipe-search"
         name="q"
         type="search"
-        placeholder="Sök recept…"
+        placeholder="Sök på recept…"
         value={inputValue}
         onChange={handleChange}
         autoComplete="off"
         inputMode="search"
+        className={styles.input}
       />
-      <button type="submit">Sök</button>
-      {errorMessage && <p className="searchbar-error">{errorMessage}</p>}
+      <button type="submit" className={styles.button} aria-label="Sök recept">
+        <img src={searchIcon} alt="" className={styles.icon} />
+      </button>
     </form>
   );
 }

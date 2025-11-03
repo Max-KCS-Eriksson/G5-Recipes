@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { getCommentsByRecipeId } from "../api/connection.js";
-import { formatTimestamp } from "../utils/datetime.js";
+import { formateDateFromISO } from "../utils/formatDate.js";
+import commenterIcon from "../assets/commenter-symbol.svg";
+import styles from "./DisplayComments.module.css";
 
-export default function DisplayComments({ recipeId }) {
+export default function DisplayComments({ recipeId, refreshFlag = false }) {
   const [comments, setComments] = useState([]);
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
@@ -30,7 +32,7 @@ export default function DisplayComments({ recipeId }) {
     return () => {
       cancelled = true;
     };
-  }, [recipeId]);
+  }, [recipeId, refreshFlag]);
 
   const sortedCommentTimeDesc = useMemo(() => {
     return [...comments].sort((a, b) => {
@@ -40,30 +42,31 @@ export default function DisplayComments({ recipeId }) {
     });
   }, [comments]);
 
+  const renderStatusMessage = (message) => (
+    <div className={styles.statusMessage}>{message}</div>
+  );
+
   switch (status) {
     case "idle":
     case "loading":
       return (
-        <section>
-          <h2>Kommentarer</h2>
-          <div>Hämtar kommentarer…</div>
+        <section className={styles.commentsSection}>
+          {renderStatusMessage("Hämtar kommentarer…")}
         </section>
       );
 
     case "error":
       return (
-        <section>
-          <h2>Kommentarer</h2>
-          <div>Kunde inte hämta kommentarer: {error}</div>
+        <section className={styles.commentsSection}>
+          {renderStatusMessage(`Kunde inte hämta kommentarer: ${error}`)}
         </section>
       );
 
     case "success":
       if (sortedCommentTimeDesc.length === 0) {
         return (
-          <section>
-            <h2>Kommentarer</h2>
-            <div>Inga kommentarer ännu.</div>
+          <section className={styles.commentsSection}>
+            {renderStatusMessage("Inga kommentarer ännu.")}
           </section>
         );
       }
@@ -71,25 +74,36 @@ export default function DisplayComments({ recipeId }) {
   }
 
   return (
-    <section>
-      <h2>Kommentarer</h2>
-      <ul>
+    <section className={styles.commentsSection}>
+      <ul className={styles.commentsList}>
         {sortedCommentTimeDesc.map((c) => {
           const submitIsoTime = c.createdAt ?? c.updatedAt;
           const renderedDisplayTime = submitIsoTime
-            ? formatTimestamp(submitIsoTime)
+            ? formateDateFromISO(submitIsoTime)
             : "";
           return (
-            <li key={c.id}>
-              <div>
-                <strong>{c.author}</strong>{" "}
-                {submitIsoTime && renderedDisplayTime ? (
-                  <time dateTime={submitIsoTime} title={submitIsoTime}>
+            <li key={c.id} className={styles.commentItem}>
+              <div className={styles.commentHeader}>
+                <div className={styles.commentLeft}>
+                  <img
+                    src={commenterIcon}
+                    alt="Användarikon"
+                    className={styles.commentIcon}
+                  />
+                  <strong className={styles.commentAuthor}>{c.author}</strong>
+                </div>
+
+                {submitIsoTime && renderedDisplayTime && (
+                  <time
+                    className={styles.commentTime}
+                    dateTime={submitIsoTime}
+                    title={submitIsoTime}
+                  >
                     {renderedDisplayTime}
                   </time>
-                ) : null}
+                )}
               </div>
-              <p>{c.comment}</p>
+              <p className={styles.commentText}>"{c.comment}"</p>
             </li>
           );
         })}

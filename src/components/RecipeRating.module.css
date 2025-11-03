@@ -1,0 +1,80 @@
+.rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 20px auto 30px;
+}
+
+.title {
+  color: #000;
+  margin: 0 0 10px 0;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #000000;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.hovered {
+  color: gold;
+}
+
+.thankYou,
+.error {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 6px 12px;
+  max-width: 300px;
+}
+
+/* ------------------------------
+   RESPONSIV DESIGN FÖR MOBIL
+   ------------------------------*/
+@media (max-width: 400px) {
+  .rating {
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 10px;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .stars {
+    margin-bottom: 0;
+  }
+
+  .star {
+    font-size: 1.1rem;
+  }
+
+  .thankYou,
+  .error {
+    font-size: 1rem;
+    max-width: 260px;
+    padding: 6px 12px;
+  }
+}

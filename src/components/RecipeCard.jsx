@@ -1,4 +1,4 @@
-import "./RecipeCard.css";
+import styles from "./RecipeCard.module.css";
 import RecipeRating from "./RecipeRating";
 
 export default function RecipeCard({ recipe }) {
@@ -8,28 +8,21 @@ export default function RecipeCard({ recipe }) {
   const { timeInMins } = instructions;
 
   return (
-    <div className="recipe-card">
-      <h2>{name}</h2>
+    <div className={styles.recipeCard} data-testid="recipe-card-test">
       <img
-        className="recipe-image"
+        className={styles.recipeImage}
         src={imageUrl || "/placeholder.jpg"}
         alt={name || "Recipe image"}
       />
+      <h2>{name}</h2>
       <p>
-        <RecipeRating recipe={recipe} readOnly={true} />
+        <RecipeRating recipeId={recipe.id} readOnly={true} />
       </p>
-      <p>Time: {timeInMins ? `${timeInMins} minutes` : "Unknown time"}</p>
-      <h3 className="ingredients-title">Ingredients:</h3>
+      <p>{timeInMins ? `${timeInMins} min` : "Okänd tid"}</p>
       {ingredients?.items?.length ? (
-        <ul className="ingredients-list">
-          {ingredients.items.map((ingredients, i) => (
-            <li key={i}>
-              {ingredients.amount} {ingredients.unit} {ingredients.name}
-            </li>
-          ))}
-        </ul>
+        <p>{ingredients.items.length} ingredienser</p>
       ) : (
-        <p>No ingredients added</p>
+        <p>Inga tillsatta ingredienser</p>
       )}
     </div>
   );

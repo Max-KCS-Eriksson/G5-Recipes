@@ -1,0 +1,125 @@
+.recipe-card {
+  --card-radius: 34px;
+  --card-pad: 16px;
+
+  height: 100%;
+
+  /* visual style */
+  font-family: var(--font-body);
+  background: #fff;
+  border: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: var(--card-radius);
+  padding: var(--card-pad);
+
+  /* layout: grid to position children */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* for the bottom meta split */
+  grid-template-rows:
+    auto /* image */
+    auto /* title */
+    auto /* rating */
+    auto; /* bottom meta row (time + ingredients) */
+  row-gap: 10px;
+
+  contain: layout paint;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Responsive 4:3 image with rounded corners */
+.recipe-image {
+  grid-column: 1 / -1; /* span both columns */
+  grid-row: 1;
+
+  inline-size: 100%;
+  aspect-ratio: 4 / 3; /* matches client ref */
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+
+  border-start-start-radius: max(
+    8px,
+    calc(var(--card-radius) - var(--card-pad))
+  );
+  border-start-end-radius: max(8px, calc(var(--card-radius) - var(--card-pad)));
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+/* Title: fixed visual height via 2-line clamp for uniformity */
+.recipe-card h2 {
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  margin: 2px 0 0 0;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 22px;
+
+  display: -webkit-box;
+  line-clamp: 2; /* standard property for compatibility */
+  -webkit-line-clamp: 2; /* clamp to 2 lines */
+  -webkit-box-orient: vertical;
+
+  /* Reserve space so even 1-line titles occupy two lines */
+  min-block-size: calc(2 * 1.35em);
+
+  /* Fallback cap for non-WebKit (Firefox) */
+  max-block-size: calc(2 * 1.35em);
+  overflow: hidden;
+}
+
+.recipe-card .meta-row,
+.recipe-card p:nth-of-type(2),
+.recipe-card p:nth-of-type(3) {
+  line-height: 20px; /* integer px */
+  min-block-size: 20px; /* reserve exact height */
+}
+
+/* Rating row (first <p>) */
+.recipe-card p:nth-of-type(1) {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin: 0;
+  line-height: 20px;
+  /* color: #ffd900; */
+  color: var(--chrome-bg);
+}
+
+.recipe-card p:nth-of-type(1) svg {
+  inline-size: 1.55em;
+  block-size: 1.55em;
+}
+
+/* Time (second <p>) — bottom-left */
+.recipe-card p:nth-of-type(2) {
+  grid-column: 1 / 2; /* left column of the meta row */
+  grid-row: 4;
+  margin: 0;
+  font-size: 0.855rem;
+  opacity: 0.9;
+  align-self: end;
+  line-height: 20px;
+}
+
+/* Ingredients (third <p>) — bottom-right */
+.recipe-card p:nth-of-type(3) {
+  grid-column: 2 / 3; /* right column of the meta row */
+  grid-row: 4;
+  margin: 0;
+  font-size: 0.855rem;
+  opacity: 0.9;
+  justify-self: end; /* align text to card edge */
+  align-self: end;
+  line-height: 20px;
+}
+
+/* Tablet/desktop: slightly roomier card padding */
+@media (min-width: 768px) {
+  .recipe-card {
+    padding: 14px;
+  }
+}

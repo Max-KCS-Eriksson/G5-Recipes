@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCategoryHierarchy, getRecipesByCategory } from "../api/connection";
+import { getRecipes } from "../api/connection";
 import Category from "./Category.jsx";
-import "./CategoryList.css";
+import styles from "./CategoryList.module.css";
+import { recipesPerCategory } from "../utils/categories.js";
 
 /**
  * CategoryList Component
@@ -21,27 +22,25 @@ function CategoryList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [empty, setEmpty] = useState(false);
+
   useEffect(() => {
     async function fetchCategoriesAndCounts() {
       try {
-        const categoryHierarchy = await getCategoryHierarchy();
-        const mainCategoryList = Object.keys(categoryHierarchy);
-        const categoryList = mainCategoryList;
-        setCategories(categoryList);
+        setLoading(true);
+        setError(null);
+        setEmpty(false);
 
-        const results = await Promise.all(
-          categoryList.map(async (category) => {
-            const recipes = await getRecipesByCategory(category);
-            return { [category]: recipes.length };
-          }),
-        );
+        const recipes = await getRecipes();
+        const categoryData = await recipesPerCategory(recipes);
 
-        const recipeCountMap = results.reduce(
-          (acc, curr) => ({ ...acc, ...curr }),
-          {},
-        );
+        if (!categoryData || Object.keys(categoryData).length === 0) {
+          setEmpty(true);
+          return;
+        }
 
-        setCategoryRecipeCount(recipeCountMap);
+        setCategories(Object.keys(categoryData));
+        setCategoryRecipeCount(categoryData);
       } catch (err) {
         console.error("Fel vid hämtning av kategorier:", err);
         setError("Kunde inte ladda kategorier.");
@@ -54,16 +53,47 @@ function CategoryList() {
   }, []);
 
   if (loading) return <p>Laddar kategorier...</p>;
+
   if (error)
     return (
-      <p style={{ color: "red" }}>
-        {error} <br /> Försök igen senare.
-      </p>
+      <div style={{ color: "red" }}>
+        <p>
+          {error} <br />
+          Försök igen senare.
+        </p>
+        <button
+          onClick={async () => {
+            try {
+              setError(null);
+              setLoading(true);
+              setEmpty(false);
+
+              const recipes = await getRecipes();
+              const categoryData = await recipesPerCategory(recipes);
+
+              if (!categoryData || Object.keys(categoryData).length === 0) {
+                setEmpty(true);
+                return;
+              }
+
+              setCategories(Object.keys(categoryData));
+              setCategoryRecipeCount(categoryData);
+            } catch (err) {
+              console.error("Fel vid hämtning av kategorier:", err);
+              setError("Kunde inte ladda kategorier.");
+            } finally {
+              setLoading(false);
+            }
+          }}
+        >
+          Försök igen
+        </button>
+      </div>
     );
 
-  if (!categories || categories.length === 0) {
+  if (empty || !categories || categories.length === 0) {
     return (
-      <aside className="category-list">
+      <aside className={styles.categoryList}>
         <h3>Kategorier</h3>
         <p>Inga kategorier hittades.</p>
       </aside>
@@ -71,19 +101,42 @@ function CategoryList() {
   }
 
   return (
-    <aside className="category-list">
-      <h3>Kategorier</h3>
+    <aside className={styles.categoryList}>
       <ul>
-        {categories.map((category) => (
-          <li key={category}>
-            <Category
-              name={category}
-              recipeCount={categoryRecipeCount?.[category] ?? 0}
-              variant="link"
-              onClick={() => navigate(`/categories/${category}`)}
-            />
-          </li>
-        ))}
+        {categories.map((category) => {
+          const categoryData = categoryRecipeCount[category];
+          const subCategories = categoryData?.subCategories ?? {};
+
+          return (
+            <li key={category} data-testid="category-item-test">
+              {/* Main category */}
+              <Category
+                name={category}
+                recipeCount={categoryData?.count ?? 0}
+                variant="link"
+                onClick={() => navigate(`/categories/${category}`)}
+              />
+
+              {/* Subcategories */}
+              {Object.keys(subCategories).length > 0 && (
+                <ul className={styles.subcategoryList}>
+                  {Object.entries(subCategories).map(
+                    ([subCategory, subCount]) => (
+                      <li key={subCategory} data-testid="category-item-test">
+                        <Category
+                          name={subCategory}
+                          recipeCount={subCount}
+                          variant="link"
+                          onClick={() => navigate(`/categories/${subCategory}`)}
+                        />
+                      </li>
+                    ),
+                  )}
+                </ul>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </aside>
   );

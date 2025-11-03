@@ -1,0 +1,144 @@
+/* Prefer dynamic viewport units if supported to avoid 1px overflow from scrollbars */
+:root {
+  --hero-vw: 100vw;
+}
+@supports (width: 100svw) {
+  :root {
+    --hero-vw: 100svw;
+  }
+}
+
+.hero {
+  position: relative;
+
+  /* full-bleed inside a max-width container */
+  inline-size: var(--hero-vw);
+  margin-inline: calc(50% - 50vw);
+  margin-block: 0;
+
+  background-image: var(--hero-bg-image);
+  background-size: var(--hero-bg-size, cover);
+  background-position: var(--hero-bg-position, center);
+  background-repeat: no-repeat;
+
+  /* prevents a stray horizontal scrollbar on some setups */
+  overflow-x: clip;
+
+  --header-overlap: 24px;
+  margin-block-start: cal(-1 * var(--header-overlap));
+}
+
+.heroCenter {
+  /* keep content clear of the header */
+  padding-block-start: calc(var(--header-overlap) + var(--gutter));
+  max-inline-size: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+
+  min-height: var(--hero-min-h);
+  display: grid;
+  place-items: center;
+}
+
+.searchbarDock {
+  justify-self: center;
+  transform: translateY(-5.5rem);
+}
+
+.curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 120px;
+  pointer-events: none;
+}
+.curve svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.gridContainer {
+  /*HomePage specific breakout*/
+  inline-size: min(1880px, 100vw);
+  margin-inline: calc(50% - min(1880px, 100vw) / 2);
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: var(--gutter);
+  margin-block: var(--gutter);
+  grid-template-columns: minmax(260px, 320px) 1fr minmax(260px, 320px);
+  grid-template-areas: "sidebar contentCards spacer";
+}
+
+.sidebar {
+  grid-area: sidebar;
+  /*Sticky on desktop view*/
+  position: sticky;
+  top: calc(var(--gutter) + 8px);
+  align-self: start;
+}
+
+.contentCards {
+  grid-area: contentCards;
+  /* Center the content cards */
+  max-inline-size: 996px;
+  margin-inline: auto;
+}
+
+.spacer {
+  grid-area: spacer;
+  display: none;
+}
+
+/* 1200px–1440px — 2 columns: [sidebar][content], remove spacer */
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .gridContainer {
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    grid-template-areas: "sidebar contentCards";
+    --cards-gap: 2rem;
+  }
+  .spacer {
+    display: none;
+  }
+}
+
+/* 992px–1199px — 2 columns, smaller sidebar*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  .gridContainer {
+    grid-template-columns: minmax(200px, 230px) 1fr;
+    grid-template-areas: "sidebar contentCards";
+    --cards-gap: 1.5rem;
+  }
+  .spacer {
+    display: none;
+  }
+}
+
+/* 768–991 px — 2 columns: [sidebar][2-card content] */
+@media (min-width: 425px) and (max-width: 991.98px) {
+  .gridContainer {
+    grid-template-columns: minmax(220px, 230px) 1fr;
+    grid-template-areas: "sidebar contentCards";
+    --cards-gap: 2rem;
+  }
+  .spacer {
+    display: none;
+  }
+  .contentCards {
+    max-inline-size: none;
+  }
+}
+
+/* Mobile: stack (wire hamburger later) */
+@media (max-width: 425px) {
+  .gridContainer {
+    padding-inline: 0;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-areas: "contentCards"; /* Sidebar will be off-canvas / toggled later */
+  }
+  .sidebar {
+    display: none; /* placeholder until hamburger is implemented */
+  }
+}
