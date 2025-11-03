@@ -86,7 +86,7 @@
   margin: 0;
   line-height: 20px;
   /* color: #ffd900; */
-  color: var(--chrome-bg);
+  color: #cc9900ff;
 }
 
 .recipe-card p:nth-of-type(1) svg {
