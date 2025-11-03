@@ -13,6 +13,7 @@
  * @returns {JSX.Element} Renderad kategori-komponent.
  */
 
+import { NavLink } from "react-router-dom";
 import styles from "./Category.module.css";
 import { joinClassNames } from "../utils/joinClassNames.js";
 
@@ -23,11 +24,30 @@ function Category({
   onClick,
   variant = "link",
 }) {
-  const className = joinClassNames(
-    styles.categoryItem,
-    styles[variant],
-    isActive && styles.active,
-  );
+  const base = joinClassNames(styles.categoryItem, styles[variant]);
+
+  if (variant === "link") {
+    const to = `/categories/${encodeURIComponent(name)}`;
+
+    return (
+      <NavLink
+        to={to}
+        end
+        className={({ isActive: navActive }) =>
+          joinClassNames(
+            base,
+            styles.categoryLink,
+            (navActive || isActive) && styles.active,
+          )
+        }
+      >
+        <span className={styles.categoryName}>{name}</span>
+        <span className={styles.categoryRecipeCount}>({recipeCount ?? 0})</span>
+      </NavLink>
+    );
+  }
+
+  const className = joinClassNames(base, isActive && styles.active);
 
   return (
     <button
