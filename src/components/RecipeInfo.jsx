@@ -49,7 +49,9 @@ export default function RecipeInfo({ recipeId }) {
               {recipe.instructions.timeInMins} min
             </p>
             {recipe.ingredients?.items?.length && (
-              <p className={styles.recipeIngredientsCount}>{recipe.ingredients.items.length} ingredienser</p>
+              <p className={styles.recipeIngredientsCount}>
+                {recipe.ingredients.items.length} ingredienser
+              </p>
             )}
             <p className={styles.recipeDifficulty}>
               Svårighetsgrad: {difficulty}

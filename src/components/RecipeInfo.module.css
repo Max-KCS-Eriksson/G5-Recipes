@@ -37,7 +37,8 @@
   flex-wrap: wrap;
 }
 
-.recipeTime, .recipeIngredientsCount,
+.recipeTime,
+.recipeIngredientsCount,
 .recipeDifficulty {
   margin: 0;
   color: #000;
