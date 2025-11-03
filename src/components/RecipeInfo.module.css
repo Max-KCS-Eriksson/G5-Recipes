@@ -67,6 +67,10 @@
   min-width: 300px;
 }
 
+.ingredients ul {
+  list-style-type: none;
+}
+
 .recipeDetails h3 {
   color: #050505;
   margin-bottom: 2px;
