@@ -57,41 +57,30 @@ function RecipeRating({ recipeId, readOnly = true }) {
   }
 
   const icons = createEmptyRatingIconList();
+  const ratingFragment = icons.map((icon, index) => (
+    <span
+      key={`${icon.className}${index}`}
+      className={`${styles.star} ${index < hovered ? styles.hovered : ""}`}
+      onMouseEnter={() => setHovered(index + 1)}
+      onMouseLeave={() => setHovered(0)}
+      onClick={() => rateRecipe(index + 1)}
+    >
+      {icon}
+    </span>
+  ));
 
   if (failedOnRating) {
     return (
       <div className={styles.rating}>
         <p className={styles.error}>Ett fel uppstod, försök igen.</p>
-        <div className={styles.stars}>
-          {icons.map((icon, index) => (
-            <span
-              key={index}
-              className={styles.star}
-              onClick={() => rateRecipe(index + 1)}
-            >
-              {icon}
-            </span>
-          ))}
-        </div>
+        <div className={styles.stars}>{ratingFragment}</div>
       </div>
     );
   } else {
     return (
       <div className={styles.rating}>
         <h3 className={styles.title}>Vad tyckte du om receptet?</h3>
-        <div className={styles.stars}>
-          {icons.map((icon, index) => (
-            <span
-              key={index}
-              className={`${styles.star} ${index < hovered ? styles.hovered : ""}`}
-              onMouseEnter={() => setHovered(index + 1)}
-              onMouseLeave={() => setHovered(0)}
-              onClick={() => rateRecipe(index + 1)}
-            >
-              {icon}
-            </span>
-          ))}
-        </div>
+        <div className={styles.stars}>{ratingFragment}</div>
       </div>
     );
   }

@@ -33,14 +33,11 @@ export default function RecipeInfo({ recipeId }) {
   return (
     <div className={styles.recipeInfo}>
       <div className={styles.recipeHeader}>
-        {/* Bilden till vänster */}
         <img
           src={recipe.imageUrl}
           alt={recipe.name}
           className={styles.recipeImage}
         />
-
-        {/* Texten till höger */}
         <div className={styles.recipeInfo}>
           <h2 className={styles.recipeTitle}>{recipe.name}</h2>
 
@@ -62,8 +59,8 @@ export default function RecipeInfo({ recipeId }) {
           <div className={styles.ingredients}>
             <h3>Ingredienser</h3>
             <ul>
-              {recipe.ingredients.items.map((ingredient, index) => (
-                <li key={index}>
+              {recipe.ingredients.items.map((ingredient) => (
+                <li key={ingredient.name}>
                   {ingredient.amount} {ingredient.unit} {ingredient.name}
                 </li>
               ))}
@@ -73,8 +70,8 @@ export default function RecipeInfo({ recipeId }) {
           <div className={styles.instructions}>
             <h3>Gör så här:</h3>
             <ol>
-              {recipe.instructions.steps.map((step, index) => (
-                <li key={index}>{step}</li>
+              {recipe.instructions.steps.map((step) => (
+                <li key={step}>{step}</li>
               ))}
             </ol>
           </div>
