@@ -63,7 +63,7 @@ function Header() {
           Hem
         </Link>
         <a href="#contact" onClick={scrollToFooter} className={styles.navBtn}>
-          Kontakter
+          Kontakt
         </a>
       </nav>
 
@@ -104,7 +104,7 @@ function Header() {
               className={styles.navBtn}
               onClick={scrollToFooter}
             >
-              Kontakter
+              Kontakt
             </a>
           </li>
         </ul>
