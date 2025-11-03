@@ -8,21 +8,18 @@ export function joinClassNames(...args) {
 
     if (typeof arg === "string") {
       parts.push(arg);
-      continue;
-    }
-
-    if (Array.isArray(arg)) {
+    } else if (Array.isArray(arg)) {
       parts.push(...arg.filter(Boolean));
-      continue;
-    }
-
-    if (typeof arg === "object") {
-      for (const [key, val] of Object.entries(arg)) {
-        if (val) parts.push(key);
-      }
-      continue;
+    } else if (typeof arg === "object") {
+      addKeys(arg);
     }
   }
 
   return parts.join(" ");
+}
+
+function addKeys(obj, arr) {
+  for (const [key, val] of Object.entries(obj)) {
+    if (val) arr.push(key);
+  }
 }
