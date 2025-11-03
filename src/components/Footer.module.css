@@ -1,33 +1,88 @@
-/* Footer.module.css */
 .footerContainer {
-  position: static; /* <- NOT sticky/fixed */
+  position: relative;
   inset: auto;
-
   background: var(--chrome-bg);
   color: var(--chrome-fg);
   padding: 1rem 1.5rem;
 }
+.footerContainer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -3px;
+  height: 18px;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    var(--chrome-bg) 0%,
+    var(--chrome-bg) 60%,
+    #b07c7c 85%,
+    var(--page-bg) 100%
+  );
+}
 
 .footerContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "brand"
+    "left"
+    "copy";
+  justify-items: center;
+  text-align: center;
   gap: 0.6rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
-
-.footerLinks {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+.brandTitle {
+  grid-area: brand;
+  margin: 0;
+  font-weight: 700;
+  font-size: 2em;
 }
-
-.footerLinks a {
-  color: var(--chrome-fg);
-  text-decoration: none;
+.footerLeft {
+  grid-area: left;
 }
-
 .footerCopy {
+  grid-area: copy;
+  margin: 0;
   font-size: 0.9rem;
   opacity: 0.85;
+}
+
+.kontakt {
+  margin: 0;
+  font-weight: 600;
+}
+.email {
+  color: var(--chrome-fg);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.email:hover,
+.email:focus-visible {
+  color: color-mix(in srgb, var(--chrome-fg) 85%, black);
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .footerContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-align: initial;
+  }
+  .footerLeft {
+    flex: 1 1 0;
+  }
+  .brandTitle {
+    flex: 0 0 auto;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .footerCopy {
+    flex: 1 1 0;
+    text-align: right;
+  }
 }

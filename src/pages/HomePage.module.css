@@ -40,6 +40,11 @@
   place-items: center;
 }
 
+.searchbarDock {
+  justify-self: center;
+  transform: translateY(-5.5rem);
+}
+
 .curve {
   position: absolute;
   left: 0;
@@ -101,7 +106,7 @@
 /* 992px–1199px — 2 columns, smaller sidebar*/
 @media (min-width: 992px) and (max-width: 1199px) {
   .gridContainer {
-    grid-template-columns: minmax(200px, 260px) 1fr;
+    grid-template-columns: minmax(200px, 230px) 1fr;
     grid-template-areas: "sidebar contentCards";
     --cards-gap: 1.5rem;
   }
@@ -111,9 +116,9 @@
 }
 
 /* 768–991 px — 2 columns: [sidebar][2-card content] */
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 425px) and (max-width: 991.98px) {
   .gridContainer {
-    grid-template-columns: minmax(220px, 280px) 1fr;
+    grid-template-columns: minmax(220px, 230px) 1fr;
     grid-template-areas: "sidebar contentCards";
     --cards-gap: 2rem;
   }
@@ -126,7 +131,7 @@
 }
 
 /* Mobile: stack (wire hamburger later) */
-@media (max-width: 767.98px) {
+@media (max-width: 425px) {
   .gridContainer {
     padding-inline: 0;
     justify-items: center;

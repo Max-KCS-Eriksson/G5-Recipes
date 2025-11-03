@@ -29,7 +29,9 @@ export default function HomePage() {
     <>
       <section className={styles.hero} aria-label="Hero">
         <div className={styles.heroCenter}>
-          <SearchBar initialValue={nameQuery} onSearch={handleSearch} />
+          <div className={styles.searchbarDock}>
+            <SearchBar initialValue={nameQuery} onSearch={handleSearch} />
+          </div>
         </div>
         <div className={styles.curve} aria-hidden="true">
           <svg viewBox="0 0 100 20" preserveAspectRatio="none">

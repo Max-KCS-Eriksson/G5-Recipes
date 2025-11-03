@@ -102,7 +102,6 @@ function CategoryList() {
 
   return (
     <aside className={styles.categoryList}>
-      <h3>Kategorier</h3>
       <ul>
         {categories.map((category) => {
           const categoryData = categoryRecipeCount[category];

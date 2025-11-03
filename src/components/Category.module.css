@@ -15,6 +15,8 @@
   cursor: pointer;
 
   font-size: 1rem;
+  font-weight: bolder;
+  font-family: var(--font-fw-bold);
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
