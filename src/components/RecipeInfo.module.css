@@ -29,11 +29,12 @@
 
 .recipeMeta {
   display: flex;
-  gap: 16px;
+  gap: 50px;
   margin: 6px 0;
+  justify-content: flex-start;
 }
 
-.recipeTime,
+.recipeTime, .recipeIngredientsCount,
 .recipeDifficulty {
   margin: 0;
   color: #000;
