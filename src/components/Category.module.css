@@ -44,3 +44,14 @@
 .category-item.toggle {
   justify-content: space-between;
 }
+
+@media (max-width: 600px) {
+  .category-item.link {
+    color: var(--page-bg);
+    justify-content: center;
+  }
+  .category-item.link:hover,
+  .category-recipe-count {
+    color: var(--page-bg);
+  }
+}

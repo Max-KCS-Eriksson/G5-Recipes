@@ -122,8 +122,25 @@
   justify-items: center;
 }
 
+/* Small title for the section (optional) */
+.catsTitle {
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  text-align: center;
+  color: var(--page-bg);
+  opacity: 0.9;
+  border-bottom: 1px solid var(--page-bg);
+}
+
+/* Make the category list scroll if it grows tall */
+.catsPanelAlways {
+  max-height: 60vh; /* drawer is 100vh, keep room for header/buttons */
+  overflow: auto;
+  padding: 0.25rem 0;
+}
+
 /* --- Responsive rules --- */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .headerNav {
     display: none;
   } /* hide desktop nav */

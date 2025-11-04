@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import Logo from "./Logo.jsx";
+import CategoryList from "./CategoryList.jsx";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -106,6 +107,14 @@ function Header() {
             >
               Kontakt
             </a>
+          </li>
+
+          {/* Categories shown directly in the drawer (mobile only) */}
+          <li className={styles.catsBlock}>
+            <h3 className={styles.catsTitle}>Kategorier</h3>
+            <div className={styles.catsPanelAlways}>
+              <CategoryList />
+            </div>
           </li>
         </ul>
       </aside>

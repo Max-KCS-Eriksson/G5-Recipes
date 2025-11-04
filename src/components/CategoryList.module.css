@@ -70,3 +70,18 @@
 .category-list:hover {
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.12);
 }
+
+@media (max-width: 600px) {
+  .category-list {
+    max-width: 100%;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .category-list:hover {
+    box-shadow: none;
+  }
+  .subcategory-list li {
+    padding-left: 0;
+  }
+}
