@@ -103,8 +103,8 @@
   }
 }
 
-/* 992px–1199px — 2 columns, smaller sidebar*/
-@media (min-width: 992px) and (max-width: 1199px) {
+/* 600px–1199px — 2 columns, smaller sidebar*/
+@media (min-width: 600px) and (max-width: 1199px) {
   .gridContainer {
     grid-template-columns: minmax(200px, 230px) 1fr;
     grid-template-areas: "sidebar contentCards";
@@ -115,30 +115,13 @@
   }
 }
 
-/* 768–991 px — 2 columns: [sidebar][2-card content] */
-@media (min-width: 425px) and (max-width: 991.98px) {
+@media (max-width: 600px) {
   .gridContainer {
-    grid-template-columns: minmax(220px, 230px) 1fr;
-    grid-template-areas: "sidebar contentCards";
-    --cards-gap: 2rem;
-  }
-  .spacer {
-    display: none;
-  }
-  .contentCards {
-    max-inline-size: none;
-  }
-}
-
-/* Mobile: stack (wire hamburger later) */
-@media (max-width: 425px) {
-  .gridContainer {
-    padding-inline: 0;
     justify-items: center;
     grid-template-columns: 1fr;
-    grid-template-areas: "contentCards"; /* Sidebar will be off-canvas / toggled later */
+    grid-template-areas: "contentCards";
   }
   .sidebar {
-    display: none; /* placeholder until hamburger is implemented */
+    display: none;
   }
 }
