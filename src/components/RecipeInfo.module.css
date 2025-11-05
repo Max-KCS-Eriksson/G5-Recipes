@@ -13,6 +13,7 @@
   width: 45%;
   max-width: 500px;
   height: auto;
+  aspect-ratio: 4 / 3;
   border-radius: 40px 0 0 40px;
   object-fit: cover;
   flex-shrink: 1;
