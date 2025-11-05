@@ -68,7 +68,25 @@ export default function RecipeList({ category, nameQuery }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, nameQuery]);
 
-  if (loading) return <p>Laddar recept...</p>;
+  if (loading) {
+    return (
+      <>
+        <p className="srOnly" aria-live="polite">
+          Laddar recept…
+        </p>
+        <div className={styles.skeletonGrid} role="status" aria-hidden="true">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={`skeleton-${i}`} className={styles.cardSkeleton}>
+              <div className={styles.cardSkImage} />
+              <div className={styles.cardSkTitle} />
+              <div className={styles.cardSkRow} />
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  }
+
   if (error)
     return (
       <div>
