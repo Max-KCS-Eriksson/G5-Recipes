@@ -13,7 +13,6 @@ function Logo({ variant = "default" }) {
     if (!atCleanHomeSearch) {
       e.preventDefault();
       navigate({ pathname: "/", search: "", hash: "" }, { replace: false });
-      return;
     }
   };
 
