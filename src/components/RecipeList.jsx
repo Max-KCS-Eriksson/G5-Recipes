@@ -74,9 +74,9 @@ export default function RecipeList({ category, nameQuery }) {
         <p className="srOnly" aria-live="polite">
           Laddar recept…
         </p>
-        <div className={styles.skeletonGrid} role="status" aria-hidden="true">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={`skeleton-${i}`} className={styles.cardSkeleton}>
+        <div className={styles.skeletonGrid} aria-hidden="true">
+          {["sk1", "sk2", "sk3", "sk4", "sk5", "sk6"].map((id) => (
+            <div key={id} className={styles.cardSkeleton}>
               <div className={styles.cardSkImage} />
               <div className={styles.cardSkTitle} />
               <div className={styles.cardSkRow} />
