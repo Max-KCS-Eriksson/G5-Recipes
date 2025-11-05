@@ -18,7 +18,6 @@ body {
   overscroll-behavior-y: none;
   font-family: var(--font-body);
   font-weight: var(--fw-regular);
-  line-height: var(--lh-1);
   font-synthesis: none;
   font-size-adjust: 0.52;
   line-height: 1.5;
