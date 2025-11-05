@@ -33,10 +33,6 @@
   transform: scale(1.2);
 }
 
-.hovered {
-  color: #cc9900ff;
-}
-
 .thankYou,
 .error {
   font-size: 1rem;
