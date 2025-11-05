@@ -8,7 +8,7 @@
  * @returns {JSX.Element} Startsidan för Receptsajten.
  */
 
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar.jsx";
 import RecipeList from "../components/RecipeList.jsx";
 import CategoryList from "../components/CategoryList.jsx";
@@ -16,13 +16,21 @@ import styles from "./HomePage.module.css";
 
 export default function HomePage() {
   const { categoryName } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const nameQuery = searchParams.get("search") || "";
 
   function handleSearch(next) {
     const nextQuery = (next ?? "").trim();
-    if (nextQuery) setSearchParams({ search: nextQuery }, { replace: true });
-    else setSearchParams({}, { replace: true });
+
+    if (nextQuery) {
+      navigate(
+        { pathname: "/", search: `?search=${encodeURIComponent(nextQuery)}` },
+        { replace: true },
+      );
+    } else {
+      navigate({ pathname: "/", search: "" }, { replace: true });
+    }
   }
 
   return (
