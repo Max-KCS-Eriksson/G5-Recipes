@@ -18,6 +18,13 @@ test.describe("The search flow", () => {
     await searchbox.fill("kyckling");
     await searchButton.click();
 
+    await page.waitForResponse(
+      (res) =>
+        res.url().includes("/recipes") &&
+        res.request().method() === "GET" &&
+        res.status() === 200,
+    );
+
     await expect
       .poll(async () => await items.count())
       .toBeLessThan(initialCount);
@@ -29,6 +36,13 @@ test.describe("The search flow", () => {
       .toBe(true);
 
     await page.reload();
+
+    await page.waitForResponse(
+      (res) =>
+        res.url().includes("/recipes") &&
+        res.request().method() === "GET" &&
+        res.status() === 200,
+    );
 
     await expect(searchbox).toHaveValue("kyckling");
     await expect.poll(async () => await items.count()).toBe(filteredCount);
