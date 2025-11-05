@@ -11,7 +11,7 @@ export function joinClassNames(...args) {
     } else if (Array.isArray(arg)) {
       parts.push(...arg.filter(Boolean));
     } else if (typeof arg === "object") {
-      addKeys(arg);
+      addKeys(arg, parts);
     }
   }
 
