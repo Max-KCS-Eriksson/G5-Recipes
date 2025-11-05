@@ -20,6 +20,8 @@ function RecipeRating({ recipeId, readOnly = true }) {
   const [recipe, setRecipe] = useState(null);
   const [hasRated, setHasRated] = useState(false);
   const [failedOnRating, setFailedOnRating] = useState(false);
+
+  const [icons, setIcons] = useState(createEmptyRatingIconList());
   const [hovered, setHovered] = useState(0);
 
   useEffect(() => {
@@ -56,13 +58,19 @@ function RecipeRating({ recipeId, readOnly = true }) {
     }
   }
 
-  const icons = createEmptyRatingIconList();
   const ratingFragment = icons.map((icon, index) => (
     <span
       key={`${icon.className}${index}`}
       className={`${styles.star} ${index < hovered ? styles.hovered : ""}`}
-      onMouseEnter={() => setHovered(index + 1)}
-      onMouseLeave={() => setHovered(0)}
+      onMouseEnter={() => {
+        const hoveredStar = index + 1;
+        setHovered(hoveredStar);
+        setIcons(ratingToIcons(hoveredStar));
+      }}
+      onMouseLeave={() => {
+        setHovered(0);
+        setIcons(createEmptyRatingIconList());
+      }}
       onClick={() => rateRecipe(index + 1)}
     >
       {icon}
