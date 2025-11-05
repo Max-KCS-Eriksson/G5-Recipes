@@ -1,5 +1,4 @@
 import styles from "./Footer.module.css";
-import Logo from "./Logo.jsx";
 
 function Footer() {
   return (
