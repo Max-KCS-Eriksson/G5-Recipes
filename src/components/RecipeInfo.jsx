@@ -34,10 +34,18 @@ export default function RecipeInfo({ recipeId }) {
   return (
     <div className={styles.recipeInfo}>
       <div className={styles.recipeHeader}>
+        {/* <img
+          src={recipe.imageUrl}
+          alt={recipe.name}
+          className={styles.recipeImage}
+        /> */}
         <img
           src={recipe.imageUrl}
           alt={recipe.name}
           className={styles.recipeImage}
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
         />
         <div className={styles.recipeInfo}>
           <h2 className={styles.recipeTitle}>{recipe.name}</h2>
