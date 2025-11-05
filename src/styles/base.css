@@ -20,6 +20,8 @@ body {
   font-weight: var(--fw-regular);
   line-height: var(--lh-1);
   font-synthesis: none;
+  font-size-adjust: 0.52;
+  line-height: 1.5;
 }
 
 /* fixed background layer */
