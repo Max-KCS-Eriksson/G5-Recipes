@@ -7,7 +7,7 @@ test.describe("The search flow", () => {
     await page.goto("/");
 
     const searchbox = page.getByRole("searchbox");
-    const searchButton = page.getByRole("button", { name: /sök/i });
+    const searchButton = page.getByRole("button", { name: /sök recept/i });
     const list = page.getByRole("list", { name: /receptlista/i });
     const items = list.getByRole("listitem");
 
