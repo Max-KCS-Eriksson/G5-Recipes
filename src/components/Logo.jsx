@@ -1,21 +1,25 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Logo.module.css";
 import pajIcon from "../assets/paj-icon.svg";
 import { joinClassNames } from "../utils/joinClassNames.js";
 
 function Logo({ variant = "default" }) {
-  const { pathname } = useLocation();
+  const { pathname, search, hash } = useLocation();
+  const navigate = useNavigate();
 
   const handleClick = (e) => {
-    if (pathname === "/") {
+    const atCleanHomeSearch = pathname === "/" && !search && !hash;
+
+    if (!atCleanHomeSearch) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate({ pathname: "/", search: "", hash: "" }, { replace: false });
+      return;
     }
   };
 
   return (
     <Link
-      to="/"
+      to={{ pathname: "/", search: "", hash: "" }}
       onClick={handleClick}
       aria-label="Gå till startsidan"
       className={joinClassNames(styles.logoText, styles[variant])}
