@@ -10,7 +10,6 @@
 }
 
 .category-link.active {
-  /* color: var(--chrome-bg); */
   font-weight: bolder;
   font-family: var(--font-fw-bold);
   font-size: 1.15rem;
@@ -50,6 +49,7 @@
     color: var(--page-bg);
     justify-content: center;
   }
+
   .category-item.link:hover,
   .category-recipe-count {
     color: var(--page-bg);
