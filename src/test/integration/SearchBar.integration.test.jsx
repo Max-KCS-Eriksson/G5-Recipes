@@ -26,7 +26,7 @@ describe("Integration 6.2.5 - SearchBar - XSS-sanering", () => {
     const submitButton = screen.getByRole("button", { name: /sök/i });
     await userEvent.click(submitButton);
 
-    expect(window.alert).not.toHaveBeenCalled();
+    expect(globalThis.alert).not.toHaveBeenCalled();
     expect(mockSearch).toHaveBeenCalledTimes(1);
     expect(mockSearch).toHaveBeenCalledWith("scriptalert1script");
     expect(screen.queryByText(/ogiltiga tecken/i)).not.toBeInTheDocument();
