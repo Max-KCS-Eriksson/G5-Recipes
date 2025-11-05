@@ -38,3 +38,10 @@ body::before {
   z-index: -1;
   will-change: transform;
 }
+
+@layer base {
+  img[loading="eager"],
+  img[fetchpriority="high"] {
+    content-visibility: visible;
+  }
+}

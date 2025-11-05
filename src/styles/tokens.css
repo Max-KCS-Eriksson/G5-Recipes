@@ -12,7 +12,7 @@
   --chrome-fg: #ffffff; /* header/footer text */
 
   /* hero */
-  --hero-bg-image: url("../assets/hero-bg.webp"); /* set your file */
+  --hero-bg-image: url("/images/hero-curve-bg.webp"); /* set your file */
   --hero-bg-size: cover;
   --hero-bg-position: center;
 
