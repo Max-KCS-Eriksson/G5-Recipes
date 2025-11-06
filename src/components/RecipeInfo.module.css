@@ -13,6 +13,7 @@
   width: 45%;
   max-width: 500px;
   height: auto;
+  aspect-ratio: 4 / 3;
   border-radius: 40px 0 0 40px;
   object-fit: cover;
   flex-shrink: 1;
@@ -118,6 +119,8 @@
   gap: 1px;
   color: #cc9900ff;
   font-size: 1.3rem;
+  padding-top: 5px;
+  padding-bottom: 8px;
 }
 
 /* ------------------------------

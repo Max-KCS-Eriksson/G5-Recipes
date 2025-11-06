@@ -7,7 +7,6 @@ ITHS School group project
 ### Project manager
 
 - Chiman Delwood
-- Debora Tecle
 - Jonas Rosen
 - Kelly Fredriksson
 - Nabila Zekry
