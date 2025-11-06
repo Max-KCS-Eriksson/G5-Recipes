@@ -23,7 +23,7 @@
 .star {
   cursor: pointer;
   font-size: 1.3rem;
-  color: #000000;
+  color: #cc9900ff;
   transition:
     transform 0.2s ease,
     color 0.2s ease;
@@ -31,10 +31,6 @@
 
 .star:hover {
   transform: scale(1.2);
-}
-
-.hovered {
-  color: gold;
 }
 
 .thankYou,

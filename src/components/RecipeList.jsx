@@ -68,7 +68,25 @@ export default function RecipeList({ category, nameQuery }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, nameQuery]);
 
-  if (loading) return <p>Laddar recept...</p>;
+  if (loading) {
+    return (
+      <>
+        <p className="srOnly" aria-live="polite">
+          Laddar recept…
+        </p>
+        <div className={styles.skeletonGrid} aria-hidden="true">
+          {["sk1", "sk2", "sk3", "sk4", "sk5", "sk6"].map((id) => (
+            <div key={id} className={styles.cardSkeleton}>
+              <div className={styles.cardSkImage} />
+              <div className={styles.cardSkTitle} />
+              <div className={styles.cardSkRow} />
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  }
+
   if (error)
     return (
       <div>
@@ -85,6 +103,8 @@ export default function RecipeList({ category, nameQuery }) {
     );
   if (!recipes || recipes.length === 0) return <p>Inga recept hittades.</p>;
 
+  const firstId = recipes[0]?.id;
+
   return (
     <ul className={styles.recipeList} aria-label="Receptlista">
       {recipes.map((recipe) => (
@@ -93,7 +113,7 @@ export default function RecipeList({ category, nameQuery }) {
             onClick={() => handleRecipeClick(recipe.id)}
             style={{ cursor: "pointer" }}
           >
-            <RecipeCard recipe={recipe} />
+            <RecipeCard recipe={recipe} priority={firstId === recipe.id} />
           </button>
         </li>
       ))}

@@ -7,7 +7,7 @@ test.describe("The search flow", () => {
     await page.goto("/");
 
     const searchbox = page.getByRole("searchbox");
-    const searchButton = page.getByRole("button", { name: /sök/i });
+    const searchButton = page.getByRole("button", { name: /sök recept/i });
     const list = page.getByRole("list", { name: /receptlista/i });
     const items = list.getByRole("listitem");
 
@@ -17,6 +17,13 @@ test.describe("The search flow", () => {
 
     await searchbox.fill("kyckling");
     await searchButton.click();
+
+    await page.waitForResponse(
+      (res) =>
+        res.url().includes("/recipes") &&
+        res.request().method() === "GET" &&
+        res.status() === 200,
+    );
 
     await expect
       .poll(async () => await items.count())
@@ -29,6 +36,13 @@ test.describe("The search flow", () => {
       .toBe(true);
 
     await page.reload();
+
+    await page.waitForResponse(
+      (res) =>
+        res.url().includes("/recipes") &&
+        res.request().method() === "GET" &&
+        res.status() === 200,
+    );
 
     await expect(searchbox).toHaveValue("kyckling");
     await expect.poll(async () => await items.count()).toBe(filteredCount);

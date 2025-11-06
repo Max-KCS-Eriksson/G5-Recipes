@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SEARCH_QUERY_POLICY,
   sanitizeSearchQuery,
@@ -12,6 +12,10 @@ export default function SearchBar({
   policy = SEARCH_QUERY_POLICY,
 }) {
   const [inputValue, setInputValue] = useState(initialValue);
+
+  useEffect(() => {
+    setInputValue(initialValue);
+  }, [initialValue]);
 
   async function handleSubmit(event) {
     event.preventDefault();

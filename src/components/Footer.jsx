@@ -1,10 +1,9 @@
 import styles from "./Footer.module.css";
-import Logo from "./Logo.jsx";
 
 function Footer() {
   return (
     <footer className={styles.footerContainer} id="contact">
-      <div
+      <footer
         className={styles.footerContent}
         role="contentinfo"
         aria-label="Sidfot"
@@ -17,11 +16,11 @@ function Footer() {
         </div>
         <p className={styles.brandTitle}>PajParadiset</p>
         <p className={styles.footerCopy}>
-          © {new Date().getFullYear()} PajParadiset.
+          © {new Date().getFullYear()} PajParadiset
           <br />
-          Alla rättigheter förbehållna.
+          Alla rättigheter förbehållna
         </p>
-      </div>
+      </footer>
     </footer>
   );
 }
