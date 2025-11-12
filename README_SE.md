@@ -7,11 +7,11 @@ Tillgängliga språk:
 
 ## Hemsida
 
-![G5 - Bild på Hemsida](https://github.com/user-attachments/assets/ac130678-f304-4061-a632-5119efa8fe67)
+![G5 - Bild på Hemsida]<img width="2938" height="3714" alt="homepage" src="https://github.com/user-attachments/assets/cd83ccca-4f0e-48d0-a656-66c7842ff6c3" />
 
 ## Receptsida
 
-![G5 - Bild på Receptsida](https://github.com/user-attachments/assets/ac130678-f304-4061-a632-5119efa8fe67)
+![G5 - Bild på Receptsida]<img width="2938" height="3746" alt="recipepage" src="https://github.com/user-attachments/assets/c03491cc-1a22-477e-ba70-5a01ff757bee" />
 
 ---
 
@@ -38,6 +38,7 @@ Applikationen är fullt integrerad med **GitHub Actions (CI/CD)** och distribuer
   - [Utvecklingsflöde (CI/CD)](#utvecklingsflöde-cicd)
   - [Projektstruktur](#projektstruktur)
   - [Team och roller](#team-och-roller)
+  - [Projektstatus](#projektstatus)
   - [Licens](#licens)
 
 ---
@@ -183,6 +184,15 @@ G5-Recipes/
 - Max Eriksson
 - Sandra Boerma
 - Sirak Kahsay
+
+---
+
+## Projektstatus
+
+Detta repo utgör den slutgiltiga versionen av G5-Recipes-projektet, utvecklat gemensamt av Grupp 5 på ITHS inom kursen Agil Utveckling.
+All funktionalitet och design speglar gruppens gemensamma arbete och beslut fram till den fastställda Definition of Done (DoD)-milstolpen.
+
+Framtida utvecklare är varmt välkomna att forka detta repo för att fortsätta experimentera, lära sig eller vidareutveckla projektet – men huvud-branchen bevaras för att hedra teamets ursprungliga insats.
 
 ---
 

@@ -7,11 +7,11 @@ Available languages:
 
 ## Home Page
 
-![G5 - HomePage Image](https://github.com/user-attachments/assets/ac130678-f304-4061-a632-5119efa8fe67)
+![G5 - HomePage Image]<img width="2938" height="3714" alt="homepage" src="https://github.com/user-attachments/assets/cd83ccca-4f0e-48d0-a656-66c7842ff6c3" />
 
 ## Recipe Page
 
-![G5 - RecipePage Image](https://github.com/user-attachments/assets/ac130678-f304-4061-a632-5119efa8fe67)
+![G5 - RecipePage Image]<img width="2938" height="3746" alt="recipepage" src="https://github.com/user-attachments/assets/c03491cc-1a22-477e-ba70-5a01ff757bee" />
 
 ---
 
@@ -38,6 +38,7 @@ The application is fully integrated with **GitHub Actions (CI/CD)** and deployed
   - [CI/CD Workflow](#cicd-workflow)
   - [Project Structure](#project-structure)
   - [Team and Roles](#team-and-roles)
+  - [Project Status](#project-status)
   - [License](#license)
 
 ---
@@ -183,6 +184,15 @@ G5-Recipes/
 - Max Eriksson
 - Sandra Boerma
 - Sirak Kahsay
+
+---
+
+## Project Status
+
+This repository represents the final version of the G5-Recipes project, developed collaboratively by Group 5 at ITHS as part of the Agile Development course.
+All functionality and design reflect the team’s shared work and decisions up to the defined Definition of Done (DoD) milestone.
+
+Future developers are warmly welcome to fork this repository and continue experimenting, learning, or evolving the project further — but please note that the main branch is preserved to honor the team’s original contribution.
 
 ---
 
