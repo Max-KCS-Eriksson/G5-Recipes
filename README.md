@@ -9,7 +9,6 @@ Available languages:
 
 ![G5 - HomePage Image]<img width="2938" height="3714" alt="homepage" src="https://github.com/user-attachments/assets/cd83ccca-4f0e-48d0-a656-66c7842ff6c3" />
 
-
 ## Recipe Page
 
 ![G5 - RecipePage Image]<img width="2938" height="3746" alt="recipepage" src="https://github.com/user-attachments/assets/c03491cc-1a22-477e-ba70-5a01ff757bee" />
@@ -192,7 +191,7 @@ G5-Recipes/
 
 This repository represents the final version of the G5-Recipes project, developed collaboratively by Group 5 at ITHS as part of the Agile Development course.
 All functionality and design reflect the team’s shared work and decisions up to the defined Definition of Done (DoD) milestone.
- 
+
 Future developers are warmly welcome to fork this repository and continue experimenting, learning, or evolving the project further — but please note that the main branch is preserved to honor the team’s original contribution.
 
 ---

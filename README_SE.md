@@ -191,7 +191,7 @@ G5-Recipes/
 
 Detta repo utgör den slutgiltiga versionen av G5-Recipes-projektet, utvecklat gemensamt av Grupp 5 på ITHS inom kursen Agil Utveckling.
 All funktionalitet och design speglar gruppens gemensamma arbete och beslut fram till den fastställda Definition of Done (DoD)-milstolpen.
- 
+
 Framtida utvecklare är varmt välkomna att forka detta repo för att fortsätta experimentera, lära sig eller vidareutveckla projektet – men huvud-branchen bevaras för att hedra teamets ursprungliga insats.
 
 ---
